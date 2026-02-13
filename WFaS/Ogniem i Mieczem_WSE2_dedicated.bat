@@ -1,0 +1,1 @@
+start mb_wfas_wse2_dedicated.exe --config-path server_config.ini -r Ogniem i Mieczem.txt --module Ogniem i Mieczem

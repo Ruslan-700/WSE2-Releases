@@ -1,0 +1,144 @@
+ui_first_person_field_of_view|Field of View (1st Person)
+ui_third_person_field_of_view|Field of View (3rd Person)
+ui_banner_mode|Show Banners
+ui_banner_outline_mode|Show Banner Outlines
+ui_dynamic_banner_transparency|Dynamic Banner Transparency
+ui_on_group|On Group
+ui_on_friendlies|On Friendlies
+ui_on_everyone|On Everyone
+ui_show_multiplayer_chat|Show Chat
+ui_show_multiplayer_team_chat|Show Team Chat
+ui_difficulty_rating_percentage|Difficulty = %d%%
+ui_general_options|General
+ui_battle_options|Battle
+ui_campaign_options|Campaign
+ui_multiplayer_options|Multiplayer
+ui_video_options|Graphics
+ui_sound_options|Sound
+ui_input_options|Input
+ui_edit_mode_options|Edit Mode
+ui_maximum_framerate|Max Frame-rate
+ui_show_framerate_wse2|Show Frame-rate
+ui_estimated_performance|Performance = %d%%
+ui_change_reflections_explanation|Full reflections are performance heavy. Disable them if you are experiencing low frame rates.
+ui_report_proficiency|Report Proficiency
+ui_abysmal|Abysmal
+ui_clear|Clear
+ui_walk|Walk
+ui_walk_toggle|Walk (Toggle)
+ui_rear_horse|Rear Horse
+ui_hide_ui|Toggle UI Display
+ui_hide_tooltips|Toggle Tooltip Display
+ui_listen_server_could_not_be_started|Listen server could not be started. Make sure no other program is using port %d.
+ui_water_reflections|Water Reflections
+ui_reflections_quality|Water Reflections Quality
+ui_sky|Sky
+ui_sky_landscape_objects|Sky, Landscape and Objects
+ui_sound_occlusion|Sound Occlusion
+ui_sound_occlusion_filter|Occlusion Low-Pass Filter
+ui_sound_hrtf_filter|HRTF Low-Pass Filter
+ui_sound_distance_filter|Distance Low/High-Pass Filter
+ui_scene_restart_required|Some settings will be applied when you enter a new scene:
+ui_game_restart_required|Some settings will be applied when you restart the game:
+ui_weapon_trails|Weapon Trails
+ui_windowed|Windowed
+ui_dynamic_batching|Dynamic Mesh Batching
+ui_free_look|Free Look
+ui_vsync|Vertical Synchronization
+ui_msaa|Antialiasing (MSAA)
+ui_atoc|Transparency Antialiasing (MSAA)
+ui_fxaa|Antialiasing (FXAA)
+ui_postprocess|Post Processing Filter
+ui_postprocess_light|Light Sharpen
+ui_postprocess_strong|Strong Sharpen
+ui_postprocess_color|MAKE MY EYES BLEED
+ui_multiplayer_kills|Kill Messages
+ui_all_kills|All
+ui_own|Own
+ui_player_deaths|Player deaths
+ui_own_kills_and_player_deaths|Own kills and player deaths
+ui_sun_flare|Sun Flare
+ui_enable_alt_f4|Enable Quit With Alt+F4
+ui_invert_mouse_x_axis|Invert Mouse X Axis
+ui_enable_sound|Enable Sound
+ui_enable_music|Enable Music
+ui_toggle_background|Background
+ui_font_scale|Font Scale
+ui_messages_font_scale|Messages Font Scale
+ui_spectator_camera_controls|Spectator Camera Controls
+ui_faster_camera|Faster Camera Movement
+ui_slower_camera|Slower Camera Movement
+ui_camera_closer|Move Camera Closer
+ui_camera_farther|Move Camera Farther
+ui_particle_degrade_distance|Particle System Degrade Distance
+ui_sheath_primary_weapon|Sheath Weapon
+ui_sheath_secondary_weapon|Sheath Shield
+ui_drop_primary_weapon|Drop Weapon
+ui_drop_secondary_weapon|Drop Shield
+ui_screenshot_format|Screenshot Format
+ui_control_block_direction|Block Control:
+ui_control_block_direction_mounted|Mounted Block Control:
+ui_control_attack_direction|Attack Control:
+ui_control_attack_direction_mounted|Mounted Attack Control:
+ui_preset_change|Preset Change
+ui_blood_amount|Blood Amount
+ui_beta|β
+ui_partial|Partial
+ui_data_file_mismatch|Your module files are corrupt or have been tampered with
+ui_randomize_client_port|Randomize Client Port (recommended unless you are behind a firewall)
+ui_client_port|Client Port
+ui_server_port|Listen Server Port
+ui_unable_to_bind_socket|Unable to connect, port already in use. 
+ui_synchronization_error|Synchronization error
+ui_dismount_horse_on_use|Dismount Horse On Use
+ui_maximum_game_frame_rate|Maximum Game Frame Rate
+ui_autoexp|Auto Exposure
+ui_ragdoll_soak|Can hit ragdoll corpses
+ui_ragdoll_soak_apply_force|Ragdoll corpses moves when hit
+ui_vsync_tooltip|Prevents screen tearing, can cause input lag\n\nPerformance Cost: <c=0xFF0000>High</c>
+ui_msaa_tooltip|Smooths out jagged edges on solid objects\n\nPerformance Cost: <c=0xFF0000>High</c>
+ui_atoc_tooltip|Smooths out jagged edges on semi-transparent objects\n\nPerformance Cost: <c=0x00FF00>Low</c>
+ui_fxaa_tooltip|Smooths out jagged edges, significantly blurs the screen\n\nPerformance Cost: <c=0xFFAA00>Medium</c>
+ui_anisotropic_filtering_tooltip|Reduces blur on distant surfaces\n\nPerformance Cost: <c=0xFFAA00>Medium</c>
+ui_sound_occlusion_tooltip|Imitates how sounds are perceived in "closed" environments, closed meaning that there are barriers close to the sound source or listener\n\nPerformance Cost: <c=0xFF0000>High</c>
+ui_update_wse2_version|Please update your WSE2 version or you will be kicked from this server.
+ui_server_for_wse2_campaign|This server is for an online campaign on WSE2, please launch WSE2 and select "Join a Campaign".
+ui_server_for_standart_game_modes|This server is for standart game modes, please select "Join a Game".
+ui_enable_cheats_wse2|Enable Cheats
+ui_enable_edit_mode_wse2|Enable Edit Mode (Be warned, this slows down the game.)
+ui_language_wse2|Language:
+ui_ondemand_textures_wse2|Load Textures On Demand
+ui_map_editor|Map editor
+ui_terrain_editor|Terrain editor
+ui_debug|Debug
+ui_restore_module_data|Restore module data
+ui_reload_ui_variables|Reload UI variables
+ui_set_lod_quality|Set lod quality
+ui_auto|Auto
+ui_freeze|Freeze
+ui_create_language_template|Create Language Template
+ui_mark_nontranslated_lines|Mark Non-translated Lines
+ui_create_language_template_required_game|Create a new game or restore a game before using this function!
+ui_create_language_template_generated|Language Template Files Generated Under new_language directory!
+ui_create_language_template_generated_marked|Language Template Files Generated Under new_language directory! Non-translated texts are marked with a {***} sign. You can use this as the search keyword.
+ui_join_campaign|Join a Campaign
+ui_custom_key_1|
+ui_custom_key_2|
+ui_custom_key_3|
+ui_custom_key_4|
+ui_custom_key_5|
+ui_custom_key_6|
+ui_custom_key_7|
+ui_custom_key_8|
+ui_custom_key_9|
+ui_custom_key_10|
+ui_custom_key_11|
+ui_custom_key_12|
+ui_custom_key_13|
+ui_custom_key_14|
+ui_custom_key_15|
+ui_custom_key_16|
+ui_custom_key_17|
+ui_custom_key_18|
+ui_custom_key_19|
+ui_custom_key_20|

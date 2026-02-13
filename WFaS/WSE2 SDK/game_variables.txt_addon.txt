@@ -1,0 +1,13 @@
+initial_menu_background_position_x = 0.025
+initial_menu_background_position_y = 0.14
+initial_menu_background_size_x = 0.24
+initial_menu_background_size_y = 0.5
+
+profile_join_campaign_button_position_x = 0.55
+profile_join_campaign_button_position_y = 0.28
+profile_join_campaign_button_size_x = 0.4
+profile_join_campaign_button_size_y = 0.04
+profile_join_campaign_button_text_size_x = 0.04
+profile_join_campaign_button_text_size_y = 0.04
+profile_join_campaign_button_text_flags = 0x10
+profile_join_campaign_button_highlight_text_color = 0xFFFFDD00

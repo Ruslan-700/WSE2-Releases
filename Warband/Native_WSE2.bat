@@ -1,0 +1,1 @@
+start mb_warband_wse2.exe --module Native --no-intro

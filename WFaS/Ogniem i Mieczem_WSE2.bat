@@ -1,0 +1,1 @@
+start mb_wfas_wse2.exe --module Ogniem i Mieczem --no-intro

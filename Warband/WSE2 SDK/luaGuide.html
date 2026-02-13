@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		body{
+			font-size: 14px;
+			font-family: Bahnschrift Light, Helvetica, Arial, sans-serif;
+		}
+
+		.smaller_font{
+			font-size: 12px;
+		}
+
+		.code
+		{		
+			margin-left: 60px;
+			padding-left: 10px;
+			display: inline-flex;
+			line-height: 1.7em;
+			tab-size: 2;
+			font-family: monospace;
+			position: relative;
+		}
+
+		.code2
+		{
+			margin-left: 0;
+			margin-top: 10px;
+		}
+
+		.code_copy{
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWNxwqAAAAB3RSTlMASElL4uPk18sF3QAAAD5JREFUKM9jYCADMLOxowC4BCs7DgkkJirAK4FqDysTXALNHha4BKpxUN6wl8AMSGIksAYiCDChyLAwkpNEAJaCBIgWpf9zAAAAAElFTkSuQmCC);
+			background-size: contain;
+			width: 1em;
+			height: 1em;
+			cursor: pointer;
+			opacity: 0.4;
+			margin: 0.5em;
+		}
+
+		.keyword
+		{
+			padding: 3px;
+			font-family: monospace;
+			white-space: pre;
+		}
+
+		.content_block
+		{
+			margin: 0 0 8px 30px;
+			padding: 6px;
+			border: 1px solid rgb(200,200,200);
+		}
+
+		.content_block:has(> .spoiler)
+		{
+			border: 1px solid rgba(200, 200, 200, 0.295);
+			margin: 0;
+		}
+
+		.content_block_caption
+		{
+			font-weight: bold;
+			font-size: 20px;
+			padding-bottom: 3px;
+			border-bottom: 1px dashed black;
+			cursor: pointer;
+			user-select: none;
+		}
+		.content_block_caption:hover
+		{
+			background-color: rgb(55 55 55 / 48%);
+		}
+
+		.spoiler
+		{
+			font-weight: unset !important;
+			font-size: unset !important;
+			border-bottom: none !important;
+		}
+
+		.border-top
+		{
+			border-top: 1px dashed;
+		}
+
+		.button_hide
+		{
+			display: inline-block;
+			border-radius: 50%;
+			border: 1px solid black;
+			margin-right: 15px;
+			line-height: 15px;
+			width: 20px;
+			height: 20px;
+			text-align: center;
+
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			font-size: 24px;
+
+			position: relative;
+			vertical-align: sub;
+		}
+
+		.button_hide_inner{
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: 60%;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			transition-property: opacity, transform;
+			transition-duration: 0.1s;
+			transition-timing-function: linear;
+		}
+
+		.button_hide_minus{
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQYFiYTLiqmDwAAAFVpVFh0Q29tbWVudAAAAAAAQ29weXJpZ2h0IElOQ09SUyBHbWJIICh3d3cuaWNvbmV4cGVyaWVuY2UuY29tKSAtIFVubGljZW5zZWQgcHJldmlldyBpbWFnZViuimEAAACXSURBVDjLzVNBDsMwCDP2PtP/vyZ/KbATGVE3rWo1aZycQCKDje37DklwdwAASZgZMhMRAUkTV65qJYGSUCEJEQEA83HHlataAGD9djX4MUEubbk7yGO5ZeZvGJyNh7tj27ZLNMYYdotBRKwyXprBHRlJ/oEKdPdpmI7r3O+LbWa+TNZ9/Q2/25Olhb6VncHpGZxVpO/JE4UlbN5XQa6iAAAAAElFTkSuQmCC");
+		}
+
+		.button_hide_plus{
+			opacity: 0;
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QQYFiU53rw8GgAAAFVpVFh0Q29tbWVudAAAAAAAQ29weXJpZ2h0IElOQ09SUyBHbWJIICh3d3cuaWNvbmV4cGVyaWVuY2UuY29tKSAtIFVubGljZW5zZWQgcHJldmlldyBpbWFnZViuimEAAACtSURBVDjLpVNdDoYgDOtWz4Lx/qfRs7Dte5ofwZ+o9AWSFdJCK7VWkISZAQBUFSKCiIC7g+S+z1lySWIiiUReRBLzPAcabNsmOUsuAGje9hX6lGhmUD3Sp15Sa6lFb/W1gitIrRXLssSXw+u6ypACd4deeX78CyPfqKqQiHP7pZRDkIZycGshbbT7syCl2oj4d+cuJH2Q3H1//b0LPento0rWOWW2KrJ9/dpW/Qf6R28tOxvu8wAAAABJRU5ErkJggg==");
+		}
+
+		.button_hide_small{
+			width: 15px;
+			height: 15px;
+			float: left;
+			margin-top: 4px;
+		}
+
+		ul{
+			line-height: 2em;
+		}
+
+		.ul_pre li{
+			white-space: pre;
+			font-family: monospace;
+		}
+
+		p{
+			line-height: 1.5em;
+		}
+
+		h1, h2{
+			color: #003366;
+			cursor: pointer;
+			user-select: none;
+		}
+		h2:hover{
+			background-color: rgb(70 70 70 / 48%);
+		}
+
+		#asterix{
+			cursor: pointer;
+			color: lightsalmon;
+		}
+
+		#asterix_box{
+			position: absolute;
+			left: -10px;
+			top: -10px;
+			padding: 20px;
+			z-index: 10;
+		}
+
+		#asterix_box>div{
+			display: block;
+		}
+
+		#ee{
+			text-align: center;
+			transition: transform 8s;
+			transition-timing-function: cubic-bezier(0, 0.49, 0.3, 1.02);
+			cursor: pointer;
+		    font-family: serif;
+		    font-style: italic;
+		    font-size: xx-large;
+		}
+
+		.padl20{
+			padding-left: 20px;
+		}
+
+		.marl20{
+			margin-left: 20px;
+		}
+
+		.padli > li{
+			padding-bottom: 1em;
+		}
+
+		.tw_smiley{
+  			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtSJVBzuoOGSoTnZREcdSxSJYKG2FVh1MLv2CJg1Jiouj4Fpw8GOx6uDirKuDqyAIfoA4OzgpukiJ/0sKLWI8OO7Hu3uPu3eA0Kgw1eyKAqpmGal4TMzmVsXAK4IYwQAi6JGYqSfSixl4jq97+Ph6F+FZ3uf+HP1K3mSATySOMt2wiDeIZzctnfM+cYiVJIX4nHjSoAsSP3JddvmNc9FhgWeGjExqnjhELBY7WO5gVjJU4hnisKJqlC9kXVY4b3FWKzXWuid/YTCvraS5TnMMcSwhgSREyKihjAos6qsMjRQTKdqPefhHHX+SXDK5ymDkWEAVKiTHD/4Hv7s1C9NTblIwBnS/2PbHOBDYBZp12/4+tu3mCeB/Bq60tr/aAOY+Sa+3tfARMLgNXFy3NXkPuNwBhp90yZAcyU9TKBSA9zP6phwwdAv0rbm9tfZx+gBkqKvlG+DgEJgoUva6x7t7O3v790yrvx+9EnLEkbwjDQAAAAZiS0dEAN8A3wDfYl/uvwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+gMGQ4tMjxB4D4AAAD6SURBVDjLpZNBbsIwEEVfonICpLLhFvQKDuphKq7AHVh3izgDOQCKRALdd1kWgHKE8rswTeJkEglhaWT5j2f+94wHnlxRn8M5pzaWpmnn/ktf4Ha7Br5Be+84fpDgfVaiKli6StpJv2NvF2or0O0TWeruwTvpthIgIAiusFaS8Anag5bo0lXXxCKAjcXekGwpqM5ZrSIO2B9p38TvcYCWpSnZOv+vhoIlAG/vs0Hmtr8u4lcJU8jznOh1KEXu+c5WG4tGwQwDX0AVdRvjDsEP6ASJcwGcOIcyYAQ6DPx/FZ5BmWcR9z2zf2LUOwuLNOzCGeYb1xmqp6fxD8PP1Sx2dqYPAAAAAElFTkSuQmCC");
+			background-size: contain;
+			width: 1em;
+			height: 1em;
+			display: inline-block;
+			position: relative;
+			top: 0.13em;
+			content: "test";
+		}
+
+		#oliveran_yt_root > *{
+			padding-bottom: 1.5em;
+		}
+	</style>
+
+	<style> /* dark theme */
+		body{
+		    background: #1b2b34;
+		    color: #fff;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: space-between;
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		}
+
+		h1, h2{
+			color: #e17742;
+		}
+
+		.button_hide{
+			background-color: #5a9bcf;
+		}
+
+		.content_block_caption{
+			color: #E1AB42;
+			border-bottom: 1px dashed #A37C30;
+		}
+
+		.keyword{
+			background-color: #046741;
+		}
+
+		.code{
+			color: #dff1ff;
+			background-color: #1a3d51;
+			border: 1px solid steelblue;
+		}
+
+		.comment{
+			color: #8ad582;
+		}
+
+		a {
+			color: lightblue;
+		}
+
+		@keyframes fish1Anim {
+		    0% { 
+		      transform: translate(0vw);
+		    }
+		    10% {
+		      transform: translate(-10vw,0);
+		    }
+		    20% {
+		      transform: translate(-11vw, -10vh) rotate(5deg);
+		    }
+		    21% {
+		      transform: translate(-11vw, -10vh) rotate(5deg) scaleX(-1);
+		    }
+		    30% {
+		      transform: translate(5vw, 5vh) rotate(-5deg) scaleX(-1);
+		    }
+		    40% {
+		      transform: translate(40vw, 15vh) rotate(10deg) scaleX(-1);
+		    }
+		    50% { 
+		      transform: translate(70vw, 5vh) rotate(-15deg) scaleX(-1);
+		    }
+		    60% { 
+		      transform: translate(75vw, -30vh) rotate(-30deg) scaleX(-1);
+		    }
+		    61% { 
+		      transform: translate(75vw, -30vh) rotate(-30deg);
+		    }
+		    70% { 
+		      transform: translate(70vw, -25vh) rotate(-30deg);
+		    }
+		    71% { 
+		      transform: translate(70vw, -25vh) rotate(-15deg);
+		    }
+		    90% { 
+		      transform: translate(30vw, -10vh) rotate(-15deg);
+		    }
+		    100% { 
+		      transform: translate(0vw) rotate(-360deg);
+		    }
+		}
+
+		#fishtank{
+	      	position: relative;
+		    width: 100%;
+		    height: 0;
+		    pointer-events: none;
+		    user-select: none;
+			display: unset !important;
+		}
+
+		#innertank{
+		    position: absolute;
+		    overflow: hidden;
+		    width: 100%;
+		    height: 100vh;
+		    bottom: 0;
+		}
+
+		.fish{
+			position: absolute;
+		}
+
+		.fishclick{
+			cursor: pointer;
+			pointer-events: all;
+			z-index: 1;
+		}
+
+		.fishimg{
+			z-index: -10;
+		}
+
+		.fishimg>img{
+			transition: rotate 0.5s;
+			transition-timing-function: ease-in-out;
+		}
+
+		#fish1click, #fish1img{
+			left: 15%;
+			bottom: 3em;
+			animation: fish1Anim 60s cubic-bezier(0.9, 1, 0.3, 0.75) 0s infinite normal;
+			width: 141px;
+			height: 98px;
+		}
+
+		/* syntax highlighting Dark */
+		pre code.hljs {
+			display: block;
+			overflow-x: auto;
+			padding: 1em
+		}
+
+		code.hljs {
+			padding: 3px 5px
+		}
+
+		.hljs {
+			/* color: #abb2bf; */
+			/* background: #282c34 */
+		}
+
+		.hljs-keyword,.hljs-operator,.hljs-pattern-match {
+			color: #f92672
+		}
+
+		.hljs-function,.hljs-pattern-match .hljs-constructor {
+			color: #61aeee
+		}
+
+		.hljs-function .hljs-params {
+			color: #a6e22e
+		}
+
+		.hljs-function .hljs-params .hljs-typing {
+			color: #fd971f
+		}
+
+		.hljs-module-access .hljs-module {
+			color: #7e57c2
+		}
+
+		.hljs-constructor {
+			color: #e2b93d
+		}
+
+		.hljs-constructor .hljs-string {
+			color: #9ccc65
+		}
+
+		.hljs-comment,.hljs-quote {
+			color: #659ad3;
+			font-style: italic
+		}
+
+		.hljs-doctag,.hljs-formula {
+			color: #c678dd
+		}
+
+		.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst {
+			color: #e06c75
+		}
+
+		.hljs-literal {
+			color: #56b6c2
+		}
+
+		.hljs-addition,.hljs-attribute,.hljs-meta .hljs-string,.hljs-regexp,.hljs-string {
+			color: #98c379
+		}
+
+		.hljs-built_in,.hljs-class .hljs-title,.hljs-title.class_ {
+			color: #e6c07b
+		}
+
+		.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable {
+			color: #d19a66
+		}
+
+		.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title {
+			color: #61aeee
+		}
+
+		.hljs-emphasis {
+			font-style: italic
+		}
+
+		.hljs-strong {
+			font-weight: 700
+		}
+
+		.hljs-link {
+			text-decoration: underline
+		}
+	</style>
+
+	<style> /* light theme */
+		body{
+			background-color: #f1f1f1;
+		}
+
+		.button_hide{
+			background-color: lightblue;
+		}
+
+		.content_block_caption{
+			color: cornflowerblue;
+		}
+		.content_block_caption:hover
+		{
+			background-color: rgb(55 55 55 / 10%);
+		}
+
+		.keyword{
+			background-color: #dcebff;
+			box-shadow: 0px 0px 5px 1px #dcebff;
+		}
+
+		.code{
+			background-color: #F5FBEE;
+			color: black;
+			border: 1px solid #bebeff;
+		}
+
+		.comment{
+			color: rgb(0,170,0);
+		}
+
+		h2:hover{
+			background-color: rgb(55 55 55 / 10%);
+		}
+
+		/* Syntax highlighting Light*/
+		pre code.hljs {
+			display: block;
+			overflow-x: auto;
+			padding: 1em
+		}
+		code.hljs {
+			padding: 3px 5px
+		}
+		/*
+
+		Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+		*/
+		.hljs {
+			/* background: white; */
+			/* color: black */
+		}
+		.hljs-comment,
+		.hljs-quote,
+		.hljs-variable {
+			color: #008000
+		}
+		.hljs-keyword,
+		.hljs-selector-tag,
+		.hljs-built,
+		.hljs-name,
+		.hljs-tag {
+			color: #00f
+		}
+		.hljs-string,
+		.hljs-title,
+		.hljs-section,
+		.hljs-attribute,
+		.hljs-literal,
+		.hljs-template-tag,
+		.hljs-template-variable,
+		.hljs-type,
+		.hljs-addition {
+			color: #a31515
+		}
+		.hljs-deletion,
+		.hljs-selector-attr,
+		.hljs-selector-pseudo,
+		.hljs-meta {
+			color: #2b91af
+		}
+		.hljs-doctag {
+			color: #808080
+		}
+		.hljs-attr {
+			color: #f00
+		}
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-link {
+			color: #00b0e8
+		}
+		.hljs-emphasis {
+			font-style: italic
+		}
+		.hljs-strong {
+			font-weight: bold
+		}
+	</style>
+
+	<style> /* hardcore theme */
+		@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+		body{
+			background-color: black;
+			color: #00FF00;
+			font-family: VT323, sans-serif;
+			font-size: medium;
+			font-weight: 400;
+  			font-style: normal;
+		}
+
+		.button_hide{
+			background-color: rgb(0,140,0);
+		}
+
+		h1, h2{
+			color: #005500;
+		}
+
+		.content_block_caption{
+			color: green;
+			border-bottom: 1px dashed green;
+		}
+
+		.keyword{
+			background-color: #2A2A2A;
+			font-family: VT323, monospace;
+		}
+
+		.code,
+		.code > code{
+			background-color: #002000;
+			color: #00FF00;
+			font-family: VT323, monospace;
+		}
+
+		.comment{
+			color: rgb(0,120,0);
+		}
+
+		#ee{
+			font-family: VT323, monospace;
+			font-size: xxx-large;
+		}
+
+		#asterix{
+			cursor: pointer;
+			color: #005500;
+		}
+
+		.code_copy{
+			opacity: 0.7;
+		}
+	</style>
+
+	<script>
+		var force_hide = false;
+		var force_expand = false;
+
+		function toggle_hide(ID)
+		{
+			var bElem = document.getElementById(ID + "_button");
+			var cElems = document.getElementsByClassName(ID + "_content");
+
+			var hide = cElems[0].style.display == "";
+			if(force_hide){hide = true}
+			if(force_expand){hide = false}
+
+			for(var i = 0; i < cElems.length; i++){
+				let elem = cElems[i];
+
+				if(hide){
+					elem.style.display = "none";
+				}else{
+					elem.style.display = "";
+				}
+			}
+
+			if(hide){
+				bElem.firstChild.style.opacity = "1";
+				bElem.firstChild.style.transform = "rotate(90deg)";
+
+				bElem.childNodes[1].style.opacity = "0";
+				bElem.childNodes[1].style.transform = "rotate(90deg)";
+			}else{
+				bElem.firstChild.style.opacity = "0";
+				bElem.firstChild.style.transform = "";
+				
+				bElem.childNodes[1].style.opacity = "1";
+				bElem.childNodes[1].style.transform = "";
+			}
+		}
+
+		function collapse_all()
+		{
+			force_hide = true;
+			var btns = document.getElementsByClassName("button_hide");
+			for(var i = 0; i < btns.length; i++){
+				btns[i].parentNode.onclick();
+			}
+			force_hide = false;
+		}
+
+		function expand_all()
+		{
+			force_expand = true;
+			var btns = document.getElementsByClassName("button_hide");
+			for(var i = 0; i < btns.length; i++){
+				btns[i].parentNode.onclick();
+			}
+			force_expand = false;
+		}
+
+		curTheme = 1;
+		var themeNames = [
+			"",
+			"Dark",
+			"Light",
+			"Hardcore"
+		];
+		function updateBtnThemeSwitchText()
+		{
+			document.getElementById("btnThemeSwitch").innerHTML = themeNames[curTheme];
+		}
+		function setTheme(index)
+		{
+			index = Math.max(Math.min(index, document.styleSheets.length - 1), 1);
+
+			document.styleSheets[curTheme].disabled = true;
+			document.styleSheets[index].disabled    = false;
+
+			curTheme = index;
+			updateBtnThemeSwitchText();
+
+			localStorage.setItem("theme_index", curTheme);
+		}
+		function cycleTheme()
+		{
+			document.getElementById('bd').style.backgroundImage = "";
+
+			index = curTheme + 1;
+			if(index >= document.styleSheets.length) index = 1;
+			
+			setTheme(index);
+		}
+		for(var i = 1; i < document.styleSheets.length; i++){
+			if(i != curTheme){
+				document.styleSheets[i].disabled = true;
+			}
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/highlight.min.js"></script>
+</head>
+
+<body id="bd">
+	<div>
+		<div style="font-size: 11px">version from 06.04.2025, written by <span onclick="var a=document.getElementById('bd');a.style.transition='filter 60s linear';a.style.filter='blur(0.9px)';">AgentSmith</span></div>
+		<div style="right: 5px; top: 5px; position: fixed;">
+			<button id="btnThemeSwitch" onclick="cycleTheme()">Light</button>
+			<button onclick="expand_all()">Expand all</button>
+			<button onclick="collapse_all()">Collapse all</button>
+		</div>
+
+		<h1 id="ee" onclick="if(curTheme==3){document.getElementById('bd').style.backgroundImage = 'url(https://i.giphy.com/Q9aBxHn9fTqKs.gif)';}else{var a=document.getElementById('ee');if(a.style.transform != ''){a.style.transform='';}else{a.style.transform='rotate(4320deg)'}};try{new Audio(sound_path + 'sword_clank_metal_13b.ogg').play();}catch{}">How to use WSE/LUA</h1>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>
+			This is the documentation for the Lua scripting system of WSE, a powerful alternative to regular modsys scripts.<br>
+			LUA will run on top of module system code. You could code almost an entire module without touching the modsys,<br> or add features to modules even if you don't have the source code.<br>
+			This guide is only a documentation of the provided API, to learn Lua itself there exist many tutorials online.<br>
+			At the end of this file there is some example code that can help you get started.<br>
+		</p>
+		<p>&nbsp;</p>
+		<h2 onclick="toggle_hide('setup')"><div id="setup_button" class="button_hide">&nbsp;</div><span>BASICS</span></h2>
+		<hr/>
+		<div class="setup_content">
+			<h3 style="margin-left: 20px;">Why use Lua?</h3>
+			<ul>
+				<li>Way nicer syntax, datastructures (no more troop slots for arrays), real functions with return values, easy string handling, etc.</li>
+				<li>No compilation needed, no python needed</li>
+				<li>
+					Hot reloading
+					<span id="asterix" class="asterix" onmousemove="document.getElementById('asterix_box').hidden=false" style="position: relative;">
+						*
+						<div id="asterix_box" onmouseleave="document.getElementById('asterix_box').hidden=true" hidden>
+							<div class="code" style="margin-left: 0; width: 35em">
+								Lua is a dynamic scripting language, so you can execute code from disk at any time with dofile().<br>
+								A <span class="keyword">dofile("main.lua")</span> is enough to test your changes in many cases.<br>
+								It isn't equivalent to a full restart though, because the lua state will not get reset, only overwritten.
+								Any triggers you added or any other changed game state remain too. This must be managed manually.
+							</div>
+						</div>
+					</span> (don't need to restart to test changes)
+				</li>
+				<li>Debugger available (lets you step through your code line by line)</li>
+				<li>Better performance</li>
+				<li>Multithreading (luaLanes library)</li>
+				<li>Use any Lua code from the internet</li>
+				<li>No confusing fixed point multiplier, easy (vector) math
+					<br>
+					<div style="display: flex; align-items: center;">
+						<pre class="code code2">local area = math.pi * r^2</pre>
+						&nbsp;&nbsp;instead of&nbsp;&nbsp;
+						<pre class="code code2" ms>
+							(store_mul, ":area", ":r", ":r"),
+							(val_mul, ":area", 314159),
+							(val_div, ":area", 100000), <span class="comment"># *(314159/100000)=*PI</span>
+						</pre>
+					</div>
+				</li>
+			</ul>
+
+			<h3 style="margin-left: 20px; margin-top: 30px">Setup</h3>
+			<ul>
+				<li>Install WSE as usual, make sure lua51.dll is in the same folder as mb_warband.exe</li>
+				<li>Create <span class="keyword">[warband_dir]\Modules\[module_name]\lua\</span>, e.g. <span class="keyword">C:\Program Files (x86)\Steam\steamapps\common\MountBlade Warband\Modules\Native\lua\</span></li>
+				<li>
+					Create main.lua inside it. This file, if it exists, gets loaded and executed by WSE at startup, before any of the module system code. You don't need any compiler.<br>
+					Typically, here you load other files, run some init code, and/or register triggers.<br>
+					In normal modsys, for something to happen you would for example write a trigger in module_mission_templates.py.<br>
+					It's the same in lua, but you register the trigger at runtime in main.lua (or load a file that does it).
+				</li>
+				<p></p>
+				<li>Create <span class="keyword">[warband_dir]\Modules\[module_name]\lua\msfiles\</span> (msfiles - "Module System files")</li>
+				<li>
+					Copy header_operations.py to your msfiles folder. This is so that WSE can translate operation names to opcodes and is neccessary for calling module system operations from lua.<br>
+					<span class="smaller_font">It's a good idea to start the game now and see if there any errors parsing this file. Delete any bad lines, but make sure any opcodes you need & the lists at the end (<span class='keyword'>lhs_operations = [...], etc</span>) are intact.</span>
+				</li>
+			</ul>
+			<p class="padl20">WSE/LUA uses a modified version of LuaJIT 2.1.0, which is based on and ABI compatible to Lua 5.1</p>
+			<p class="padl20">
+				<a href="https://www.lua.org/manual/5.1/#index" target="_blank" rel="noopener noreferrer">Lua Reference Manual</a><br>
+				<a href="https://www.lua.org/pil/contents.html" target="_blank" rel="noopener noreferrer">Programming in Lua</a> (this is for Lua 5.0 while WSE has 5.1, but the differences are small)<br>
+				<a href="https://studio.zerobrane.com/download?not-this-time" target="_blank" rel="noopener noreferrer">Lua IDE</a> for testing code snippets and debugging
+			</p>
+			<p>&nbsp;</p>
+		</div>
+
+
+		<h2 onclick="toggle_hide('game_table')"><div id="game_table_button" class="button_hide">&nbsp;</div><span>THE "GAME" TABLE<br /></span></h2>
+		<hr/>
+		<div class="game_table_content">
+			<p style="margin-left: 20px;"><em>The game table is a predefined global table that allows you access to the game from lua.</em></p>
+			<div class="content_block">
+				<div class="content_block_caption">Operations</div>
+				<div>
+					<p>To call operations, use <span class="keyword">game.operation_name(arg1, arg2, ...)</span></p>
+					<p style="padding-left: 30px;">Example: <span style="margin-left:0px; line-height: 25px; display:inline; padding: 6px;" class="code">game.display_message("test string")</span></p>
+					<p>String and pos arguments are passed to the game via the games registers (overwritting them), starting from reg[128] and counting downwards.</p>
+					<p>Notice that the argument type matters. For example, if an operation expects an integer, you cannot pass a string that contains a number.</p>
+					<p>Return values are:</p>
+					<pre class="code" txt>
+						boolDidNotFail, intError						= game.cf_operation(arg1, arg2, ...) for can_fail operations
+						intResult, intError									= game.lhs_operation(lhs_arg, arg1, arg2, ...) for lhs operations
+						boolDidNotFail, intResult, intError	= game.cf_lhs_operation(lhs_arg, arg1, arg2, ...) for operations which are both can_fail and lhs
+						intError														= game.operation(arg1, arg2, ...) for all other operations
+						
+						(lhs = left hand side? Operations that assign a value, e.g. val_add)
+						(cf  = can fail, e.g. agent_is_active)
+					</pre>
+
+					<p>Note that in Lua, you don't have to assign all return values. For example, if you don't care about the error code, just omit the corresponding lhs var.</p>
+					<p>I'm not sure what the error code signalizes, however it should be 0 if there was no error.</p>
+					<br>
+					<p class="border-top"><br>With Lhs operations, there is a slight problem. Their syntax is:<br>
+						<span class="marl20 keyword">(lhs_op, &ltdestination_param&gt, &ltparam1&gt, &ltparam2&gt, ...)</span>
+					</p>
+					<p>
+						While in lua you want to write:<br>
+						<span class="marl20 keyword">result = game.lhs_op(param1, param2, ...)</span>
+					</p>
+					<p>Why is this a problem?<br>
+						Because of different parameter count. Now, WSE could detect that you are calling an Lhs operation and fill in the missing parameter, but: the operation might actually use the initial value of it to affect the result.<br>
+						An obvious example for this is <span class="keyword">val_add</span>. It makes no sense to write <span class="keyword">result = val_add(5)</span>. What is it adding 5 to?
+					</p>
+					<p>Whether or not an operation uses the initial value can't simply be detected by WSE. So in the past it used to be that you had to write <span class="keyword">result = game.lhs_op(some_number, var1, var2, ...)</span> for all lhs operations (some_number was just 0 mostly). Annoying.</p>
+					<p>However, after further inspection, it is reasonable to assume that only <span class="keyword">val_</span> operations do this. Therefore WSE update adds <span class="keyword">game.op</span>:</p>
+					<pre class="code">
+						local val = game.agent_get_slot(0, agent_id, slot_no)
+						local val = game.op.agent_get_slot(agent_id, slot_no)
+					</pre>
+					<p>It will add the 0 automatically for any lhs_operation, except for ones that start with <span class="keyword">val_</span>. If you find operations where this is wrong, please contact <a href="https://forums.taleworlds.com/index.php?members/agentsmith.186495/" target="_blank" rel="noopener noreferrer">AgentSmith</a> on TaleWorlds forum.</p>
+					<p>
+						If you don't want to write the <span class="keyword">.op</span> all the time, call <span class="keyword">game.op.make_default()</span>. It is optional because of legacy code.<br>
+						<span class="keyword">gop = game.op</span> also works.
+					</p>
+				</div>
+			</div>
+
+
+			<div class="content_block">
+				<div class="content_block_caption">Registers, Global Variables</div>
+				<div>
+					<p>To access registers, use <span class="keyword">game.reg[n]</span> , <span class="keyword">game.sreg[n]</span> and <span class="keyword">game.preg[n]</span></p>
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						game.reg[0] = 123
+						local i = game.reg[0]
+						game.sreg[0] = "test string"
+						local s = game.sreg[0]
+						game.preg[0] = game.pos.new()
+						local pos = game.preg[0]
+					</pre>
+					<p>As of the current version, registers are copied by value instead of by reference. So doing things like:</p>
+					<pre class="code">
+						game.preg[0]:rotX(30)
+					</pre>
+					<p>Does not change the actual game register. This is likely going to be improved in a future version. What you have to do instead for now is:</p>
+					<pre class="code">
+						local p = game.preg[0]
+						p:rotX(30)
+						game.preg[0] = p
+					</pre>
+					<p class="border-top"><br>To access global variables, use <span class="keyword">game.gvar.gvar_name</span></p>
+					<pre class="code">
+						game.gvar.g_encountered_party = 123
+						print(game.gvar.g_encountered_party)
+					</pre>
+					<p>WSE will read variables.txt at startup to translate gvar_name. If this file is incorrect for any reason, accessing a gvar may produce an error or access a random gvar. You can't create new gvars.</p>
+				</div>
+			</div>
+
+
+			<div class="content_block">
+				<div class="content_block_caption">Constants</div>
+				<div>
+					<p>
+						For every <span class="keyword">header_[name].py</span> or <span class="keyword">ID_[name].py</span> file you copied to your "msfiles" folder, a new table will be generated: <span class="keyword">game.const.[name]</span><br>
+						This table will be filled with all the constants from that file.<br>
+						If there are two files with the same <span class="keyword">[name]</span>, e.g. header_scenes and ID_scenes, the tables will get merged.</p>
+					<p>As of the current version, only lines that match one of the two following regexes (regular expressions) will be accepted:</p>
+					<pre class="code" txt>
+						^(\w+)=(((-)?0x[\da-fA-F]+)|((-)?\d+(\.\d+)?))$
+						^(\w+)=(\w+)$
+					</pre>
+					<p>This probably looks intimidating to you, but really all it says is that your constant must either be a number, a hex number, or another constant (from the same file, currently).</p>
+					<p>In other words: <span class="keyword">constant = num|hexNum|otherConstant</span>
+					<p>If the match fails, the line will be ignored. To display a warning in this case, set <span class="keyword">[lua] disable_game_const_warnings = 0</span> in wse_settings.ini.</p>
+					<p><br>You can omit the <span class="keyword">[name]</span> part in <span class="keyword">game.const.[name].[constant]</span>, in which case all tables in <span class="keyword">game.const</span> will be searched for your constant and the first result will be used.</p>
+					<p>So let's say you want to add a deathmatch trigger for <span class="keyword">ti_on_agent_hit</span>. Instead of this:</p>
+					<pre class="code">
+						game.addTrigger("mst_multiplayer_dm", -28, 0, 0, condCB)
+					</pre>
+					<p>You could copy header_triggers.py to your msfiles folder and do:</p>
+					<pre class="code">
+						game.addTrigger("mst_multiplayer_dm", game.const.ti_on_agent_hit, 0, 0, condCB)
+						<span class="comment">--or if you like to be specific:</span>
+						game.addTrigger("mst_multiplayer_dm", game.const.triggers.ti_on_agent_hit, 0, 0, condCB)
+					</pre>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Triggers</div>
+				<div>
+					<p>To add mission template triggers, use <span class="keyword">index = game.addTrigger(strTemplateId|intTemplateNo, numCheckTime, numDelayTime, numRearmTime, funcConditionsCallback, [funcConsequencesCallback])</span></p>
+					<p>These work exactly like module system triggers. Times can be float values or values from header_triggers.py (the numbers, string names are not supported yet), just like you would do it in the MS. If conditionsCallback returns false, consequencesCallback will not be executed. If it returns true or nothing, consequencesCallback will be executed.</p>
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						function condCB()
+							doStuff()
+							return true
+						end
+						game.addTrigger("mst_multiplayer_dm", 1, 0, 0, condCB)
+					</pre>
+					<p>addTrigger returns an integer that is the index of the added trigger.</p>
+					<p>You can also remove triggers by using <span class="keyword">game.removeTrigger(strTemplateId|intTemplateNo, intTriggerIndex)</span>. If intTriggerIndex is negative, the trigger with (numTriggers + intTriggerIndex) gets removed (e.g. to remove the last trigger, use -1). Returns success.</p>
+					<p>
+						Useful functions:
+						<ul>
+							<li>
+								<span class="keyword">game.getCurTemplateNo()</span> returns the index of the current mission template. Note that no template will be loaded at the time main.lua is executed.
+							</li>
+							<li>
+								<span class="keyword">game.getCurTemplateId()</span> returns the id/name of the current mission template. Note that no template will be loaded at the time main.lua is executed.
+							</li>
+							<li>
+								<span class="keyword">game.getNumTemplates()</span> returns number of mission templates.
+							</li>
+							<li>
+								<span class="keyword">game.getTemplateId(index)</span> returns the id/name of mission template at index.
+							</li>
+							<li>
+								<span class="keyword">game.getNumTriggers(strTemplateId|intTemplateNo)</span> returns the number of triggers for this mission template.
+							</li>
+						</ul>
+					</p>
+					<p>&nbsp;</p>
+					<p>Item triggers:</p>
+					<ul>
+						<li><span class="keyword">index   = game.addItemTrigger(strItemID|intItemNo, numTriggerInterval, funcCallback)</span></li>
+						<li><span class="keyword">success = game.removeItemTrigger(strItemID|intItemNo, index)</span></li>
+						<li><span class="keyword">num     = game.getNumItemTriggers(strItemID|intItemNo)</span></li>
+					</ul>
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						game.addItemTrigger("itm_fighting_pick", game.const.ti_on_weapon_attack, function()
+							print("agent no " .. game.store_trigger_param_1(0) .. " swung a fighting pick")
+						end)
+					</pre>
+					<p>&nbsp;</p>
+					<p>Scene prop triggers:</p>
+					<ul>
+						<li><span class="keyword">index   = game.addScenePropTrigger(strPropID|intPropNo, numTriggerInterval, funcCallback)</span></li>
+						<li><span class="keyword">success = game.removeScenePropTrigger(strPropID|intPropNo, index)</span></li>
+						<li><span class="keyword">num     = game.getNumScenePropTriggers(strPropID|intPropNo)</span></li>
+					</ul>
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						game.addScenePropTrigger(game.const.spr_apple_a, game.const.ti_on_scene_prop_init, function()
+							print("Apple " .. game.store_trigger_param_1(0) .. " initialized.")
+						end)
+					</pre>
+					<p>&nbsp;</p>
+					<p>World triggers:</p>
+					<p class="padl20">Due to technical reasons, these work differently. You need to assign a callback to <span class="keyword">game.OnWorldTrigger</span>:</p>
+						<pre class="code">game.OnWorldTrigger = function(date) ... end</pre>
+					<p class="padl20">
+						It will be called after the game checks the modsys triggers, and receive time in hours. It will be called even if the game is paused, but date won't change.<br>
+						The game will save the state of its triggers to the savefile, so that for example ti_once does not reactivate when you load a save. You have to save this data manually if you need it. (Use <span class="keyword">game.OnSave(), game.OnLoadSave()</span>)<br>
+						Time conversions according to WSE source:
+						<ul class="ul_pre">
+							<li>hours  = date</li>
+							<li>days   = date / 24</li>
+							<li>weeks  = date / 168</li>
+							<li>months = date / 720</li>
+							<li>years  = date / 8640</li>
+						</ul>
+					</p>
+					<p class="border-top">
+						<br>
+						For technical reasons, if there are modsys errors in a trigger added in lua (for example invalid agent_id), it will report as line 0, opcode 5113.
+					</p>
+				</div>
+			</div>
+
+
+			<div class="content_block">
+				<div class="content_block_caption">Iterators</div>
+				<div>
+					<p>To use iterators (try_for_agents, try_for_players, ...), use the provided iterator functions <span class="keyword">game.partiesIt, game.agentsIt, game.propInstIt, game.playersIt</span></p>
+					<p>These work exactly like module system iterators and take the same arguments.</p>
+					<pre class="code">
+						game.partiesIt()
+						game.agentsIt([pos, radius, [use_grid]]) <span class="comment">--pos: integer for pos register or table of type game.pos</span>
+						game.propInstIt([subKindNo], [metaType]) <span class="comment">--a.k.a. [object_id], [object_type]</span>
+						game.playersIt([skip_server])
+					</pre>
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						for curPlayer in game.playersIt(true) do <span class="comment">--skip server. You can also use 1 or 0</span>
+							foo(curPlayer)
+						end
+					</pre>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Positions</div>
+				<div>
+					<p>To work with positions, the following "classes" are provided: <span class="keyword">game.rotation, game.pos and vector3</span> (see under miscellaneous)</p>
+					<p>Keep in mind that these don't need the fixed point multiplier that the module system requires you to use.</p>
+					<p>The MS multiplier is essentially a way of specifying the current unit of length.</p>
+					<pre class="code" ms>
+						set_fixed_point_multiplier(1),
+						position_get_x(":x", 0), <span class="comment">#get pos0_x in meters</span>
+						set_fixed_point_multiplier(100),
+						position_get_x(":x", 0), <span class="comment">#get pos0_x in centimeters</span>
+					</pre>
+					<p>In Lua it's simpler, you work with floating point numbers. "1.0" always means 1 meter, "0.01" always means 1 centimeter.</p>
+					<pre class="code">
+						<span class="comment">--this is equivalent to above modsys example</span>
+						print(game.preg[0].o.x) <span class="comment">--pos0_x float</span>
+					</pre>
+
+					<ul>
+						<li>
+							<p><span class="keyword">game.rotation</span></p>
+							<ul>
+								<li>
+									<p><span class="keyword">game.rotation.new([obj])</span> - constructor. obj can be used to specify initial values.</p>
+								</li>
+								<li>
+									<p><span class="keyword">game.rotation.prototype</span></p>
+									<pre class="code">
+										s = vector3.new({x = 1}) <span class="comment">--x axis</span>
+										f = vector3.new({y = 1}) <span class="comment">--forwards/y axis</span>
+										u = vector3.new({z = 1})  <span class="comment">--up/z axis</span>
+										function getRot(self) <span class="comment">--returns vector3.new({z = yaw, x = pitch, y = roll})</span>
+										function rotX(self, angle) <span class="comment">--rotate around x axis, angle in degrees</span>
+										function rotY(self, angle) <span class="comment">--rotate around y axis, angle in degrees</span>
+										function rotZ(self, angle) <span class="comment">--rotate around z axis, angle in degrees</span>
+										function rotate(self, rotVec3) <span class="comment">--rotate around all axis, zxy order, angle in degrees</span>
+									</pre>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<p><span class="keyword">game.pos</span></p>
+							<ul>
+								<li>
+									<p><span class="keyword">game.pos.new([obj])</span> - constructor. obj can be used to specify initial values.</p>
+								</li>
+								<li>
+									<p><span class="keyword">game.pos.prototype</span></p>
+									<pre class="code">
+										o = vector3.new() <span class="comment">--position in the world</span>
+										rot = game.rotation.new() <span class="comment">--rotation, or heading of the pos if you like</span>
+										
+										<span class="comment">--see game.rotation.prototype for these</span>
+										function getRot(self)
+										function rotX(self, angle)
+										function rotY(self, angle)
+										function rotZ(self, angle)
+										function rotate(self, rotVec3)
+										function moveX(self, val) <span class="comment">--Move by val into local X direction</span>
+										function moveY(self, val) <span class="comment">--Move by val into local Y direction</span>
+										function moveZ(self, val) <span class="comment">--Move by val into local Z direction</span>
+										function move(self, val) <span class="comment">--Move by val into local directions, val must be table with any of x,y,z entries</span>
+										function dist(self, pos2) <span class="comment">--returns distance between self.o and pos2.o</span>
+										function isBehind(self, pos2) <span class="comment">--returns true if self is behind pos2 (shorthand for game.position_is_behind_position)</span>
+									</pre>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<p style="padding-left: 30px;">Example:</p>
+					<pre class="code">
+						local pos0 = game.preg[0]
+						local newRot = game.rotation.new(pos0.rot)
+						local newPos = game.pos.new({rot = newRot})
+						newPos:rotX(45)
+						newPos:rotate({x = 90, z = 180})
+						newPos:move({x = 10, z = 5})
+					</pre>
+				</div>
+			</div>
+
+
+			<div class="content_block">
+				<div class="content_block_caption">Presentations</div>
+				<div>
+					<p>You can add presentations using <span class="keyword">index = game.addPrsnt(tablePrsnt)</span></p>
+					<p>tablePrsnt must have the following format</p>
+					<pre class="code" txt>
+						tablePrsnt = {
+							id = str,
+							[flags] = {int, int, ...},
+							[mesh] = int,
+							triggers = {[numTriggerConst] = func, ...}
+						}
+					</pre>
+					<p><span class="keyword">[flags]</span> can be omited and defaults to no flags at all. If you copied header_presentation.py to your msfiles folder, you can use the flags defined there.</p>
+					<p><span class="keyword">[mesh]</span> can be omited and defaults to 0. If you copied ID_meshes.py to your msfiles folder, you can use the mesh nos defined there.</p>
+					<p><span class="keyword">triggers</span> must have at least one element, the key being a number and the value being a function. If you copied header_triggers.py to your msfiles folder, you can use the trigger values defined there.</p>
+					<p>Return value: the index of the new presentation.</p>
+					<p>Example:</p>
+					<pre class="code">
+						<span class="comment">--copy header_presentations.py, header_triggers.py and ID_meshes.py to your msfiles folder for this example.</span>
+						local index = game.addPrsnt({
+							id = "myPrsnt",
+							flags = {game.const.prsntf_read_only, game.const.prsntf_manual_end_only},
+							<span class="comment">--you can initialize an array like this, without keys - they don't matter here anyway.</span>
+							mesh = game.const.mesh_cb_ui_main,
+							triggers = {
+									[game.const.ti_on_presentation_load] = function ()
+										<span class="comment">--The const inside the [] declares a number key, similar to keyName = 123 for string keys.</span>
+										game.presentation_set_duration(9999999)
+										local overlay = game.create_mesh_overlay(0, game.const.mesh_mp_ingame_menu)
+							
+										local position = game.pos.new()
+										position.o.x = 0.3
+										position.o.y = 0.3
+										game.overlay_set_position(overlay, position)
+							
+										position.o.x = 0.5
+										position.o.y = 0.8
+										game.overlay_set_size(overlay, position)
+									end
+							}
+						})
+						game.start_presentation(index)
+					</pre>
+					<p>Remove using <span class="keyword">game.removePrsnt(index)</span>. Remember, removing will shift above indices.</p>
+					<p>On dedicated, add/remove will do and return nothing.</p>
+					<p>For technical reasons, if there are modsys errors in a presentation added in lua (for example invalid agent_id), it will report as line 0, opcode 5113.</p>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Particle Systems</div>
+				<div>
+					<p>You can add particle systems using <span class="keyword">index = game.addPsys(tablePsys)</span></p>
+					<p>tablePsys must have the following format</p>
+					<pre class="code" txt>
+						tablePsys = {
+							id = str, [flags] = {int, int, ...}, mesh = str|int,
+							num_particles = int, life = num, damping = num, gravity_strength = num, turbulance_size = num, turbulance_strength = num,
+							alpha_keys			= {{num, num}, {num, num}},
+							  red_keys			= {{num, num}, {num, num}},
+							green_keys			= {{num, num}, {num, num}},
+							 blue_keys			= {{num, num}, {num, num}},
+							scale_keys			= {{num, num}, {num, num}},
+							emit_box_size		= {num, num, num},
+							emit_velocity		= {num, num, num},
+							emit_dir_randomness = num,
+							rotation_speed = num,
+							rotation_damping = num
+						}
+					</pre>
+					<p><span class="keyword">[flags]</span> can be omited and defaults to no flags at all.</p>
+					<p>Return value: the index of the new particle system.</p>
+					<p>Example:</p>
+					<pre class="code">
+							local psys = game.addPsys({id = "blabla", flags = {game.const.psf_billboard_3d, game.const.psf_global_emit_dir}, mesh = "prt_mesh_snow_fall_1",
+								num_particles = 150,
+								life = 2,
+								damping = 0.2,
+								gravity_strength = 0.1,
+								turbulance_size = 30,
+								turbulance_strength = 20,
+								alpha_keys = {{0.2, 1}, {1, 1}},
+								red_keys = {{1.0, 1.0}, {1, 1.0}},
+								green_keys = {{1.0, 1.0}, {1, 1.0}},
+								blue_keys = {{1.0, 1.0}, {1, 1.0}},
+								scale_keys = {{1.0, 1.0},   {1.0, 1.0}},
+								emit_box_size = {10, 10, 0.5},
+								emit_velocity = {0, 0, -5.0},
+								emit_dir_randomness = 1,
+								rotation_speed = 200,
+								rotation_damping = 0.5
+							})
+							game.particle_system_burst(psys, game.preg[0], 20)
+					</pre>
+					<p>Remove using <span class="keyword">game.removePsys(index)</span>. Remember, removing will shift above indices.</p>
+					<p>On dedicated, add/remove will do and return nothing.</p>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Module operation hooking</div>
+				<div>
+					<p>You can hook module operations using <span class="keyword">game.hookOperation(operation, funcCallback)</span>.</p>
+					<p>This means whenever the module system uses the operation, your callback will be executed <strong>first</strong>.</p>
+					<p><span class="keyword">operation</span> must be either the operation name as a string or an opcode integer.</p>
+					<p>Operation hooks are experimental - it can be very useful, but you risk crashes.</p>
+					<p>&nbsp;</p>
+					<p>The return values of <span class="keyword">funcCallback</span> control further behaviour.</p>
+					<p>If it returns nothing or true, the module operation will be executed as usual.</p>
+					<p>If the first return value is false, the module operation will not be executed.</p>
+					<p>If the second return value is a bool, the module system will think it is executing a cf operation (so if the bool is false, it will break execution, like e.g. <span class="code" style="margin-left: 0;display: unset; padding: 3px;">(eq, 1, 0),</span>).</p>
+					<p>If the second return value is a number, the module system will think it is executing a lhs operation and try to set the return value</p>
+					<p>If the callback returns three values, the module system will think it is executing a cf/lhs operation. The 2nd return value must be the cf value and the 3rd the lhs value</p>
+					<p>In short, the variants are:</p>
+					<pre class="code" txt>
+						boolExecute
+						boolExecute, boolFail
+						boolExecute, numLhs
+						boolExecute, boolFail, numLhs
+					</pre>
+					<p>To unhook an operation, use <span class="keyword">game.hookOperation(operation, nil)</span>.</p>
+					<p>The hook will not be triggered when calling operations from lua. However, this task can be achieved by overwritting the game metatable, which is defined as:</p>
+					<pre class="code">
+						game.mt = {
+								__index = function(table, key)
+										return function(...)
+												return game.execOperation(key,...)
+										end
+								end
+						}
+					</pre>
+					<p>One could, for example, do (NOT FINISHED YET):</p>
+					<pre class="code">
+						game.mt = {
+								__index = function(table, key)
+										If key == "player_get_gold" then
+												return myCustomGoldCalculation
+												<span class="comment">--return function that takes all args (...) and returns gold</span>
+												<span class="comment">--this function should, if neccessary, use game.execOperation("player_get_gold", args)</span>
+												<span class="comment">--instead of game.player_get_gold(args), for avoiding an infinite loop.</span>
+										end
+										return function(...)
+												return game.execOperation(key,...)
+										end
+								end
+						}
+						setmetatable(game, game.mt)
+					</pre>
+					<p>You could even go one step further and create a wrapper for <span class="keyword">game.hookOperation</span> that automates this process for you.</p>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Script hooking</div>
+				<div>
+					<p>You can hook scripts using <span class="keyword">game.hookScript(script_no, funcCallback)</span>.</p>
+					<p><span class="keyword">funcCallback</span> will receive all script parameters. Its return values control further behaviour:</p>
+					<p>If it returns false, the script will not be executed.</p>
+					<p>If it returns numbers, the script parameters will be replaced with them, then the script is executed.</p>
+					<p>&nbsp;</p>
+					<p>Example:</p>
+					<pre class="code">
+						local a = 0
+						game.hookScript(game.script.game_get_console_command, function(...)
+						  print("Hook")
+						  a = a + 1
+
+						  if a <= 5 then
+						    local s = ""
+						    for i = 1, select("#", ...) do
+						      s = s .. tostring(select(i, ...)) .. "     "
+						    end
+
+						    print("CONSOLE CMD", a, "blocked, params were: ", s)
+						    return false
+
+						  elseif a <= 10 then
+						    return 2, 1, 4 <span class="comment">--set team 1 bot count to 4. At least for NW</span>
+
+						  elseif a == 15 then
+						    game.hookScript(game.script.game_get_console_command, nil)
+						  end
+						end)
+					</pre>
+					<p>To unhook a script, use <span class="keyword">game.hookScript(script_no, nil)</span>.</p>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Other functions</div>
+				<div>
+					<ul class="padli">
+						<li>
+							<div>
+								<p><span class="keyword">game.getScriptNo(script_name)</span> use in conjunction with game.call_script(scriptNo, ...)</p>
+								<p style="padding-left: 10px;">Example:</p>
+								<pre class="code">
+									local no = game.getScriptNo("game_start")
+									game.call_script(no)
+								</pre>
+								<p style="padding-left: 10px;">
+									WSE Update now provides a wrapper: <span class="keyword">game.script.[name]</span>
+									<pre class="code">
+										game.call_script(game.script.game_start)
+									</pre>
+								</p>
+							</div>
+						</li>
+						<li>
+							<span class="keyword">game.getCurTemplateNo()</span> returns the index of the current mission template. Note that no template will be loaded at the time main.lua is executed.
+						</li>
+						<li>
+							<span class="keyword">game.getCurTemplateId()</span> returns the id/name of the current mission template. Note that no template will be loaded at the time main.lua is executed.
+						</li>
+						<li>
+							<span class="keyword">game.getNumTemplates()</span> returns number of mission templates.
+						</li>
+						<li>
+							<span class="keyword">game.getTemplateId(index)</span> returns the id/name of mission template at index.
+						</li>
+						<li>
+							<span class="keyword">game.getNumTriggers(strTemplateId|intTemplateNo)</span> returns the number of triggers for this mission template.
+						</li>
+						<li>
+							<span class="keyword">game.getMeshId(index)</span> returns name of mesh at index (mesh no). Note: This does not access the mesh list in module_meshes. Index is for the internal list of all meshes loaded from the .brf files.
+						</li>
+						<li>
+							<span class="keyword">game.getNumMeshes()</span> returns number of meshes. Note: This does not access the mesh list in module_meshes. It is for the internal list of all meshes loaded from the .brf files.
+						</li>
+						<li>
+							<span class="keyword">game.OnRglLogWrite(str)</span> this function, if it exists, gets called when something gets written to rgl_log.txt. It receives the log message as its parameter.
+							A bad idea is to use <span class="keyword">game.display_message</span> in this function, as it will easily cause an infinite loop. You can however use <span class="keyword">print()</span>.
+							Any error (which would normally trigger the event again, which would trigger the error, ...) caused by this function will be catched and logged safely.
+						</li>
+						<li>
+							<p><span class="keyword">game.OnChatMessageReceived(intPlayerNo, boolIsTeamChat, strMsg)</span> this function, if it exists, gets called when a chat message is received (both client and server). It will be called after the corresponding module system script. If it returns a string the message will be overwritten, if it returns true the message will be supressed. Returning something will overwrite any action the module script may have taken.</p>
+						</li>
+						<li>
+							<p><span class="keyword">game.OnGameLoad()</span> this function, if it exists, gets called when the game loads.</p>
+							<p><span class="keyword">game.OnSave()</span> this function, if it exists, gets called after a game is saved successfully.</p>
+							<p><span class="keyword">game.OnLoadSave()</span> this function, if it exists, gets called after a savegame is loaded successfully.</p>
+						</li>
+						<li>
+							<p><span class="keyword">game.fail()</span> when used during a <span class="keyword">lua_call</span> operation it will make the MS code fail, like any other cf operation can do.</p>
+							<p style="padding-left: 10px;">Example:</p>
+							<pre class="code" ms>
+								(try_begin),
+										(lua_push_int, 456),
+										(lua_call, "@is123", 1),
+										(display_message, "@Yes it is."),
+								(else_try),
+										(display_message, "@Nah"),
+								(try_end),
+							</pre>
+							<p></p>
+							<pre class="code">
+								function is123(val)
+										if val ~= 123 then
+												game.fail()
+										end
+								end
+							</pre>
+						</li>
+					</ul>
+					<p style="padding-left: 10px">Other WSE LUA API functions - these could be useful for advanced users, but you should get along fine without ever using them.</p>
+					<ul class="padli">
+						<li><span class="keyword">game.execOperation(strOperationName, arg1, arg2, ....)</span> - see operations</li>
+						<li><span class="keyword">game.getOperationFlags(strOperationName)</span> - Flags: None = 0x0, Lhs = 0x1, Cf = 0x2 (this is what WSE figured from reading header_operations.py, the engine may not agree).</li>
+						<li><span class="keyword">game.getReg(intTypeId, intIndex)</span> typeIds are: 0 = int, 1 = str, 2 = pos</li>
+						<li><span class="keyword">game.setReg(intTypeId, intIndex, val)</span></li>
+						<li><span class="keyword">game.getGvar(key)</span></li>
+						<li><span class="keyword">game.setGvar(key, value)</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<h2 onclick="toggle_hide('miscellaneous')"><div id="miscellaneous_button" class="button_hide">&nbsp;</div><span>MISCELLANEOUS<br /></span></h2>
+		<hr />
+		<div class="miscellaneous_content">
+			<div class="content_block">
+				<div class="content_block_caption">Globals</div>
+				<div>
+					<ul class="padli">
+						<li><span class="keyword">tableShallowCopy(t, copyMetatable)</span> - returns a copy of table t, however any object items will still reference the same object. If copyMetatable ~= nil, the returned table will have the same metatable as t, as given by getmetatable(t).</li>
+						<li><span class="keyword">tableRecursiveCopy(t, copyMetatable)</span> - returns a copy of table t. All table items in t and further down the "tree" will be actual copies by value instead of by reference. If copyMetatable ~= nil, all metatables will be copied (by value), as given by getmetatable(t).</li>
+						<li>vector3 - class for storing and manipulating 3D vectors
+							<ul>
+								<li>
+									<p style="padding-left: 20px; padding-top: 10px;"><span class="keyword">vector3.prototype</span></p>
+									<pre class="code">
+										x = 0
+										y = 0
+										z = 0
+										<span class="comment">--You can also use vec3[1], vec3[2], vec3[3] instead of x,y,z</span>
+										function len(self) <span class="comment">--returns the length of the vector</span>
+										function dist(self, vec2) <span class="comment">--returns the distance between self and vec2</span>
+										function dot(self, vec2) <span class="comment">--returns the dot product of self and vec2</span>
+										function cross(self, vec2) <span class="comment">--returns the cross product of self and vec2</span>
+										function unit(self) <span class="comment">--returns a normalized copy of itself</span>
+										function lerp(self, goal, alpha) <span class="comment">--returns a new vector that is the interpolation between self and goal by factor alpha (0-1)</span>
+									</pre>
+								</li>
+								<li>
+									<p style="padding-left: 20px; padding-top: 10px;"><span class="keyword">vector3.new([obj])</span> - constructor. obj; can be used to specify initial values.</p>
+								</li>
+								<li>
+									<p style="padding-left: 20px; padding-top: 10px;"><span class="keyword">vector3 operators</span> + - * ==</p>
+								</li>
+								<li>
+								<p style="padding-left: 20px;">Example:</p>
+									<pre class="code">
+										local vecA = vector3.new({x = 60, y = 30})
+										local vecB = vector3.new()
+										
+										game.display_message(tostring(vecA:len())) <span class="comment">--67.08...</span>
+										
+										if vecA == vecB then
+											<span class="comment">--will not happen</span>
+										end
+										
+										vecA = vecA * vecB <span class="comment">--{60*0, 30*0, 0*0}</span>
+										if vecA == vecB then
+											<span class="comment">--will happen</span>
+										end
+									</pre>
+								</li>
+							</ul>
+						</li>
+						<li><span class="keyword">printTable(t, [prefix])</span> - print an entire table, recursively. Useful for debugging.</li>
+						<li><span class="keyword">make(table, ...)</span> - useful for creating table tree structures.<br>
+							<pre class="code">
+								t = {}
+								  ...
+								make(t, "a", "b").c = 5
+								<span class="comment">--t: {a = {b = {c = 5}}}</span>
+							</pre>
+							<br>
+							It will make sure that <span class="keyword">table.a.b</span> exists and return it, but won't overwrite anything that already exists.
+						</li>
+						<li><span class="keyword">starts_with(str, start)</span><br>
+						<li><span class="keyword">ends_with(str, ending)</span><br>
+						<li><span class="keyword">round(num, numDecimalPlaces)</span><br>
+						<li>
+							<span class="keyword">getTime()</span> get time in milliseconds since program start, using <span class="keyword">std::chrono::steady_clock</span>
+						</li>
+						<li><span class="keyword">_print(str)</span> - displays str in game (console on dedicated). Regular print() uses this.</li>
+						<li><span class="keyword">_log(str)</span> - adds str to rgl_log.txt</li>
+						<li>
+							<span class="keyword">mkdir(path)</span> Create a directory. Returns true on success, on failure it returns nil, err_msg, err_code<br>
+							err_code can be: ERROR_ALREADY_EXISTS = 0xB7, ERROR_PATH_NOT_FOUND = 0x3
+						</li>
+						<li>
+							<span class="keyword">rmdir(path)</span> Remove a directory. Returns true on success, on failure it returns nil, err_msg, err_code<br>
+							err_code: not sure, check this <a href="https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-removedirectorya">page.</a>
+						</li>
+						<li>
+							<span class="keyword">lsdir(path)</span> For listing the contents of a directory. Returns an iterator or nil, err_msg<br>
+							Iterator will return file_name, <a href="https://learn.microsoft.com/de-de/windows/win32/fileio/file-attribute-constants">file_attributes</a>
+							<pre class="code">
+								for path, attr in lsdir("dirtest") do
+									print(path, attr)
+								end
+
+								<span class="comment">--Might be good to check for errors first</span>
+								local iter, err_msg = lsdir("")
+								if iter then
+									for path, attr in iter do
+										print(path, attr)
+									end
+								else
+									print(err_msg)
+								end
+							</pre>
+						</li>
+						<li>
+							<a href="https://sourceforge.net/p/warband-script-enhancer/code/ci/1.170/tree/WSELib/LuaGlobals.lua" target="_blank" rel="noopener noreferrer">Lua startup code (sourceforge)</a> - this gets executed right before main.lua.
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Additional Libraries</div>
+				<ul>
+					<li>
+						<a href="https://lualanes.github.io/lanes/" target="_blank" rel="noopener noreferrer">luaLanes</a> v3.17.1 is included for multithreading. Check out Oliveran's AI! (->Examples). <span class="keyword">lanes = require("lanes").configure()</span><br>
+						Some things I learned while writing a leaderboard for a dedicated server:
+						<ul>
+							<li>Triggers don't work in a thread.</li>
+							<li>
+								In general, access to the game from a thread is risky. You may get away with a lot, but the proper way is to use a worker type pattern.<br>
+								Create a worker thread that listens for a job message via a shared linda object, then do computing and send the result back to the main thread, where it is applied to the game.<br>
+							</li>
+							<li>I tried to include the sqlite library in an upvalue, it did not work. In the end I wrapped everything inside a function.</li>
+							<li>Runtime errors in your thread are silent. Fortunately you can wrap your worker function in a pcall and print any error.</li>
+						</ul>
+						
+						Full code can be found <a href="https://github.com/kumpuu/Warband-Lua-Examples/blob/master/lua/stats.lua" target="_blank" rel="noopener noreferrer"">here.</a>
+					</li>
+					<li>
+						<a href="https://lua.sqlite.org/home/doc/tip/doc/lsqlite3.wiki" target="_blank" rel="noopener noreferrer">LSQLite3</a> v0.9.6 (sqlite 3.24.0) library for your database needs. <span class="keyword">sqlite3 = require("lsqlite3")</span>.
+					</li>
+					<li>
+						<a href="https://github.com/orbitalquark/lua-std-regex" target="_blank" rel="noopener noreferrer">lua-std-regex</a> v1.0 (binding for C++ regex which is better than lua's) <span class="keyword">regex = require("regex")</span>.
+					</li>
+					<li>
+						mobDebug, see 'Debugger' chapter.
+					</li>
+				</ul>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Debugger, Profiler</div>
+				<h4>
+					What is a debugger?
+				</h4>
+				<p class="padl20">
+					A debugger lets you find bugs. You can step through your code line by line, set breakpoints (execution will pause), inspect variables - watch line by line how things go wrong.<br>
+					Without it, you have to add print statements everywhere - it works, but for complicated bugs annoying and time consuming. For "nonlinear" (e.g. recursive) code, it can also be very hard to reconstruct the execution path.<br>
+					The Lua debugger lets you debug lua <span class="tw_smiley"></span>  - You can't see modsys or C++ code.
+				</p>
+				<h4>
+					Install
+				</h4>
+				<div>
+					<ol class="padli">
+						<li>Get <a href="https://studio.zerobrane.com/download?not-this-time" target="_blank" rel="noopener noreferrer">ZeroBrane IDE</a></li>
+						<li>Start it, select <span class="keyword">Project->Project Directory->Choose</span> and select your lua folder</li>
+						<li>Also enable <span class="keyword">Project->Start Debugger Server</span></li>
+						<li>ZeroBrane is now waiting for an incoming connection. Run <span class="keyword">local mob = require("mobDebug")</span> in your script when you want to start debugging.</li>
+						<li>There should be a message: <span class="keyword">*** LUA DEBUGGER LOADED ***</span></li>
+						<li>Now: <span class="keyword">mob.start()</span>. The game will pause and try to connect to ZeroBrane. You can also pass an address and port to start().</li>
+						<li>If successful, you should see a message in ZeroBrane. The game is initially paused to let you set breakpoints. Click the green arrow to continue.</li>
+						<li>Tip: Enable Watch/Stack window (View)</li>
+					</ol>
+					<p>That's it! It seems like it won't detect when the game ends, so stop the debugger manually. There is also a VSCode extension, but I did not test it. Lastly, debugging will slow down lua a little bit, so don't leave it enabled when you ship your code.</p>
+					<p>More info: <a href="https://studio.zerobrane.com/doc-remote-debugging" target="_blank" rel="noopener noreferrer">ZeroBrane Documentation</a>  <a href="https://github.com/pkulchenko/MobDebug" target="_blank" rel="noopener noreferrer">mobDebug Github</a></p>
+				</div>
+				<br>
+				<h4>
+					Profiler
+				</h4>
+				<p class="padl20">
+					I didn't do much more than confirm that it is functional. <span class="keyword">require("jit.p")</span> produced an error for me, but <span class="keyword">require("jit.profile").start("f", print)</span> gave some output. (Don't stop it, it will collect data and print periodically.)<br>
+					<a href="https://luajit.org/ext_profiler.html" target="_blank" rel="noopener noreferrer">Official Documentation</a>
+				</p>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Sandbox</div>
+				<div>
+					<p>Changes include:</p>
+					<ul>
+						<li>
+							<p>Disabled package.loadlib, package.cpath, io.popen. os.execute, os.getenv, os.tmpname, ffi library, loading bytecode (can be exploited)</p>
+						</li>
+						<li>
+							<p>
+								Restrict dofile, loadfile and all IO operations to the lua directory
+								<p>
+									Access storage folder by prefixing <span class="keyword">%storage%</span>	
+									<p><pre class="code">
+										local f, err = io.open("%storage%\\file.json", "r")
+									</pre></p>
+									For dedicated servers, storage folder is at <span class="keyword">[warband_dir]\WSE\[Module]\</span> by default.<br>
+									For client, look in <span class="keyword">C:\Users\[user]\Documents\Mount&Blade Warband\WSE\[Module]</span> (WSE 2 uses <span class="keyword">Mount&Blade Warband WSE2</span>).<br>
+									Tip: access other modules by using <span class="keyword">%storage%\\..\\[Other Module]\\somefile.txt</span> (this is only allowed for %storage%).
+								</p>
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content_block">
+				<div class="content_block_caption">Settings (wse_settings.ini, add [lua] section)</div>
+				<div>
+					<ul>
+						<li>
+							<p><span class="keyword">disable_game_const_warnings</span> - disables all warnings during msfiles\ game constants scanning</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content_block">
+				<div class="content_block_caption">Notice</div>
+				<ul>
+					<li>The Lua/C stack (used to pass parameters and return values from modsys to lua and back) is automatically cleared when it reaches a size of 100. This is to prevent stack overflows.</li>
+					<li>When using (lua_call) operation, there is always a traceback function pushed to the stack before the call (this is to provide debug info in case of error).
+						WSE should remove this when it's done, but it doesn't, and changing the behaviour now might break user code that relies on fixed stack indices.
+						Therefore you have to keep this in mind when using lua_call, your stack will grow even if there are no return values.
+						It's a good habit to use (lua_set_top, 0) before starting to call lua functions, so you always know you're starting with a clean stack.</li>
+					<li>All lua standard libraries are loaded on game start, including <a href="https://bitop.luajit.org/api.html" target="_blank" rel="noopener noreferrer">bitop</a>.</li>
+					<li>If you don't want others to copy your source code, you can minify or obfuscate it. There are many such tools available online. Compiling modsys code is about as secure as minifying it.</li>
+				</ul>
+			</div>
+		</div>
+
+		<h2 onclick="toggle_hide('examples')"><div id="examples_button" class="button_hide">&nbsp;</div><span>EXAMPLES</span></h2>
+		<hr/>
+		<div class="examples_content">
+			<p style="margin-left: 20px;"><em>Some of these are ripped out of larger files without testing, so be careful.</em></p>
+			<div class="content_block">
+				<div class="content_block_caption">Simple custom log</div>
+				<p>Needs header_triggers.py in msfiles.</p>
+				<pre class="code code2">
+					myLog = io.open("custom_log.txt", "a")
+					myLog:write("Server started at " .. os.date("%Y.%m.%d, %X") .. "\\n")
+					myLog:flush()
+					
+					function getTriggerParam(index)
+							return game.store_trigger_param(0, index)
+					end
+					
+					function playerJoinedCallback()
+							local playerNo = getTriggerParam(1)
+						
+							game.str_store_player_username(0, playerNo)
+							game.str_store_player_ip(1, playerNo)
+						
+							myLog:write(game.sreg[0] .. " joined with IP " .. game.sreg[1] ..
+										" at " .. os.date("%Y.%m.%d, %X") .. "\\n")
+							myLog:flush()
+							return false
+					end
+					
+					templates = {
+							"dm",
+							"tdm",
+							"cf", <span class="comment">--capture the flag</span>
+							"sg", <span class="comment">--siege</span>
+							"bt", <span class="comment">--battle</span>
+							"fd", <span class="comment">--fight and destroy</span>
+							"ccoop", <span class="comment">--invasion</span>
+							"duel"
+					}
+					
+					<span class="comment">--add triggers to all multiplayer templates</span>
+					for k,v in pairs(templates) do
+						game.addTrigger("mst_multiplayer_" .. v, game.const.ti_server_player_joined, 0, 0, playerJoinedCallback)
+					end
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Squad spawner</div>
+				<p>This function spawns agents in a square at the specified position.</p>
+				<pre class="code code2">
+					function spawnSquad(troop, amount, position)
+							local sideLen = math.floor(math.sqrt(amount))
+							local leftovers = amount - sideLen * sideLen
+							local spawnSpreadDistance = 1
+							position.o.x = position.o.x - math.floor(sideLen/2) * spawnSpreadDistance
+							position.o.y = position.o.y - math.floor(sideLen/2) * spawnSpreadDistance
+						
+							for i=1, sideLen do
+									for j=1, sideLen do
+											game.set_spawn_position(position)
+											game.spawn_agent(troop)
+											position.o.x = position.o.x + spawnSpreadDistance
+									end
+									position.o.x = position.o.x - spawnSpreadDistance * sideLen
+									position.o.y = position.o.y + spawnSpreadDistance
+							end
+					end
+				</pre>
+				<p>You could call it like:</p>
+				<pre class="code code2">
+					local pos = game.pos.new({o = {x=100,y=100}})
+					spawnSquad(game.const.trp_bandit, 10, pos)
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Quickly reload main.lua when typing "reloadMain" in server console</div>
+				<p>All this does is call dofile. Be careful, it is not equivalent to a full restart.</p>
+				<pre class="code code2" ms>
+					("wse_console_command_received", [ <span class="comment">#this is a script that WSE adds</span>
+							(store_script_param, ":command_type", 1),
+						
+							(str_equals, s0, "@reloadMain"),
+							(lua_push_str, "@main.lua"),
+							(lua_call, "@dofile", 1), <span class="comment">#one param, the string we pushed</span>
+							(set_trigger_result, 1),
+					]),
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">event_mgr.lua</div>
+				<p>
+					The idea is to have a wrapper for game.addTrigger so we have more control (for example this is useful for hot reloading), and to have a single interface for all events - mission template, scene prop, and item triggers, as well as your own events.<br>
+					It returns a constant index to your trigger. game.addTrigger index will shift if you remove things below.<br>
+					Does only add to deathmatch, and no management of SP/MP triggers. It's up to you to modify to your needs.<br>
+					Needs header_triggers.py, ID_scenes.py, ID_items.py in msfiles.
+				</p>
+				<pre class="code code2">
+					<span class="comment">--[[
+					Usage:
+						event_mgr.subscribe(event_id, callback)
+						event_id:
+							"ti_constant", e.g. "ti_before_mission_start"
+							"timer_x.y", e.g. "timer_1.5" or "timer_0"
+							"itm_a:ti_constant", e.g. "itm_french_cav_pistol:ti_on_weapon_attack"
+							"spr_b:ti_constant", same thing
+							"script_", e.g. "script_game_quick_start" (versus hookScript - you can not control execution of modsys script here)
+							"key_", e.g.:
+							"key_o"                              O clicked
+							"key_o down=key_shift"               O clicked while Shift down
+							"key_k down=key_shift key_control"   key_shift, key_control means both left/right
+							"your_own_event_id", can be used with dispatch()
+					
+						returns: a subscription ID which you can use with unsubscribe
+					
+						event_mgr.unsubscribe(event_id, subscription_id)
+					
+						event_mgr.clear()
+						Clear all callbacks. Useful for hot-reloading
+						Example reload:
+						event_mgr.subscribe("key_r down=key_shift", function()
+							event_mgr.clear()
+							print("Reloading")
+							dofile("main.lua")
+						end)
+					
+						event_mgr.dispatch(event_id, ...)
+					]]</span>
+
+					local regex = require "regex"
+
+					if not event_mgr then
+						event_mgr = {
+							events = {}
+						}
+					end
+
+					function event_mgr.subscribe(event_id, callback)
+						event_mgr.init_event(event_id)
+
+						local i = 1
+						while event_mgr.events[event_id][i] ~= nil do i = i + 1 end
+						event_mgr.events[event_id][i] = callback
+						return i
+					end
+
+					function event_mgr.unsubscribe(event_id, subscription_id)
+						event_mgr.events[event_id][subscription_id] = nil
+					end
+
+					function event_mgr.dispatch(event_id, ...)
+						if event_mgr.events[event_id] then
+							for _, event_callback in pairs(event_mgr.events[event_id]) do
+								event_callback(...)
+							end
+						end
+					end
+
+					function event_mgr.clear()
+						for event_id, _ in pairs(event_mgr.events) do
+							event_mgr.events[event_id] = {}
+						end
+					end
+
+					function event_mgr.init_event(event_id)
+						if event_mgr.events[event_id] then return end
+						make(event_mgr.events, event_id)
+
+						local function add_mst_trig(const, callback)
+							for i = 0, game.getNumTemplates()-1 do
+								game.addTrigger(i, const, 0, 0, callback)
+							end
+						end
+						
+						--generic dispatcher
+						local function cb()
+							event_mgr.dispatch(event_id)
+							return false
+						end
+
+						if starts_with(event_id, "ti_") then
+							local const = game.const.triggers[event_id]
+							add_mst_trig(const, cb)
+						
+						elseif starts_with(event_id, "timer_") then
+							local const = tonumber(string.match(event_id, "%d+%.?%d*"))
+							add_mst_trig(const, cb)
+
+						elseif starts_with(event_id, "itm_") then
+							local itm, const = string.match(event_id, "([%w_]+):([%w_]+)")
+							itm = game.const[itm]
+							const = game.const[const]
+							game.addItemTrigger(itm, const, cb)
+
+						elseif starts_with(event_id, "spr_") then
+							local spr, const = string.match(event_id, "([%w_]+):([%w_]+)")
+							spr = game.const[spr]
+							const = game.const[const]
+							game.addScenePropTrigger(spr, const, cb)
+
+						elseif starts_with(event_id, "script_") then
+							local s = string.match(event_id, "script_([%w_]+)")
+							game.hookScript(game.script[s], function(...) event_mgr.dispatch(event_id, ...) end)
+
+						elseif starts_with(event_id, "key_") then
+							local keyname, modkeys = regex.match(event_id, [[(key_\w+)(?: down=(.+))?]])
+							local down = {}
+
+							local function key_test_func(keyname, op)
+								if keyname == "key_control" then
+									local k1 = game.const.triggers["key_left_control"]
+									local k2 = game.const.triggers["key_right_control"]
+									return function() return (op(k1) or op(k2)) end
+
+								elseif keyname == "key_shift" then
+									local k1 = game.const.triggers["key_left_shift"]
+									local k2 = game.const.triggers["key_right_shift"]
+									return function() return (op(k1) or op(k2)) end
+
+								elseif keyname == "key_alt" then
+									local k1 = game.const.triggers["key_left_alt"]
+									local k2 = game.const.triggers["key_right_alt"]
+									return function() return (op(k1) or op(k2)) end
+
+								else
+									local k = game.const.triggers[keyname]
+									return function() return op(k) end
+								end
+							end
+
+							local clicked = key_test_func(keyname, game.key_clicked)
+							for modkey in regex.gmatch(modkeys, [[\w+]]) do
+								table.insert(down, key_test_func(modkey, game.key_is_down))
+							end
+
+							add_mst_trig(0, function()
+								if clicked() then
+									for i = 1, #down do
+										if not down[i]() then return false end
+									end
+
+									event_mgr.dispatch(event_id)
+									return false
+								end
+							end)
+						end
+					end
+
+					--For calling from modsys
+					function eventDispatch(event_id, ...)
+						event_mgr.dispatch(event_id, ...)
+					end
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Timeouts</div>
+				<p>Execute modssys script or lua function with a delay. Uses previous event manager.</p>
+				<pre class="code code2">
+					local timeouts = {}
+					
+					function timeoutsTick()
+						if #timeouts ~= 0 then
+							local t_now = game.store_mission_timer_a_msec(0)
+					
+							for i = #timeouts, 1, -1 do
+								if timeouts[i].t <= t_now then
+									timeouts[i].cb(timeouts[i].cb, t_now)
+									table.remove(timeouts, i)
+								end
+							end
+						end
+					end
+					
+					function timeoutAddScript(time, script_no, ...)
+						local args = {...}
+						local cb = function()
+							game.call_script(script_no, unpack(args))
+						end
+					
+						table.insert(timeouts, { t = game.store_mission_timer_a_msec(0) + time, cb = cb})
+					end
+					
+					function timeoutAdd(time, callback)
+						table.insert(timeouts, { t = game.store_mission_timer_a_msec(0) + time, cb = callback })
+					end
+					
+					event_mgr.subscribe("ti_before_mission_start", function() timeouts = {} end)
+					event_mgr.subscribe("timer_0", timeoutsTick)
+				</pre>
+				<br><br>
+				<p style="margin-bottom: 0;">Modsys example:</p>
+				<pre class="code code2" ms>
+					(lua_push_int, 2000),
+					(lua_push_int, "script_for_timeout"),
+					(lua_push_int, ":var1"),
+					(lua_push_int, ":var2"),
+					
+					(lua_call, "@timeoutAddScript", 4),
+					(lua_set_top, 0), <span class="comment">#Just make sure its cleaned up</span>
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Map Scripts</div>
+				<p>
+					Before map start, searches for ./lua/map_scripts/&lt;mapname&gt;.lua and executes it in its own environment (using setfenv).<br>
+					Uses previous event manager. The script can read from root _G via the metatable, event_mgr is wrapped though in order to auto-unsub any events at map change.<br>
+					Needs ID_scenes.py in msfiles.
+				</p>
+				<pre class="code code2">
+					local subbed_events = {}
+
+					<span class="comment">--wrap event_mgr so we can log all subscriptions and auto-unsub at map change</span>
+					local fenv_mt = {
+					  __index = setmetatable({
+					    event_mgr = {
+					      subscribe = function(event_id, callback)
+					        local idx = _G.event_mgr.subscribe(event_id, callback)
+					        table.insert(subbed_events, {event_id = event_id, idx = idx})
+					        return idx
+					      end,
+
+					      unsubscribe = function(event_id, index)
+					        for i,v in ipairs(subbed_events) do
+					          if v.idx == index then
+					            table.remove(subbed_events, i)
+					            return _G.event_mgr.unsubscribe(event_id, index)
+					          end
+					        end
+					      end,
+
+					      dispatch = _G.event_mgr.dispatch
+					    }   
+					  }, {__index = _G})
+					}
+
+					local scene_names = {}
+					for k,v in pairs(game.const.scenes) do scene_names[v] = k end
+
+					local function load_map_script(map_name)
+					  local fname = "map_scripts\\" .. map_name .. ".lua"
+					  local f = io.open(fname, r)
+					  if not f then return end
+					  f:close()
+
+					  local func, error = loadfile(fname)
+					  if not func then print("Error loading " .. fname .. ": " .. error); return end
+
+					  local fenv = {}
+					  setmetatable(fenv, fenv_mt)
+
+					  setfenv(func, fenv)
+					  func()
+					end
+
+					event_mgr.subscribe("ti_before_mission_start", function()
+					  <span class="comment">--clean events from last map</span>
+					  for _,v in pairs(subbed_events) do
+					    event_mgr.unsubscribe(v.event_id, v.idx)
+					  end
+					  subbed_events = {}
+
+					  local scene = game.store_current_scene(0)
+					  load_map_script(scene_names[scene])
+					end)
+				</pre>
+				<p><br>Example: <span class="keyword">lua/map_scripts/scn_mp_custom_map_3.lua</span></p>
+				<pre class="code code2">
+					print("custom_map_3 script loaded")
+
+					event_mgr.subscribe("spr_apple_a:ti_on_init_scene_prop", 
+					  function() 
+					    print("apple")
+					    do_something()
+					  end)
+
+					event_mgr.subscribe("itm_birch_trunk:ti_on_weapon_attack", 
+					  function() 
+					    print("attack")
+					    explode_player()
+					  end)
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Presentation with a clock and a white center dot (for aiming)</div>
+				<p>Needs header_triggers.py, header_presentations.py, ID_meshes.py in msfiles.</p>
+				<pre class="code code2">
+					local clockOverlay
+					local nextRefreshTime
+
+					local prsnt = game.addPrsnt({
+						id = "clock",
+						flags = {game.const.prsntf_read_only, game.const.prsntf_manual_end_only},
+						triggers = {
+							[game.const.ti_on_presentation_load] = function()
+								game.presentation_set_duration(99999999)
+
+								clockOverlay = game.create_text_overlay(0, "00:00:00", game.const.tf_left_align)
+
+								local screenPos = game.pos.new()
+								screenPos.o.x = 0
+								screenPos.o.y = 0
+
+								local sizePos = game.pos.new(game.preg[0])
+								sizePos.o.x = 1
+								sizePos.o.y = 1
+
+								game.overlay_set_position(clockOverlay, screenPos)
+								game.overlay_set_size(clockOverlay, sizePos)
+								game.overlay_set_color(clockOverlay, 0xFFFFFA)
+
+								nextRefreshTime = 0
+
+								midDotOverlay = game.create_mesh_overlay(0, game.const.meshes.mesh_white_dot)
+								screenPos.o.x = 0.5 - 0.0002
+								screenPos.o.y = 0.75/2 - 0.0001
+								sizePos.o.x = 0.1
+								sizePos.o.y = 0.1
+								game.overlay_set_position(midDotOverlay, screenPos)
+								game.overlay_set_size(midDotOverlay, sizePos)
+							end,
+							
+							[game.const.ti_on_presentation_run] = function()
+								local curTime = game.store_trigger_param_1(0)
+								if curTime >= nextRefreshTime then
+									nextRefreshTime = nextRefreshTime + 1000
+									game.overlay_set_text(clockOverlay, os.date("%X"))
+								end
+							end
+						}
+					})
+
+					event_mgr.subscribe("ti_after_mission_start", function()
+						game.start_presentation(prsnt)
+					end)
+				</pre>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">At map start, spawn banhammer at each apple_a with varno1 = 1</div>
+				<p>Uses event_mgr, needs header_triggers.py, ID_items.py in msfiles.</p>
+				<pre class="code code2">
+					event_mgr.subscribe("spr_apple_a:ti_on_init_scene_prop", 
+					  function() 
+					    local inst = game.store_trigger_param_1(0)
+					    if game.prop_instance_get_variation_id(0, inst) == 1 then
+					    	print("found apple " .. inst)
+
+					    	game.prop_instance_get_position(1, inst) <span class="comment">--pos1 translates to 1</span>
+					    	game.set_spawn_position(1)
+					    	game.spawn_item(game.const.itm_banhammer, 0, 0)
+					    end
+					  end)
+				</pre>
+			</div>
+			
+			<div class="content_block">
+				<div class="content_block_caption">Oliveran's Combat AI (multithreaded)</div>
+				<p>This was made by Oliveran in 2017. I never ran this myself or reviewed the code in any detail, but the results speak for themselves.</p>
+				<div class="padl20">
+					<p>Original description:</p>
+					<div class="code" style="margin-left: 20px;">
+						<div>
+							I'm a long-time competitive player, who's always really enjoyed all aspects of singleplayer - but as I increased in skill,
+							the AI got dull very quickly, as I grew with the competitive scene's skill.
+							As the game has reached a relatively stagnant point in terms of figuring out mechanics,
+							break down playstyles and ways to play as a team;
+							I figured I could use the knowledge to make an AI that can play more player-like,
+							that can be functional in both singleplayer and mutiplayer (though ofc not at a competitive level <span class="tw_smiley"> </span>)
+						</div>
+					</div>
+					<p>Videos (Youtube):</p>
+					<div id="oliveran_yt_root" class="padl20">
+						<script>
+							var yts = [
+								["https://www.youtube.com/embed/Z5kRdFGdOKY", "Melee AI - Version 0.1 - Blocking and attacking basics"],
+								["https://www.youtube.com/embed/QpL6k8UV4ZA", "Melee AI - Version 0.2 - Footwork and AI feinting"],
+								["https://www.youtube.com/embed/X9XICIGK5yY", "Melee AI 0.2 - Footwork&Feinting - Bot v Bot"],
+								["https://www.youtube.com/embed/7O9hFlkLSNA", "Melee AI 0.3 - Kickin' butt"],
+								["https://www.youtube.com/embed/tgyhKRcFVL8", "Melee AI 0.3 - Kickin' butt - Bot v Bot"],
+								["https://www.youtube.com/embed/ppcOawQ7z1Q", "Melee AI 0.4 - Positioning, target switching"],
+								["https://www.youtube.com/embed/VJyeI1iHoRk", "Archery AI 0.1 - Aiming at different body positions"]
+							];
+
+							var root = document.getElementById("oliveran_yt_root");
+							for (let yt of yts){
+								let div = document.createElement("div");
+
+									let inp = document.createElement("input");
+									inp.setAttribute('type', 'button');
+									inp.setAttribute('value', yt[1]);
+
+								inp.onclick = function(){
+									div.innerHTML = '<iframe width="800" height="450" src="' + yt[0] +'" title="' + yt[1] + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+								}
+
+								div.appendChild(inp);
+								root.appendChild(div);
+							}
+						</script>
+					</div>
+					<a href="https://github.com/kumpuu/-WB-Competitive-style-combat-AI" target="_blank" rel="noopener noreferrer">Code</a><br>
+					<a href="https://forums.taleworlds.com/index.php?threads/wb-competitive-style-combat-ai-playable-version-0-2-out.363466/" target="_blank" rel="noopener noreferrer">Forum Post</a><br>
+				</div>
+			</div>
+
+			<div class="content_block">
+				<div class="content_block_caption">Code extract - Dedicated Server</div>
+				<p>Some of the lua code I made for a server. Including a stats database and animation helper.</p>
+				<a href="https://github.com/kumpuu/Warband-Lua-Examples/" target="_blank" rel="noopener noreferrer"">Github</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="fishtank" style="display: none;">
+		<div id="innertank">
+			<div id="fish1click" class="fish fishclick" onclick="var a=document.getElementById('fish1img').children[0];if(a.style.rotate != ''){a.style.rotate='';}else{a.style.rotate='360deg'};try{new Audio(sound_path + 'jump_end_water.ogg').play();}catch{}">
+			</div>
+			<div id="fish1img" class="fish fishimg">
+				<img  src="data:image/gif;base64,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">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var sound_path = "C:/Program Files (x86)/Steam/steamapps/common/MountBlade Warband/Sounds/";
+
+		//Automate hide button creation
+		var contentCaptions = document.getElementsByClassName("content_block_caption");
+		for(let i = 0; i < contentCaptions.length; i++){
+			var nodeCount = 0;
+			for(var j = 0; j < contentCaptions[i].parentNode.childNodes.length; j++){
+
+				var curNode = contentCaptions[i].parentNode.childNodes[j];
+				if(curNode.nodeType == 1){
+					nodeCount++;
+					if(nodeCount >= 2){
+						if(curNode.className != ""){
+							curNode.className += " ";
+						}
+						curNode.className += "content_block_" + i + "_content";
+					}
+				}
+			}
+
+			contentCaptions[i].onclick = ()=>{toggle_hide("content_block_" + i)}
+
+			var caption = contentCaptions[i].innerHTML;
+			contentCaptions[i].innerHTML = "<div id='content_block_" + i + "_button'" 
+				+ " class='button_hide button_hide_small'>&nbsp;</div>" + caption;
+
+		}
+
+		var hideBtns = document.getElementsByClassName("button_hide");
+		for(var i = 0; i < hideBtns.length; i++){
+			hideBtns[i].innerHTML = "</div><div class='button_hide_inner button_hide_plus'></div><div class='button_hide_inner button_hide_minus'>";
+		}
+
+		//Hide all 2nd level items by default, for overview
+		for(let i = 0; i < contentCaptions.length; i++){
+			toggle_hide("content_block_" + i);
+		}
+
+		updateBtnThemeSwitchText();
+
+		function count_white(str)
+		{
+			var i = 0;
+			while(str[i] == " " || str[i] == "\t"){ i++; }
+			return i;
+		}
+
+		function empty_line(str)
+		{
+			for(var i = 0; i < str.length; i++){
+				var c = str[i];
+				if(c != " " && c != "\t" && c != "\r" && c != "\n"){ return false; }
+			}
+			return true;
+		}
+
+		//remove extra whitespace in code blocks
+		for(block of document.getElementsByTagName("pre")) 
+		{
+			if(!block.classList.contains("code")){continue;}
+
+			var lines = block.innerHTML.split("\n");
+			var min_indent = 9999;
+			lines.forEach((line) => 
+			{
+				if(!empty_line(line)){
+					var w = count_white(line);
+					if(w < min_indent){min_indent = w};
+				}
+			});
+
+			for(var i = 0; i < lines.length; i++)
+			{
+				if(lines[i].length >= min_indent){
+					lines[i] = lines[i].slice(min_indent);
+				}
+			};
+			if(empty_line(lines[lines.length-1])){ lines.pop(); }
+
+			block.innerHTML = "<span>" + lines.join("\n") +  "</span>";
+
+			if(block.hasAttribute("ms"))
+			{
+				block.innerHTML = "<code class='language-python'>" + block.innerHTML + "</code>";
+			}
+			else if(!block.hasAttribute("txt")){
+				block.innerHTML = "<code class='language-lua'>" + block.innerHTML + "</code>";
+			}
+
+			let copy = block.appendChild(document.createElement("div"));
+			copy.className = "code_copy";
+
+			let b = block;
+			copy.onclick = function(){
+				navigator.clipboard.writeText(b.textContent).then(function() {
+					copy.animate(
+					  [
+					    { transform: "scale(1)" },
+					    { transform: "scale(1.5)" },
+					    { transform: "scale(1)" },
+					  ],
+					  {
+					    duration: 200,
+					  });
+				}, function(err) {
+					console.error('Async: Could not copy text: ', err);
+				});
+			}
+		};
+
+		var index = localStorage.getItem("theme_index");
+		if(index) setTheme(index);
+
+		hljs.highlightAll(); //syntax highlighting
+	</script>
+</body>
