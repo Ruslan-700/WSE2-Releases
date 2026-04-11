@@ -1,0 +1,144 @@
+ui_first_person_field_of_view|Sichtfeld (1. Person)
+ui_third_person_field_of_view|Sichtfeld (3. Person)
+ui_banner_mode|Banner anzeigen
+ui_banner_outline_mode|Bannerumrisse anzeigen
+ui_dynamic_banner_transparency|Dynamische Bannertransparenz
+ui_on_group|Auf Gruppe
+ui_on_friendlies|Auf Verbündeten
+ui_on_everyone|Auf allen
+ui_show_multiplayer_chat|Chat anzeigen
+ui_show_multiplayer_team_chat|Teamchat anzeigen
+ui_difficulty_rating_percentage|Schwierigkeit = %d%%
+ui_general_options|Allgemein
+ui_battle_options|Schlacht
+ui_campaign_options|Kampagne
+ui_multiplayer_options|Mehrspieler
+ui_video_options|Grafik
+ui_sound_options|Sound
+ui_input_options|Eingabe
+ui_edit_mode_options|Bearbeitungsmodus
+ui_maximum_framerate|Maximale Bildrate
+ui_show_framerate_wse2|Bildrate anzeigen
+ui_estimated_performance|Leistung = %d%%
+ui_change_reflections_explanation|Volle Reflexionen sind leistungsintensiv. Deaktivieren Sie sie, wenn Sie niedrige Bildraten haben.
+ui_report_proficiency|Fähigkeitsbericht
+ui_abysmal|Miserabel
+ui_clear|Löschen
+ui_walk|Gehen
+ui_walk_toggle|Gehen (Umschalten)
+ui_rear_horse|Pferd aufbäumen
+ui_hide_ui|Benutzeroberfläche ein-/ausblenden
+ui_hide_tooltips|Tooltips ein-/ausblenden
+ui_listen_server_could_not_be_started|Der Server konnte nicht gestartet werden. Stellen Sie sicher, dass kein anderes Programm den Port %d verwendet.
+ui_water_reflections|Wasserreflexionen
+ui_reflections_quality|Wasserreflexionen Qualität
+ui_sky|Himmel
+ui_sky_landscape_objects|Himmel, Landschaft und Objekte
+ui_sound_occlusion|Klangverdeckung
+ui_sound_occlusion_filter|Verdeckungs-Tiefpassfilter
+ui_sound_hrtf_filter|HRTF-Tiefpassfilter
+ui_sound_distance_filter|Distanz Tief-/Hochpassfilter
+ui_scene_restart_required|Einige Einstellungen werden beim Betreten einer neuen Szene angewendet:
+ui_game_restart_required|Einige Einstellungen werden beim Neustart des Spiels angewendet:
+ui_weapon_trails|Waffenspuren
+ui_windowed|Fenstermodus
+ui_dynamic_batching|Dynamisches Mesh-Batching
+ui_free_look|Freie Sicht
+ui_vsync|Vertikale Synchronisation
+ui_msaa|Kantenglättung (MSAA)
+ui_atoc|Transparenz-Kantenglättung (MSAA)
+ui_fxaa|Kantenglättung (FXAA)
+ui_postprocess|Nachbearbeitungsfilter
+ui_postprocess_light|Leichtes Schärfen
+ui_postprocess_strong|Starkes Schärfen
+ui_postprocess_color|LASS MEINE AUGEN BLUTEN
+ui_multiplayer_kills|Kill-Nachrichten
+ui_all_kills|Alle
+ui_own|Eigene
+ui_player_deaths|Spielertode
+ui_own_kills_and_player_deaths|Eigene Kills und Spielertode
+ui_sun_flare|Sonnenblendung
+ui_enable_alt_f4|Beenden mit Alt+F4 aktivieren
+ui_invert_mouse_x_axis|Maus X-Achse invertieren
+ui_enable_sound|Sound aktivieren
+ui_enable_music|Musik aktivieren
+ui_toggle_background|Hintergrund
+ui_font_scale|Schriftgröße
+ui_messages_font_scale|Nachrichtenschriftgröße
+ui_spectator_camera_controls|Zuschauerkamera-Steuerung
+ui_faster_camera|Schnellere Kamerabewegung
+ui_slower_camera|Langsamere Kamerabewegung
+ui_camera_closer|Kamera näher
+ui_camera_farther|Kamera weiter
+ui_particle_degrade_distance|Partikelsystem Reduzierungsdistanz
+ui_sheath_primary_weapon|Waffe wegstecken
+ui_sheath_secondary_weapon|Schild wegstecken
+ui_drop_primary_weapon|Waffe fallenlassen
+ui_drop_secondary_weapon|Schild fallenlassen
+ui_screenshot_format|Bildschirmfoto-Format
+ui_control_block_direction|Block-Steuerung:
+ui_control_block_direction_mounted|Block-Steuerung (beritten):
+ui_control_attack_direction|Angriffs-Steuerung:
+ui_control_attack_direction_mounted|Angriffs-Steuerung (beritten):
+ui_preset_change|Voreinstellung ändern
+ui_blood_amount|Blutmenge
+ui_beta|β
+ui_partial|Teilweise
+ui_data_file_mismatch|Ihre Moduldateien sind beschädigt oder wurden manipuliert
+ui_randomize_client_port|Zufälligen Client-Port verwenden (empfohlen, außer bei Firewall)
+ui_client_port|Client-Port
+ui_server_port|Server-Port
+ui_unable_to_bind_socket|Verbindung nicht möglich, Port wird bereits verwendet.
+ui_synchronization_error|Synchronisationsfehler
+ui_dismount_horse_on_use|Beim Benutzen vom Pferd absteigen
+ui_maximum_game_frame_rate|Maximale Spielbildrate
+ui_autoexp|Automatische Belichtung
+ui_ragdoll_soak|Ragdoll-Leichen können getroffen werden
+ui_ragdoll_soak_apply_force|Ragdoll-Leichen bewegen sich bei Treffern
+ui_vsync_tooltip|Verhindert Bildschirmrisse, kann Eingabeverzögerung verursachen\n\nLeistungskosten: <c=0xFF0000>Hoch</c>
+ui_msaa_tooltip|Glättet gezackte Kanten an festen Objekten\n\nLeistungskosten: <c=0xFF0000>Hoch</c>
+ui_atoc_tooltip|Glättet gezackte Kanten an halbtransparenten Objekten\n\nLeistungskosten: <c=0x00FF00>Niedrig</c>
+ui_fxaa_tooltip|Glättet gezackte Kanten, verwischt das Bild deutlich\n\nLeistungskosten: <c=0xFFAA00>Mittel</c>
+ui_anisotropic_filtering_tooltip|Reduziert Unschärfe auf entfernten Oberflächen\n\nLeistungskosten: <c=0xFFAA00>Mittel</c>
+ui_sound_occlusion_tooltip|Simuliert die Wahrnehmung von Klängen in geschlossenen Umgebungen, d.h. wenn Barrieren zwischen Schallquelle und Hörer liegen\n\nLeistungskosten: <c=0xFF0000>Hoch</c>
+ui_update_wse2_version|Bitte aktualisieren Sie Ihre WSE2-Version, sonst werden Sie von diesem Server entfernt.
+ui_server_for_wse2_campaign|Dieser Server ist für eine Online-Kampagne mit WSE2. Bitte starten Sie WSE2 und wählen Sie „Einer Kampagne beitreten".
+ui_server_for_standart_game_modes|Dieser Server ist für Standard-Spielmodi, bitte wählen Sie „Einem Spiel beitreten".
+ui_enable_cheats_wse2|Cheats aktivieren
+ui_enable_edit_mode_wse2|Bearbeitungsmodus aktivieren (Achtung: verlangsamt das Spiel.)
+ui_language_wse2|Sprache:
+ui_ondemand_textures_wse2|Texturen bei Bedarf laden
+ui_map_editor|Karteneditor
+ui_terrain_editor|Geländeeditor
+ui_debug|Debug
+ui_restore_module_data|Moduldaten wiederherstellen
+ui_reload_ui_variables|UI-Variablen neu laden
+ui_set_lod_quality|LOD-Qualität festlegen
+ui_auto|Automatisch
+ui_freeze|Einfrieren
+ui_create_language_template|Sprachvorlage erstellen
+ui_mark_nontranslated_lines|Nicht übersetzte Zeilen markieren
+ui_create_language_template_required_game|Erstellen Sie ein neues Spiel oder stellen Sie eines wieder her, bevor Sie diese Funktion nutzen!
+ui_create_language_template_generated|Sprachvorlagendateien wurden im Verzeichnis new_language generiert!
+ui_create_language_template_generated_marked|Sprachvorlagendateien wurden im Verzeichnis new_language generiert! Nicht übersetzte Texte sind mit {***} markiert. Sie können dies als Suchbegriff verwenden.
+ui_join_campaign|Einer Kampagne beitreten
+ui_custom_key_1|
+ui_custom_key_2|
+ui_custom_key_3|
+ui_custom_key_4|
+ui_custom_key_5|
+ui_custom_key_6|
+ui_custom_key_7|
+ui_custom_key_8|
+ui_custom_key_9|
+ui_custom_key_10|
+ui_custom_key_11|
+ui_custom_key_12|
+ui_custom_key_13|
+ui_custom_key_14|
+ui_custom_key_15|
+ui_custom_key_16|
+ui_custom_key_17|
+ui_custom_key_18|
+ui_custom_key_19|
+ui_custom_key_20|

@@ -231,6 +231,7 @@ cast_ray_agents                      = 3620 #(cast_ray_agents, <destination>, <h
 ai_mesh_face_group_translate         = 3621 #(ai_mesh_face_group_translate, <group_no>, <position_register>), #Translates the ai mesh face <group_no> by distance given in <position_register> (requires WSE2)
 set_show_crosshair                   = 3622 #(set_show_crosshair, <value>), #Enables or disables the crosshair for singleplayer
 shift_entry_point                    = 3623 #(shift_entry_point, <entry_no>), #Shift <entry_no> same way game does to spawn visitors (requires WSE2)
+missile_remove                       = 3624 #(missile_remove, <missile_no>), #Removes <missile_no> from the mission
 
 troop_get_skill_points       = 3700 #(troop_get_skill_points, <destination>, <troop_no>), #Stores <troop_no>'s unused skill points into <destination>
 troop_set_skill_points       = 3701 #(troop_set_skill_points, <troop_no>, <value>), #Sets <troop_no>'s unused skill points to <value>

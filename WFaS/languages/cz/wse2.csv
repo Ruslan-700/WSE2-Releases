@@ -1,0 +1,144 @@
+ui_first_person_field_of_view|Zorné pole (1. osoba)
+ui_third_person_field_of_view|Zorné pole (3. osoba)
+ui_banner_mode|Zobrazit prapory
+ui_banner_outline_mode|Zobrazit obrysy praporů
+ui_dynamic_banner_transparency|Dynamická průhlednost praporů
+ui_on_group|Na skupině
+ui_on_friendlies|Na spojencích
+ui_on_everyone|Na všech
+ui_show_multiplayer_chat|Zobrazit chat
+ui_show_multiplayer_team_chat|Zobrazit týmový chat
+ui_difficulty_rating_percentage|Obtížnost = %d%%
+ui_general_options|Obecné
+ui_battle_options|Bitva
+ui_campaign_options|Kampaň
+ui_multiplayer_options|Hra více hráčů
+ui_video_options|Grafika
+ui_sound_options|Zvuk
+ui_input_options|Ovládání
+ui_edit_mode_options|Režim úprav
+ui_maximum_framerate|Maximální snímková frekvence
+ui_show_framerate_wse2|Zobrazit snímkovou frekvenci
+ui_estimated_performance|Výkon = %d%%
+ui_change_reflections_explanation|Plné odrazy jsou náročné na výkon. Vypněte je, pokud máte nízkou snímkovou frekvenci.
+ui_report_proficiency|Hlášení zručnosti
+ui_abysmal|Příšerné
+ui_clear|Vymazat
+ui_walk|Chůze
+ui_walk_toggle|Chůze (přepínání)
+ui_rear_horse|Vzepjat koně
+ui_hide_ui|Přepnout zobrazení rozhraní
+ui_hide_tooltips|Přepnout zobrazení nápověd
+ui_listen_server_could_not_be_started|Server se nepodařilo spustit. Ujistěte se, že žádný jiný program nepoužívá port %d.
+ui_water_reflections|Odrazy na vodě
+ui_reflections_quality|Kvalita odrazů na vodě
+ui_sky|Obloha
+ui_sky_landscape_objects|Obloha, krajina a objekty
+ui_sound_occlusion|Okluze zvuku
+ui_sound_occlusion_filter|Okluzní dolní propust
+ui_sound_hrtf_filter|HRTF dolní propust
+ui_sound_distance_filter|Vzdálenostní dolní/horní propust
+ui_scene_restart_required|Některá nastavení budou použita při vstupu do nové scény:
+ui_game_restart_required|Některá nastavení budou použita při restartu hry:
+ui_weapon_trails|Stopy zbraní
+ui_windowed|V okně
+ui_dynamic_batching|Dynamické seskupování meshů
+ui_free_look|Volný pohled
+ui_vsync|Vertikální synchronizace
+ui_msaa|Vyhlazování (MSAA)
+ui_atoc|Vyhlazování průhlednosti (MSAA)
+ui_fxaa|Vyhlazování (FXAA)
+ui_postprocess|Filtr postprocessingu
+ui_postprocess_light|Lehké doostření
+ui_postprocess_strong|Silné doostření
+ui_postprocess_color|AŤ MI KRVÁCÍ OČI
+ui_multiplayer_kills|Zprávy o zabití
+ui_all_kills|Všechny
+ui_own|Vlastní
+ui_player_deaths|Smrti hráčů
+ui_own_kills_and_player_deaths|Vlastní zabití a smrti hráčů
+ui_sun_flare|Sluneční záře
+ui_enable_alt_f4|Povolit ukončení Alt+F4
+ui_invert_mouse_x_axis|Invertovat osu X myši
+ui_enable_sound|Povolit zvuk
+ui_enable_music|Povolit hudbu
+ui_toggle_background|Pozadí
+ui_font_scale|Velikost písma
+ui_messages_font_scale|Velikost písma zpráv
+ui_spectator_camera_controls|Ovládání kamery diváka
+ui_faster_camera|Rychlejší pohyb kamery
+ui_slower_camera|Pomalejší pohyb kamery
+ui_camera_closer|Přiblížit kameru
+ui_camera_farther|Oddálit kameru
+ui_particle_degrade_distance|Vzdálenost degradace částic
+ui_sheath_primary_weapon|Uschovat zbraň
+ui_sheath_secondary_weapon|Uschovat štít
+ui_drop_primary_weapon|Zahodit zbraň
+ui_drop_secondary_weapon|Zahodit štít
+ui_screenshot_format|Formát snímků obrazovky
+ui_control_block_direction|Ovládání bloku:
+ui_control_block_direction_mounted|Ovládání bloku na koni:
+ui_control_attack_direction|Ovládání útoku:
+ui_control_attack_direction_mounted|Ovládání útoku na koni:
+ui_preset_change|Změna předvolby
+ui_blood_amount|Množství krve
+ui_beta|β
+ui_partial|Částečně
+ui_data_file_mismatch|Soubory vašeho modulu jsou poškozené nebo byly pozměněny
+ui_randomize_client_port|Náhodný port klienta (doporučeno, pokud nejste za firewallem)
+ui_client_port|Port klienta
+ui_server_port|Port serveru
+ui_unable_to_bind_socket|Nelze se připojit, port je již používán.
+ui_synchronization_error|Chyba synchronizace
+ui_dismount_horse_on_use|Sesednout z koně při použití
+ui_maximum_game_frame_rate|Maximální snímková frekvence hry
+ui_autoexp|Automatická expozice
+ui_ragdoll_soak|Lze zasáhnout ragdoll mrtvoly
+ui_ragdoll_soak_apply_force|Ragdoll mrtvoly se pohnou při zásahu
+ui_vsync_tooltip|Zabraňuje trhání obrazu, může způsobit zpoždění vstupu\n\nNáročnost na výkon: <c=0xFF0000>Vysoká</c>
+ui_msaa_tooltip|Vyhlazuje zubaté hrany pevných objektů\n\nNáročnost na výkon: <c=0xFF0000>Vysoká</c>
+ui_atoc_tooltip|Vyhlazuje zubaté hrany poloprůhledných objektů\n\nNáročnost na výkon: <c=0x00FF00>Nízká</c>
+ui_fxaa_tooltip|Vyhlazuje zubaté hrany, výrazně rozmazává obraz\n\nNáročnost na výkon: <c=0xFFAA00>Střední</c>
+ui_anisotropic_filtering_tooltip|Snižuje rozmazání vzdálených povrchů\n\nNáročnost na výkon: <c=0xFFAA00>Střední</c>
+ui_sound_occlusion_tooltip|Napodobuje vnímání zvuků v uzavřených prostorech, tedy tam, kde jsou překážky blízko zdroje zvuku nebo posluchače\n\nNáročnost na výkon: <c=0xFF0000>Vysoká</c>
+ui_update_wse2_version|Prosím aktualizujte svou verzi WSE2, jinak budete vyhozen z tohoto serveru.
+ui_server_for_wse2_campaign|Tento server je pro online kampaň na WSE2. Prosím spusťte WSE2 a zvolte „Připojit se ke kampani".
+ui_server_for_standart_game_modes|Tento server je pro standardní herní režimy, prosím zvolte „Připojit se ke hře".
+ui_enable_cheats_wse2|Povolit cheaty
+ui_enable_edit_mode_wse2|Povolit režim úprav (Pozor: zpomaluje hru.)
+ui_language_wse2|Jazyk:
+ui_ondemand_textures_wse2|Načítat textury na vyžádání
+ui_map_editor|Editor map
+ui_terrain_editor|Editor terénu
+ui_debug|Debug
+ui_restore_module_data|Obnovit data modulu
+ui_reload_ui_variables|Znovu načíst proměnné UI
+ui_set_lod_quality|Nastavit kvalitu LOD
+ui_auto|Automaticky
+ui_freeze|Zmrazit
+ui_create_language_template|Vytvořit jazykovou šablonu
+ui_mark_nontranslated_lines|Označit nepřeložené řádky
+ui_create_language_template_required_game|Vytvořte novou hru nebo obnovte hru před použitím této funkce!
+ui_create_language_template_generated|Soubory jazykové šablony byly vygenerovány v adresáři new_language!
+ui_create_language_template_generated_marked|Soubory jazykové šablony byly vygenerovány v adresáři new_language! Nepřeložené texty jsou označeny značkou {***}. Můžete ji použít jako klíčové slovo pro vyhledávání.
+ui_join_campaign|Připojit se ke kampani
+ui_custom_key_1|
+ui_custom_key_2|
+ui_custom_key_3|
+ui_custom_key_4|
+ui_custom_key_5|
+ui_custom_key_6|
+ui_custom_key_7|
+ui_custom_key_8|
+ui_custom_key_9|
+ui_custom_key_10|
+ui_custom_key_11|
+ui_custom_key_12|
+ui_custom_key_13|
+ui_custom_key_14|
+ui_custom_key_15|
+ui_custom_key_16|
+ui_custom_key_17|
+ui_custom_key_18|
+ui_custom_key_19|
+ui_custom_key_20|

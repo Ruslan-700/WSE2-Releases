@@ -119,6 +119,12 @@ ti_on_agent_routed  = -112.0 #can only be used in module_mission_templates trigg
 # Trigger Param 1: agent no
 # Trigger Result: if set, rewrite agent status. 1 - dead, 2 - wounded
 
+ti_on_agent_footstep_sound_played  = -113.0 #can only be used in module_mission_templates triggers
+# Trigger Param 1: agent no
+# Trigger Param 2: sound no
+# Trigger Param 3: is custom sound
+# Trigger Result: if set, rewrite sound no
+
 gk_walk = 52
 gk_walk_toggle = 53
 gk_rear_horse = 54
