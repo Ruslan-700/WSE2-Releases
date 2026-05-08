@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.4.7
+- Added steam achievements.
+- Added `agent_set_can_multihit`, `agent_has_multihit`, `agent_set_crush_through`, `agent_get_crush_through`, `agent_set_trigger_disabled`, `agent_is_trigger_disabled` operations.
+- Fixed severe FPS drop in interior and dungeon scenes for x64 build.
+- Fixed crash on mission end for x64 build.    
+- Fixed crash when loading a texture with a malformed DDS mip chain for x64 build.
+- Fixed processing the result for `ti_on_agent_killed_or_wounded`.
+
 ## 1.1.4.6
 - x64 build.
 - Added `missile_remove` operation.

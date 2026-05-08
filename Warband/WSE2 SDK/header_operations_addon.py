@@ -168,6 +168,12 @@ agent_set_rider_rotation_angles                  = 3349 #(agent_set_rider_rotati
 agent_get_rider_rotation_angles                  = 3350 #(agent_get_rider_rotation_angles, <destination_fixed_point>, <agent_no>, <rotation_type>, <side>), #Stores <agent_no>'s rider rotation angle for <rotation_type> and <side> into <destination_fixed_point>. Side: 0 - right, 1 - left. (requires WSE2)
 agent_set_default_rider_rotation_angles          = 3351 #(agent_set_default_rider_rotation_angles, <agent_no>), #Sets <agent_no>'s default rider rotation angles. (requires WSE2)
 agent_ai_set_can_aim                             = 3352 #(agent_ai_set_can_aim, <agent_no>, <value>), #Enables or disables <agent_no>'s ranged aiming (ballistic arc computation) for ai. When disabled, ranged agents look straight at the target instead of aiming upward. (requires WSE2)
+agent_set_can_multihit                           = 3353 #(agent_set_can_multihit, <agent_no>, <value>), #Enables or disables <agent_no>'s  melee attacks to hit multiple enemies in a single swing, applying damage to every valid target intersecting the weapon's hitbox. Each target is hit at most once per swing. Attacks can still be blocked. If the agent is using a crush-through-block weapon, the swing will bypass blocks under the normal crush-through rules and continue past blocked defenders. Must be set on the server side in multiplayer. (requires WSE2)
+agent_has_multihit                               = 3354 #(agent_has_multihit, <agent_no>), #Fails if the agent has multi-hit disabled. (requires WSE2)
+agent_set_crush_through                          = 3355 #(agent_set_crush_through, <agent_no>, <value>), #Makes all <agent_no>'s attacks function like itp_crush_through if <value> set to 1, like itp_crush_through_any_direction if <value> set to 2, else native functionality. (requires WSE2)
+agent_get_crush_through                          = 3356 #(agent_get_crush_through, <destination>, <agent_no>), #Returns 1 if <agent_no> is set to itp_crush_through functionality, returns 2 if set to itp_crush_through_any_direction functionality, else returns 0. (requires WSE2)
+agent_set_trigger_disabled                       = 3357 #(agent_set_trigger_disabled, <agent_no>, <trigger_id>, <value>), #Disables (<value>=1) or enables (<value>=0) firing of <trigger_id> for <agent_no>. Supported triggers: ti_on_agent_turn, ti_on_agent_fill_collision_capsule (WSE2), ti_on_agent_fill_movement_capsule (WSE2), ti_on_agent_footstep_sound_played.
+agent_is_trigger_disabled                        = 3358 #(agent_is_trigger_disabled, <agent_no>, <trigger_id>), #Fails if <trigger_id> is enabled for <agent_no>. Supported triggers: ti_on_agent_turn, ti_on_agent_fill_collision_capsule (WSE2), ti_on_agent_fill_movement_capsule (WSE2), ti_on_agent_footstep_sound_played.
 
 multiplayer_send_chat_message_to_player      = 3400 #(multiplayer_send_chat_message_to_player, <player_no>, <sender_player_no>, <text>, [<type>]), #Sends <text> to <player_no> as a (native compatible) chat message by <sender_player_no>. Works only on servers. [<type>]: 0 = chat, 1 = team chat
 multiplayer_send_composite_message_to_player = 3401 #(multiplayer_send_composite_message_to_player, <player_no>, <message_type>, <message_register>), #Sends <message_register> with <message_type> to <player_no> (requires, for WSE: network_compatible = 0 in wse_settings.ini, for WSE2: bBreakWarbandCompatibility=true in rgl_config.ini)
@@ -549,6 +555,7 @@ lhs_operations += [
 	agent_get_time_speed_multiplier,
 	agent_get_action_speed_modifier,
 	agent_get_rider_rotation_angles,
+	agent_get_crush_through,
 	multiplayer_get_cur_profile,
 	multiplayer_get_num_profiles,
 	multiplayer_cur_message_get_int,
@@ -630,6 +637,8 @@ can_fail_operations += [
 	game_key_released,
 	dict_is_empty,
 	dict_has_key,
+	agent_has_multihit,
+	agent_is_trigger_disabled,
 	multiplayer_is_campaign,
 	missile_is_valid,
 	cast_ray_agents,
