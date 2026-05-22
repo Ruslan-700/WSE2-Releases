@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.4.8
+- Fixed crashes in x64 build caused by stale persistent manifold pointers.
+- Added `agent_set_can_piercing`, `agent_has_piercing` operations.
+- Fixed and updated `agent_set_can_multihit` operation.
+
 ## 1.1.4.7
 - Added steam achievements.
 - Added `agent_set_can_multihit`, `agent_has_multihit`, `agent_set_crush_through`, `agent_get_crush_through`, `agent_set_trigger_disabled`, `agent_is_trigger_disabled` operations.
