@@ -1,127 +1,127 @@
-ui_first_person_field_of_view|视野（第一人称）
-ui_third_person_field_of_view|视野（第三人称）
-ui_banner_mode|显示旗帜
-ui_banner_outline_mode|显示旗帜轮廓
-ui_dynamic_banner_transparency|动态旗帜透明度
-ui_on_group|在队伍上
-ui_on_friendlies|在友方上
-ui_on_everyone|在所有人上
-ui_show_multiplayer_chat|显示聊天
-ui_show_multiplayer_team_chat|显示队伍聊天
-ui_difficulty_rating_percentage|难度 = %d%%
-ui_general_options|常规
-ui_battle_options|战斗
-ui_campaign_options|战役
-ui_multiplayer_options|多人游戏
-ui_video_options|图形
-ui_sound_options|声音
-ui_input_options|输入
-ui_edit_mode_options|编辑模式
-ui_maximum_framerate|最大帧率
-ui_show_framerate_wse2|显示帧率
-ui_estimated_performance|性能 = %d%%
-ui_change_reflections_explanation|全反射非常消耗性能。如果帧率较低，请关闭此选项。
-ui_report_proficiency|报告熟练度
-ui_abysmal|极差
-ui_clear|清除
-ui_walk|步行
-ui_walk_toggle|步行（切换）
-ui_rear_horse|马匹扬蹄
-ui_hide_ui|切换界面显示
-ui_hide_tooltips|切换提示显示
-ui_listen_server_could_not_be_started|无法启动服务器。请确保没有其他程序正在使用端口 %d。
-ui_water_reflections|水面反射
-ui_reflections_quality|水面反射质量
-ui_sky|天空
-ui_sky_landscape_objects|天空、地形和物体
-ui_sound_occlusion|声音遮蔽
-ui_sound_occlusion_filter|遮蔽低通滤波器
-ui_sound_hrtf_filter|HRTF 低通滤波器
-ui_sound_distance_filter|距离低/高通滤波器
-ui_scene_restart_required|部分设置将在进入新场景时生效：
-ui_game_restart_required|部分设置将在重启游戏后生效：
-ui_weapon_trails|武器轨迹
-ui_windowed|窗口化
-ui_dynamic_batching|动态网格批处理
-ui_free_look|自由视角
-ui_vsync|垂直同步
-ui_msaa|抗锯齿（MSAA）
-ui_atoc|透明抗锯齿（MSAA）
-ui_fxaa|抗锯齿（FXAA）
-ui_postprocess|后期处理滤镜
-ui_postprocess_light|轻度锐化
-ui_postprocess_strong|强力锐化
-ui_postprocess_color|让我的眼睛流血
-ui_multiplayer_kills|击杀消息
-ui_all_kills|全部
-ui_own|自己的
-ui_player_deaths|玩家死亡
-ui_own_kills_and_player_deaths|自己的击杀和玩家死亡
-ui_sun_flare|太阳眩光
-ui_enable_alt_f4|启用 Alt+F4 退出
-ui_invert_mouse_x_axis|反转鼠标 X 轴
-ui_enable_sound|启用声音
-ui_enable_music|启用音乐
-ui_toggle_background|背景
-ui_font_scale|字体缩放
-ui_messages_font_scale|消息字体缩放
-ui_spectator_camera_controls|观战摄像机控制
-ui_faster_camera|加速摄像机移动
-ui_slower_camera|减速摄像机移动
-ui_camera_closer|拉近摄像机
-ui_camera_farther|拉远摄像机
-ui_particle_degrade_distance|粒子系统退化距离
-ui_sheath_primary_weapon|收起武器
-ui_sheath_secondary_weapon|收起盾牌
-ui_drop_primary_weapon|丢弃武器
-ui_drop_secondary_weapon|丢弃盾牌
-ui_screenshot_format|截图格式
-ui_control_block_direction|格挡控制：
-ui_control_block_direction_mounted|骑乘格挡控制：
-ui_control_attack_direction|攻击控制：
-ui_control_attack_direction_mounted|骑乘攻击控制：
-ui_preset_change|预设更改
-ui_blood_amount|血量
+ui_first_person_field_of_view|视 野 （ 第 一 人 称 ） 
+ui_third_person_field_of_view|视 野 （ 第 三 人 称 ） 
+ui_banner_mode|显 示 旗 帜 
+ui_banner_outline_mode|显 示 旗 帜 轮 廓 
+ui_dynamic_banner_transparency|动 态 旗 帜 透 明 度 
+ui_on_group|在 队 伍 上 
+ui_on_friendlies|在 友 方 上 
+ui_on_everyone|在 所 有 人 上 
+ui_show_multiplayer_chat|显 示 聊 天 
+ui_show_multiplayer_team_chat|显 示 队 伍 聊 天 
+ui_difficulty_rating_percentage|难 度 = %d%%
+ui_general_options|常 规 
+ui_battle_options|战 斗 
+ui_campaign_options|战 役 
+ui_multiplayer_options|多 人 游 戏 
+ui_video_options|图 形 
+ui_sound_options|声 音 
+ui_input_options|输 入 
+ui_edit_mode_options|编 辑 模 式 
+ui_maximum_framerate|最 大 帧 率 
+ui_show_framerate_wse2|显 示 帧 率 
+ui_estimated_performance|性 能 = %d%%
+ui_change_reflections_explanation|全 反 射 非 常 消 耗 性 能 。 如 果 帧 率 较 低 ， 请 关 闭 此 选 项 。 
+ui_report_proficiency|报 告 熟 练 度 
+ui_abysmal|极 差 
+ui_clear|清 除 
+ui_walk|步 行 
+ui_walk_toggle|步 行 （ 切 换 ） 
+ui_rear_horse|马 匹 扬 蹄 
+ui_hide_ui|切 换 界 面 显 示 
+ui_hide_tooltips|切 换 提 示 显 示 
+ui_listen_server_could_not_be_started|无 法 启 动 服 务 器 。 请 确 保 没 有 其 他 程 序 正 在 使 用 端 口 %d 。 
+ui_water_reflections|水 面 反 射 
+ui_reflections_quality|水 面 反 射 质 量 
+ui_sky|天 空 
+ui_sky_landscape_objects|天 空 、 地 形 和 物 体 
+ui_sound_occlusion|声 音 遮 蔽 
+ui_sound_occlusion_filter|遮 蔽 低 通 滤 波 器 
+ui_sound_hrtf_filter|HRTF 低 通 滤 波 器 
+ui_sound_distance_filter|距 离 低 / 高 通 滤 波 器 
+ui_scene_restart_required|部 分 设 置 将 在 进 入 新 场 景 时 生 效 ： 
+ui_game_restart_required|部 分 设 置 将 在 重 启 游 戏 后 生 效 ： 
+ui_weapon_trails|武 器 轨 迹 
+ui_windowed|窗 口 化 
+ui_dynamic_batching|动 态 网 格 批 处 理 
+ui_free_look|自 由 视 角 
+ui_vsync|垂 直 同 步 
+ui_msaa|抗 锯 齿 （ MSAA ） 
+ui_atoc|透 明 抗 锯 齿 （ MSAA ） 
+ui_fxaa|抗 锯 齿 （ FXAA ） 
+ui_postprocess|后 期 处 理 滤 镜 
+ui_postprocess_light|轻 度 锐 化 
+ui_postprocess_strong|强 力 锐 化 
+ui_postprocess_color|让 我 的 眼 睛 流 血 
+ui_multiplayer_kills|击 杀 消 息 
+ui_all_kills|全 部 
+ui_own|自 己 的 
+ui_player_deaths|玩 家 死 亡 
+ui_own_kills_and_player_deaths|自 己 的 击 杀 和 玩 家 死 亡 
+ui_sun_flare|太 阳 眩 光 
+ui_enable_alt_f4|启 用 Alt+F4退 出 
+ui_invert_mouse_x_axis|反 转 鼠 标 X轴 
+ui_enable_sound|启 用 声 音 
+ui_enable_music|启 用 音 乐 
+ui_toggle_background|背 景 
+ui_font_scale|字 体 缩 放 
+ui_messages_font_scale|消 息 字 体 缩 放 
+ui_spectator_camera_controls|观 战 摄 像 机 控 制 
+ui_faster_camera|加 速 摄 像 机 移 动 
+ui_slower_camera|减 速 摄 像 机 移 动 
+ui_camera_closer|拉 近 摄 像 机 
+ui_camera_farther|拉 远 摄 像 机 
+ui_particle_degrade_distance|粒 子 系 统 退 化 距 离 
+ui_sheath_primary_weapon|收 起 武 器 
+ui_sheath_secondary_weapon|收 起 盾 牌 
+ui_drop_primary_weapon|丢 弃 武 器 
+ui_drop_secondary_weapon|丢 弃 盾 牌 
+ui_screenshot_format|截 图 格 式 
+ui_control_block_direction|格 挡 控 制 ： 
+ui_control_block_direction_mounted|骑 乘 格 挡 控 制 ： 
+ui_control_attack_direction|攻 击 控 制 ： 
+ui_control_attack_direction_mounted|骑 乘 攻 击 控 制 ： 
+ui_preset_change|预 设 更 改 
+ui_blood_amount|出 血 量 
 ui_beta|β
-ui_partial|部分
-ui_data_file_mismatch|您的模组文件已损坏或被篡改
-ui_randomize_client_port|随机客户端端口（推荐，除非您在防火墙后面）
-ui_client_port|客户端端口
-ui_server_port|服务器端口
-ui_unable_to_bind_socket|无法连接，端口已被占用。
-ui_synchronization_error|同步错误
-ui_dismount_horse_on_use|使用时下马
-ui_maximum_game_frame_rate|最大游戏帧率
-ui_autoexp|自动曝光
-ui_ragdoll_soak|可以击中布娃娃尸体
-ui_ragdoll_soak_apply_force|布娃娃尸体被击中时会移动
-ui_vsync_tooltip|防止画面撕裂，可能导致输入延迟\n\n性能消耗：<c=0xFF0000>高</c>
-ui_msaa_tooltip|平滑实体对象的锯齿边缘\n\n性能消耗：<c=0xFF0000>高</c>
-ui_atoc_tooltip|平滑半透明对象的锯齿边缘\n\n性能消耗：<c=0x00FF00>低</c>
-ui_fxaa_tooltip|平滑锯齿边缘，会明显模糊画面\n\n性能消耗：<c=0xFFAA00>中</c>
-ui_anisotropic_filtering_tooltip|减少远处表面的模糊\n\n性能消耗：<c=0xFFAA00>中</c>
-ui_sound_occlusion_tooltip|模拟封闭环境中的声音感知效果，即声源或听者附近有障碍物的情况\n\n性能消耗：<c=0xFF0000>高</c>
-ui_update_wse2_version|请更新您的 WSE2 版本，否则您将被踢出此服务器。
-ui_server_for_wse2_campaign|此服务器用于 WSE2 在线战役，请启动 WSE2 并选择"加入战役"。
-ui_server_for_standart_game_modes|此服务器用于标准游戏模式，请选择"加入游戏"。
-ui_enable_cheats_wse2|启用作弊
-ui_enable_edit_mode_wse2|启用编辑模式（警告：会降低游戏速度。）
-ui_language_wse2|语言：
-ui_ondemand_textures_wse2|按需加载纹理
-ui_map_editor|地图编辑器
-ui_terrain_editor|地形编辑器
-ui_debug|调试
-ui_restore_module_data|恢复模组数据
-ui_reload_ui_variables|重新加载 UI 变量
-ui_set_lod_quality|设置 LOD 质量
-ui_auto|自动
-ui_freeze|冻结
-ui_create_language_template|创建语言模板
-ui_mark_nontranslated_lines|标记未翻译的行
-ui_create_language_template_required_game|请在使用此功能之前创建新游戏或恢复游戏！
-ui_create_language_template_generated|语言模板文件已生成至 new_language 目录！
-ui_create_language_template_generated_marked|语言模板文件已生成至 new_language 目录！未翻译的文本以 {***} 标记。您可以使用它作为搜索关键词。
-ui_join_campaign|加入战役
+ui_partial|部 分 
+ui_data_file_mismatch|您 的 模 组 文 件 已 损 坏 或 被 篡 改 
+ui_randomize_client_port|随 机 客 户 端 端 口 （ 推 荐 ， 除 非 您 在 防 火 墙 后 面 ） 
+ui_client_port|客 户 端 端 口 
+ui_server_port|服 务 器 端 口 
+ui_unable_to_bind_socket|无 法 连 接 ， 端 口 已 被 占 用 。 
+ui_synchronization_error|同 步 错 误 
+ui_dismount_horse_on_use|使 用 时 下 马 
+ui_maximum_game_frame_rate|最 大 游 戏 帧 率 
+ui_autoexp|自 动 曝 光 
+ui_ragdoll_soak|可 以 击 中 布 娃 娃 尸 体 
+ui_ragdoll_soak_apply_force|布 娃 娃 尸 体 被 击 中 时 会 移 动 
+ui_vsync_tooltip|防 止 画 面 撕 裂 ， 可 能 导 致 输 入 延 迟\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
+ui_msaa_tooltip|平 滑 实 体 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
+ui_atoc_tooltip|平 滑 半 透 明 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_fxaa_tooltip|平 滑 锯 齿 边 缘 ， 会 明 显 模 糊 画 面\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_anisotropic_filtering_tooltip|减 少 远 处 表 面 的 模 糊\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_sound_occlusion_tooltip|模 拟 封 闭 环 境 中 的 声 音 感 知 效 果 ， 即 声 源 或 听 者 附 近 有 障 碍 物 的 情 况\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
+ui_update_wse2_version|请 更 新 您 的 WSE2版 本 ， 否 则 您 将 被 踢 出 此 服 务 器 。 
+ui_server_for_wse2_campaign|此 服 务 器 用 于 WSE2在 线 战 役 ， 请 启 动 WSE2 并 选 择 "加 入 战 役" 。 
+ui_server_for_standart_game_modes|此 服 务 器 用 于 标 准 游 戏 模 式 ， 请 选 择 " 加 入 游 戏 " 。 
+ui_enable_cheats_wse2|启 用 作 弊 
+ui_enable_edit_mode_wse2|启 用 编 辑 模 式 （ 警 告 ： 会 降 低 游 戏 速 度 。 ） 
+ui_language_wse2|语 言 ： 
+ui_ondemand_textures_wse2|按 需 加 载 纹 理 
+ui_map_editor|地 图 编 辑 器 
+ui_terrain_editor|地 形 编 辑 器 
+ui_debug|调 试 
+ui_restore_module_data|恢 复 模 组 数 据 
+ui_reload_ui_variables|重 新 加 载 UI 变 量 
+ui_set_lod_quality|设 置 LOD质 量 
+ui_auto|自 动 
+ui_freeze|冻 结 
+ui_create_language_template|创 建 语 言 模 板 
+ui_mark_nontranslated_lines|标 记 未 翻 译 的 行 
+ui_create_language_template_required_game|请 在 使 用 此 功 能 之 前 创 建 新 游 戏 或 恢 复 游 戏 ！ 
+ui_create_language_template_generated|语 言 模 板 文 件 已 生 成 至 new_language 目 录 ！ 
+ui_create_language_template_generated_marked|语 言 模 板 文 件 已 生 成 至 new_language 目 录 ！ 未 翻 译 的 文 本 以 {***}标 记 。 您 可 以 使 用 它 作 为 搜 索 关 键 词 。 
+ui_join_campaign|加 入 战 役 
 ui_custom_key_1|
 ui_custom_key_2|
 ui_custom_key_3|
