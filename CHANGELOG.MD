@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.4.9
+- Added `scene_prop_remove` operation.
+- Added barrier convex sweep to Bullet character controller (anti-tunneling) for x64 build.
+- Fixed crash in Bullet physics (x64 build) caused by NULL manifold pointers in simulation island managers.
+- Fixed multihit/piercing double-hit caused by toggling can_multihit mid-swing.
+- Fixed SETFLAGVALUE/GETFLAGVALUE truncating 64-bit m_flags to 32 bits (`party_set_icon` wiped carry_goods/carry_gold).
+
 ## 1.1.4.8
 - Fixed crashes in x64 build caused by stale persistent manifold pointers.
 - Added `agent_set_can_piercing`, `agent_has_piercing` operations.
