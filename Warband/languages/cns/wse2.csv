@@ -62,6 +62,7 @@ ui_enable_alt_f4|启 用 Alt+F4退 出
 ui_invert_mouse_x_axis|反 转 鼠 标 X轴 
 ui_enable_sound|启 用 声 音 
 ui_enable_music|启 用 音 乐 
+ui_enable_sound_variation|打 开 声 效 变 化 
 ui_toggle_background|背 景 
 ui_font_scale|字 体 缩 放 
 ui_messages_font_scale|消 息 字 体 缩 放 
