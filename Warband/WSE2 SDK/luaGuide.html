@@ -158,12 +158,12 @@
 			background-color: rgb(70 70 70 / 48%);
 		}
 
-		#asterix{
+		.asterix{
 			cursor: pointer;
 			color: lightsalmon;
 		}
 
-		#asterix_box{
+		.asterix_box{
 			position: absolute;
 			left: -10px;
 			top: -10px;
@@ -171,7 +171,7 @@
 			z-index: 10;
 		}
 
-		#asterix_box>div{
+		.asterix_box>div{
 			display: block;
 		}
 
@@ -582,7 +582,7 @@
 			font-size: xxx-large;
 		}
 
-		#asterix{
+		.asterix{
 			cursor: pointer;
 			color: #005500;
 		}
@@ -694,7 +694,7 @@
 
 <body id="bd">
 	<div>
-		<div style="font-size: 11px">version from 06.04.2025, written by <span onclick="var a=document.getElementById('bd');a.style.transition='filter 60s linear';a.style.filter='blur(0.9px)';">AgentSmith</span></div>
+		<div style="font-size: 11px">version from 11.06.2026, written by <span onclick="var a=document.getElementById('bd');a.style.transition='filter 60s linear';a.style.filter='blur(0.9px)';">AgentSmith</span></div>
 		<div style="right: 5px; top: 5px; position: fixed;">
 			<button id="btnThemeSwitch" onclick="cycleTheme()">Light</button>
 			<button onclick="expand_all()">Expand all</button>
@@ -721,10 +721,10 @@
 				<li>No compilation needed, no python needed</li>
 				<li>
 					Hot reloading
-					<span id="asterix" class="asterix" onmousemove="document.getElementById('asterix_box').hidden=false" style="position: relative;">
+					<span class="asterix" onmousemove="this.childNodes[1].hidden=false" style="position: relative;">
 						*
-						<div id="asterix_box" onmouseleave="document.getElementById('asterix_box').hidden=true" hidden>
-							<div class="code" style="margin-left: 0; width: 35em">
+						<div class="asterix_box" onmouseleave="this.hidden=true" hidden>
+							<div class="code" style="margin-left: 0; width: 40em">
 								Lua is a dynamic scripting language, so you can execute code from disk at any time with dofile().<br>
 								A <span class="keyword">dofile("main.lua")</span> is enough to test your changes in many cases.<br>
 								It isn't equivalent to a full restart though, because the lua state will not get reset, only overwritten.
@@ -734,7 +734,22 @@
 					</span> (don't need to restart to test changes)
 				</li>
 				<li>Debugger available (lets you step through your code line by line)</li>
-				<li>Better performance</li>
+				<li>Better performance
+					<span class="asterix" onmousemove="this.childNodes[1].hidden=false" style="position: relative;">
+						*
+						<div class="asterix_box" onmouseleave="this.hidden=true" hidden>
+							<div class="code" style="margin-left: 0; width: 40em">
+								The pure lua language itself is a lot faster, but note that calling a game operation from lua is actually a bit slower,
+								because of the translation that must happen between lua and the engine.<br>
+								So replacing a modsys script line-by line with game.operation(...) statements is not faster.<br>
+								The overhead is small though, the only time you would notice it<br>
+								is when calling operations hundreds of thousands of times each frame.<br>
+								Where you can expect performance benefits is when writing computationally expensive code,<br>
+								that does not call the engine in hot loops too much, for example a pathfinding algorithm.
+							</div>
+						</div>
+					</span>
+				</li>
 				<li>Multithreading (luaLanes library)</li>
 				<li>Use any Lua code from the internet</li>
 				<li>No confusing fixed point multiplier, easy (vector) math
@@ -811,19 +826,24 @@
 						<span class="marl20 keyword">result = game.lhs_op(param1, param2, ...)</span>
 					</p>
 					<p>Why is this a problem?<br>
-						Because of different parameter count. Now, WSE could detect that you are calling an Lhs operation and fill in the missing parameter, but: the operation might actually use the initial value of it to affect the result.<br>
+						Because of different parameter count. Now, WSE could detect that you are calling an Lhs operation and fill in something for destination_param, but: the operation might actually use the initial value of it to affect the result.<br>
 						An obvious example for this is <span class="keyword">val_add</span>. It makes no sense to write <span class="keyword">result = val_add(5)</span>. What is it adding 5 to?
 					</p>
-					<p>Whether or not an operation uses the initial value can't simply be detected by WSE. So in the past it used to be that you had to write <span class="keyword">result = game.lhs_op(some_number, var1, var2, ...)</span> for all lhs operations (some_number was just 0 mostly). Annoying.</p>
+					<p>Whether or not an operation uses the initial value can't simply be detected by WSE. So in the past it used to be that you had to write <span class="keyword">result = game.lhs_op(some_number, var1, var2, ...)</span> for all lhs operations (some_number was just 0 mostly). That's annoying.</p>
 					<p>However, after further inspection, it is reasonable to assume that only <span class="keyword">val_</span> operations do this. Therefore WSE update adds <span class="keyword">game.op</span>:</p>
 					<pre class="code">
 						local val = game.agent_get_slot(0, agent_id, slot_no)
 						local val = game.op.agent_get_slot(agent_id, slot_no)
 					</pre>
-					<p>It will add the 0 automatically for any lhs_operation, except for ones that start with <span class="keyword">val_</span>. If you find operations where this is wrong, please contact <a href="https://forums.taleworlds.com/index.php?members/agentsmith.186495/" target="_blank" rel="noopener noreferrer">AgentSmith</a> on TaleWorlds forum.</p>
+					<p>You can use this for any operation, and it will fill in 0 automatically for any lhs_operation that does not start with <span class="keyword">val_</span>. If you find operations where this is wrong, please contact <a href="https://forums.taleworlds.com/index.php?members/agentsmith.186495/" target="_blank" rel="noopener noreferrer">AgentSmith</a> on TaleWorlds forum.</p>
 					<p>
-						If you don't want to write the <span class="keyword">.op</span> all the time, call <span class="keyword">game.op.make_default()</span>. It is optional because of legacy code.<br>
-						<span class="keyword">gop = game.op</span> also works.
+						If you don't want to write the <span class="keyword">.op</span> all the time, call <span class="keyword">game.op.make_default()</span> at the beginning. It is optional because of legacy code.<br>
+						<span class="keyword">gop = game.op</span> also works:
+						<pre class="code">
+							gop = game.op
+							gop.display_message("Test")
+							val = gop.agent_get_slot(agent_id, slot_no)
+						</pre>
 					</p>
 				</div>
 			</div>
@@ -1237,7 +1257,7 @@
 				<div>
 					<p>You can hook scripts using <span class="keyword">game.hookScript(script_no, funcCallback)</span>.</p>
 					<p><span class="keyword">funcCallback</span> will receive all script parameters. Its return values control further behaviour:</p>
-					<p>If it returns false, the script will not be executed.</p>
+					<p>If it returns false, the script will not be executed. Additionally, you can use <span class="keyword">game.fail()</span> before returning false, so it will act like a failed script.</p>
 					<p>If it returns numbers, the script parameters will be replaced with them, then the script is executed.</p>
 					<p>&nbsp;</p>
 					<p>Example:</p>

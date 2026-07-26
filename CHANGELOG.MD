@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.5.0
+- Fixed crash in dispatchAllCollisionPairs on rapid map reload for x64 build.
+- Fixed stack overflow when an on-hit trigger deals damage back to the same agent.
+- Fixed scene prop use/hit location not following the prop when moved by script.
+- Fixed party skills board showing "+-1" — apply skill modifier to player only, matching vanilla.
+- Fixed multihit/piercing hitting the same agent repeatedly when the agent number exceeded 1024.
+- Fixed agent_equip_item having no effect on corpses in x64 builds — delayed ragdoll freeze to 3 seconds.
+- Lua: Make game.fail() work with game.hookScript(), update documentation.
+
 ## 1.1.4.9
 - Added `scene_prop_remove` operation.
 - Added barrier convex sweep to Bullet character controller (anti-tunneling) for x64 build.
