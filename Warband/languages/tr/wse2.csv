@@ -19,6 +19,8 @@ ui_input_options|Giriş
 ui_edit_mode_options|Düzenleme Modu
 ui_maximum_framerate|Maksimum Kare Hızı
 ui_show_framerate_wse2|Kare Hızını Göster
+ui_show_render_stats_wse2|Render İstatistiklerini Göster
+ui_show_simulation_stats_wse2|Simülasyon İstatistiklerini Göster
 ui_estimated_performance|Performans = %d%%
 ui_change_reflections_explanation|Tam yansımalar performansı olumsuz etkiler. Düşük kare hızı yaşıyorsanız devre dışı bırakın.
 ui_report_proficiency|Yetkinliği Raporla
@@ -100,10 +102,12 @@ ui_msaa_tooltip|Katı nesnelerdeki pürüzlü kenarları yumuşatır\n\nPerforma
 ui_atoc_tooltip|Yarı saydam nesnelerdeki pürüzlü kenarları yumuşatır\n\nPerformans Maliyeti: <c=0x00FF00>Düşük</c>
 ui_fxaa_tooltip|Pürüzlü kenarları yumuşatır, ekranı belirgin şekilde bulanıklaştırır\n\nPerformans Maliyeti: <c=0xFFAA00>Orta</c>
 ui_anisotropic_filtering_tooltip|Uzak yüzeylerdeki bulanıklığı azaltır\n\nPerformans Maliyeti: <c=0xFFAA00>Orta</c>
-"ui_sound_occlusion_tooltip|Seslerin ""kapalı"" ortamlarda nasıl algılandığını taklit eder"; kapalı, ses kaynağına veya dinleyiciye yakın engellerin bulunduğu anlamına gelir\n\nPerformans Maliyeti: <c=0xFF0000>Yüksek</c>
+ui_show_render_stats_wse2_tooltip|Kare başına render sayacını gösterir: çizim çağrıları, görünür nesneler, CPU ve GPU skinning, gölgeler ve iş parçacığı süreleri\n\nPerformans Maliyeti: <c=0x00FF00>Düşük</c>
+ui_show_simulation_stats_wse2_tooltip|Bir simülasyon adımının nereye gittiğini gösterir: fizik, ajanlar, YZ, tetikleyiciler, sahne, ağ ve betik çağrıları\n\nPerformans Maliyeti: <c=0x00FF00>Düşük</c>
+ui_sound_occlusion_tooltip|Seslerin "kapalı" ortamlarda nasıl algılandığını taklit eder; kapalı, ses kaynağına veya dinleyiciye yakın engellerin bulunduğu anlamına gelir\n\nPerformans Maliyeti: <c=0xFF0000>Yüksek</c>
 ui_update_wse2_version|Lütfen WSE2 sürümünüzü güncelleyin, aksi takdirde bu sunucudan atılacaksınız.
-"ui_server_for_wse2_campaign|Bu sunucu WSE2 üzerinde bir çevrimiçi sefer içindir, lütfen WSE2'yi başlatın ve ""Bir Sefere Katıl""ı seçin."
-"ui_server_for_standart_game_modes|Bu sunucu standart oyun modları içindir, lütfen ""Bir Oyuna Katıl""ı seçin."
+ui_server_for_wse2_campaign|Bu sunucu WSE2 üzerinde bir çevrimiçi sefer içindir, lütfen WSE2'yi başlatın ve "Bir Sefere Katıl"ı seçin.
+ui_server_for_standart_game_modes|Bu sunucu standart oyun modları içindir, lütfen "Bir Oyuna Katıl"ı seçin.
 ui_enable_cheats_wse2|Hileleri Etkinleştir
 ui_enable_edit_mode_wse2|Düzenleme Modunu Etkinleştir (Uyarı: bu oyunu yavaşlatır.)
 ui_language_wse2|Dil:

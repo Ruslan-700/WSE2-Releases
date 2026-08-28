@@ -694,7 +694,7 @@
 
 <body id="bd">
 	<div>
-		<div style="font-size: 11px">version from 11.06.2026, written by <span onclick="var a=document.getElementById('bd');a.style.transition='filter 60s linear';a.style.filter='blur(0.9px)';">AgentSmith</span></div>
+		<div style="font-size: 11px">version from 19.08.2026, written by <span onclick="var a=document.getElementById('bd');a.style.transition='filter 60s linear';a.style.filter='blur(0.9px)';">AgentSmith</span></div>
 		<div style="right: 5px; top: 5px; position: fixed;">
 			<button id="btnThemeSwitch" onclick="cycleTheme()">Light</button>
 			<button onclick="expand_all()">Expand all</button>
@@ -709,6 +709,7 @@
 			This is the documentation for the Lua scripting system of WSE, a powerful alternative to regular modsys scripts.<br>
 			LUA will run on top of module system code. You could code almost an entire module without touching the modsys,<br> or add features to modules even if you don't have the source code.<br>
 			This guide is only a documentation of the provided API, to learn Lua itself there exist many tutorials online.<br>
+			You also need a decent understanding of how this game is modded via the module system, before lua becomes useful.<br>
 			At the end of this file there is some example code that can help you get started.<br>
 		</p>
 		<p>&nbsp;</p>
@@ -1560,15 +1561,23 @@
 						</li>
 						<li>
 							<p>
-								Restrict dofile, loadfile and all IO operations to the lua directory
+								Restrict dofile, loadfile and all IO operations to the lua directory.
+								<b>Reading</b> may leave it via <span class="keyword">..</span>, up to the Warband directory - anything below it is readable, nothing above it is.
+								<pre class="code">
+									local f, err = io.open("../../../rgl_log.txt", "r")   -- ok, Warband dir
+									local f, err = io.open("../../../../secrets.txt", "r") -- nil, too far up
+								</pre>
+								Writing (<span class="keyword">w</span>, <span class="keyword">a</span>, <span class="keyword">r+</span>, os.remove, os.rename, mkdir, rmdir) stays inside the lua directory, so <span class="keyword">..</span> is rejected there.
+								If a module is installed from the Steam Workshop it lives outside the Warband directory; its own folder is readable as well.<br>
+								Every rejected path simply yields <span class="keyword">nil</span> - check the second return value.
 								<p>
 									Access storage folder by prefixing <span class="keyword">%storage%</span>	
 									<p><pre class="code">
-										local f, err = io.open("%storage%\\file.json", "r")
+										local f, err = io.open("%storage%/file.json", "r")
 									</pre></p>
 									For dedicated servers, storage folder is at <span class="keyword">[warband_dir]\WSE\[Module]\</span> by default.<br>
 									For client, look in <span class="keyword">C:\Users\[user]\Documents\Mount&Blade Warband\WSE\[Module]</span> (WSE 2 uses <span class="keyword">Mount&Blade Warband WSE2</span>).<br>
-									Tip: access other modules by using <span class="keyword">%storage%\\..\\[Other Module]\\somefile.txt</span> (this is only allowed for %storage%).
+									Tip: access other modules by using <span class="keyword">%storage%\\..\\[Other Module]\\somefile.txt</span>.<br>
 								</p>
 							</p>
 						</li>

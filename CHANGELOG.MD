@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1.5.1
+- Launcher: Replaced ftp to GitHub Releases. Added a shader patch button.
+- Added render and simulation diagnostics — on-screen overlay and periodic log output (`bShowRenderStats`, `bShowSimulationStats`, `iRenderStatsLogInterval`, `iSimulationStatsLogInterval` config options).
+- Added `[Threads] bPreferPerformanceCores` config option for hybrid CPUs, enabled by default.
+- Added `[FakeCharacterShadows] iMaxNumShadowedCharacters` config option to override the shadowed character target.
+- Restored skin/noskin shader selection (`[Graphics] bUseShaderPairs`, enabled by default), with the pairing table read from the module folder and a fallback to a global `wse2_shaders.ini`.
+- Pooled script local variable frames and loop stack, and sized the local variable clear to the slots a block can address instead of all 1024.
+- Batched bone matrix uploads for fully weighted meshes, and made `bUseLowVariationCache` work past two skins.
+- Grouped entities by shadow pass, so a shadow bake no longer walks the whole scene once per pass.
+- Indexed collection meshes by material instead of scanning them, and made the batch wait yield instead of spinning bare.
+- Profiler bitstream stages writes in a 64 KB buffer instead of calling write every four bytes.
+- Fixed the physical core count being halved on hybrid CPUs (6P+4E reported 8 cores instead of 10).
+- Fixed `iMaximumFrameLatency` having no effect at its default value; 0 now means "leave it alone".
+- Fixed Steam Workshop module handling — buffer overrun on the subscribed-item list, module root falling back to the drive root when the install path could not be resolved, an endless startup wait for UGC titles, and unsanitised item titles reaching file paths.
+- Fixed a crash on the campaign map caused by a NULL context menu mesh.
+- Fixed language records wrapped in quotes never loading.
+- Fixed the dedicated server fps limit being discarded at startup.
+- Lua: the IO sandbox is now anchored to the Warband directory — everything below it is readable (including a Steam Workshop module's own folder), while writing stays inside the module's `lua` folder.
+- Lua: Key `game.hookScript()` callbacks by block instead of by its printable name.
+
 ## 1.1.5.0
 - Fixed crash in dispatchAllCollisionPairs on rapid map reload for x64 build.
 - Fixed stack overflow when an on-hit trigger deals damage back to the same agent.

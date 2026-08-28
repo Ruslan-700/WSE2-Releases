@@ -19,6 +19,8 @@ ui_input_options|Eingabe
 ui_edit_mode_options|Bearbeitungsmodus
 ui_maximum_framerate|Maximale Bildrate
 ui_show_framerate_wse2|Bildrate anzeigen
+ui_show_render_stats_wse2|Render-Statistik anzeigen
+ui_show_simulation_stats_wse2|Simulations-Statistik anzeigen
 ui_estimated_performance|Leistung = %d%%
 ui_change_reflections_explanation|Volle Reflexionen sind leistungsintensiv. Deaktivieren Sie sie, wenn Sie niedrige Bildraten haben.
 ui_report_proficiency|Fähigkeitsbericht
@@ -101,6 +103,8 @@ ui_atoc_tooltip|Glättet gezackte Kanten an halbtransparenten Objekten\n\nLeistu
 ui_fxaa_tooltip|Glättet gezackte Kanten, verwischt das Bild deutlich\n\nLeistungskosten: <c=0xFFAA00>Mittel</c>
 ui_anisotropic_filtering_tooltip|Reduziert Unschärfe auf entfernten Oberflächen\n\nLeistungskosten: <c=0xFFAA00>Mittel</c>
 ui_sound_occlusion_tooltip|Simuliert die Wahrnehmung von Klängen in geschlossenen Umgebungen, d.h. wenn Barrieren zwischen Schallquelle und Hörer liegen\n\nLeistungskosten: <c=0xFF0000>Hoch</c>
+ui_show_render_stats_wse2_tooltip|Zeigt Renderer-Zähler pro Bild: Draw Calls, sichtbare Objekte, CPU- und GPU-Skinning, Schatten und Thread-Zeiten\n\nLeistungskosten: <c=0x00FF00>Niedrig</c>
+ui_show_simulation_stats_wse2_tooltip|Zeigt, wofür ein Simulationsschritt aufgewendet wird: Physik, Agenten, KI, Trigger, Szene, Netzwerk und Skriptaufrufe\n\nLeistungskosten: <c=0x00FF00>Niedrig</c>
 ui_update_wse2_version|Bitte aktualisieren Sie Ihre WSE2-Version, sonst werden Sie von diesem Server entfernt.
 ui_server_for_wse2_campaign|Dieser Server ist für eine Online-Kampagne mit WSE2. Bitte starten Sie WSE2 und wählen Sie „Einer Kampagne beitreten".
 ui_server_for_standart_game_modes|Dieser Server ist für Standard-Spielmodi, bitte wählen Sie „Einem Spiel beitreten".
