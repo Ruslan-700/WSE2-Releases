@@ -781,7 +781,18 @@
 				<li>Create <span class="keyword">[warband_dir]\Modules\[module_name]\lua\msfiles\</span> (msfiles - "Module System files")</li>
 				<li>
 					Copy header_operations.py to your msfiles folder. This is so that WSE can translate operation names to opcodes and is neccessary for calling module system operations from lua.<br>
-					<span class="smaller_font">It's a good idea to start the game now and see if there any errors parsing this file. Delete any bad lines, but make sure any opcodes you need & the lists at the end (<span class='keyword'>lhs_operations = [...], etc</span>) are intact.</span>
+					<span class="smaller_font">It's a good idea to start the game now and see if there any errors parsing this file.
+						<span class="asterix" onmousemove="this.childNodes[1].hidden=false" style="position: relative;">
+							*
+							<div class="asterix_box" onmouseleave="this.hidden=true" hidden>
+								<div class="code" style="margin-left: 0; width: 40em">
+									If you get a lot of errors like "Warning reading file.py, line x: could not process line" or "Error reading file.py, line x could not find y", they are mostly harmless. WSE just doesn't understand all of python syntax.<br>
+									Check section "Constants" for how to hide them.
+								</div>
+							</div>
+						</span>
+					 Delete any bad lines, but make sure any opcodes you need & the lists at the end (<span class='keyword'>lhs_operations = [...], etc</span>) are intact.
+					</span>
 				</li>
 			</ul>
 			<p class="padl20">WSE/LUA uses a modified version of LuaJIT 2.1.0, which is based on and ABI compatible to Lua 5.1</p>
@@ -853,27 +864,53 @@
 			<div class="content_block">
 				<div class="content_block_caption">Registers, Global Variables</div>
 				<div>
-					<p>To access registers, use <span class="keyword">game.reg[n]</span> , <span class="keyword">game.sreg[n]</span> and <span class="keyword">game.preg[n]</span></p>
+					<p>
+						To access registers, use <span class="keyword">game.reg&lt;n&gt;</span> , <span class="keyword">game.s&lt;n&gt;</span> and <span class="keyword">game.pos&lt;n&gt;</span><br>
+						Alternatively use <span class="keyword">game.reg[n]</span> , <span class="keyword">game.sreg[n]</span> and <span class="keyword">game.preg[n]</span>
+					</p>
 					<p style="padding-left: 30px;">Example:</p>
 					<pre class="code">
-						game.reg[0] = 123
-						local i = game.reg[0]
-						game.sreg[0] = "test string"
-						local s = game.sreg[0]
-						game.preg[0] = game.pos.new()
-						local pos = game.preg[0]
+						game.reg0 = 123
+						local i = game.reg0
+						game.s0 = "test string"
+						local s = game.s0
+						game.pos0 = game.pos.new()
+						local pos = game.pos0
+
+						game.sreg[0] = "abc"
+						print(game.sreg[0])
 					</pre>
 					<p>As of the current version, registers are copied by value instead of by reference. So doing things like:</p>
 					<pre class="code">
 						game.preg[0]:rotX(30)
 					</pre>
-					<p>Does not change the actual game register. This is likely going to be improved in a future version. What you have to do instead for now is:</p>
+					<p>Does not change the actual game register. What you have to do instead is:</p>
 					<pre class="code">
 						local p = game.preg[0]
 						p:rotX(30)
 						game.preg[0] = p
 					</pre>
-					<p class="border-top"><br>To access global variables, use <span class="keyword">game.gvar.gvar_name</span></p>
+
+					<p>
+						Warning for string and pos: do not use with operations that use the register as an output.<br>
+						For example, you can not do things like:
+						<pre class="code">
+							game.str_store_troop_name(game.s5, troop_id)
+						</pre>
+						<br>
+						Because the engine expects a register_no (integer). In modsys this works because s5 is literally defined as 5. But in lua, writing game.s5 will return the content (string) of s5.<br>
+						So WSE would receive that string and helpfully pass it to the engine by writing it to the last string register, and give that last register's number to the engine. The troop name would then be stored into the very last string reg instead of s5.<br>
+						The correct way of doing this is simply:
+						<pre class="code">
+							game.str_store_troop_name(5, troop_id)
+							local result = game.s5
+						</pre>
+					</p>
+					
+					<p class="border-top">
+						<br>
+						To access global variables, use <span class="keyword">game.gvar.gvar_name</span>
+					</p>
 					<pre class="code">
 						game.gvar.g_encountered_party = 123
 						print(game.gvar.g_encountered_party)
@@ -887,7 +924,7 @@
 				<div class="content_block_caption">Constants</div>
 				<div>
 					<p>
-						For every <span class="keyword">header_[name].py</span> or <span class="keyword">ID_[name].py</span> file you copied to your "msfiles" folder, a new table will be generated: <span class="keyword">game.const.[name]</span><br>
+						Often you need to use constants from header files in your code. For every <span class="keyword">header_[name].py</span> or <span class="keyword">ID_[name].py</span> file you copied to your "msfiles" folder, a new table will be generated: <span class="keyword">game.const.[name]</span><br>
 						This table will be filled with all the constants from that file.<br>
 						If there are two files with the same <span class="keyword">[name]</span>, e.g. header_scenes and ID_scenes, the tables will get merged.</p>
 					<p>As of the current version, only lines that match one of the two following regexes (regular expressions) will be accepted:</p>
@@ -895,9 +932,14 @@
 						^(\w+)=(((-)?0x[\da-fA-F]+)|((-)?\d+(\.\d+)?))$
 						^(\w+)=(\w+)$
 					</pre>
-					<p>This probably looks intimidating to you, but really all it says is that your constant must either be a number, a hex number, or another constant (from the same file, currently).</p>
+					<p>Really all it says is that your constant must either be a number, a hex number, or another constant (from the same file, currently).</p>
 					<p>In other words: <span class="keyword">constant = num|hexNum|otherConstant</span>
-					<p>If the match fails, the line will be ignored. To display a warning in this case, set <span class="keyword">[lua] disable_game_const_warnings = 0</span> in wse_settings.ini.</p>
+					<p class="border-top"></p>
+					<p>If the match fails, the line will be ignored and it might trigger a warning.<br>
+						These warnings should be hidden by default, if not you can hide them by setting <span class="keyword">[lua] disable_game_const_warnings = 1</span> in wse_settings.ini.<br>
+						For WSE2 it's <span class="keyword">[General] bLuaDisableGameConstWarnings=true</span> in "Documents\Mount&Blade Warband WSE2\rgl_config.ini". For WSE2 dedicated server it's server_config.ini.
+					</p>
+					<p class="border-top"></p>
 					<p><br>You can omit the <span class="keyword">[name]</span> part in <span class="keyword">game.const.[name].[constant]</span>, in which case all tables in <span class="keyword">game.const</span> will be searched for your constant and the first result will be used.</p>
 					<p>So let's say you want to add a deathmatch trigger for <span class="keyword">ti_on_agent_hit</span>. Instead of this:</p>
 					<pre class="code">
@@ -978,7 +1020,7 @@
 					<p class="padl20">Due to technical reasons, these work differently. You need to assign a callback to <span class="keyword">game.OnWorldTrigger</span>:</p>
 						<pre class="code">game.OnWorldTrigger = function(date) ... end</pre>
 					<p class="padl20">
-						It will be called after the game checks the modsys triggers, and receive time in hours. It will be called even if the game is paused, but date won't change.<br>
+						It will be called after the game checks the modsys triggers, and receive time in hours (floating point number). It will be called even if the game is paused, but date won't change.<br>
 						The game will save the state of its triggers to the savefile, so that for example ti_once does not reactivate when you load a save. You have to save this data manually if you need it. (Use <span class="keyword">game.OnSave(), game.OnLoadSave()</span>)<br>
 						Time conversions according to WSE source:
 						<ul class="ul_pre">
@@ -1020,9 +1062,11 @@
 			<div class="content_block">
 				<div class="content_block_caption">Positions</div>
 				<div>
-					<p>To work with positions, the following "classes" are provided: <span class="keyword">game.rotation, game.pos and vector3</span> (see under miscellaneous)</p>
-					<p>Keep in mind that these don't need the fixed point multiplier that the module system requires you to use.</p>
-					<p>The MS multiplier is essentially a way of specifying the current unit of length.</p>
+					<p>
+						To work with positions, the following "classes" are provided: <span class="keyword">game.rotation, game.pos and vector3</span> (see under miscellaneous)<br>
+						These don't need the fixed point multiplier that the module system requires you to use.<br>
+						The MS multiplier is essentially a way of specifying the current unit of length.
+					</p>
 					<pre class="code" ms>
 						set_fixed_point_multiplier(1),
 						position_get_x(":x", 0), <span class="comment">#get pos0_x in meters</span>
@@ -1049,10 +1093,11 @@
 										f = vector3.new({y = 1}) <span class="comment">--forwards/y axis</span>
 										u = vector3.new({z = 1})  <span class="comment">--up/z axis</span>
 										function getRot(self) <span class="comment">--returns vector3.new({z = yaw, x = pitch, y = roll})</span>
-										function rotX(self, angle) <span class="comment">--rotate around x axis, angle in degrees</span>
-										function rotY(self, angle) <span class="comment">--rotate around y axis, angle in degrees</span>
-										function rotZ(self, angle) <span class="comment">--rotate around z axis, angle in degrees</span>
+										function rotX(self, angle, [global]) <span class="comment">--rotate around local x axis, angle in degrees. If global~=nil use global x axis</span>
+										function rotY(self, angle, [global]) <span class="comment">--rotate around local y axis, angle in degrees. If global~=nil use global y axis</span>
+										function rotZ(self, angle, [global]) <span class="comment">--rotate around local z axis, angle in degrees. If global~=nil use global z axis</span>
 										function rotate(self, rotVec3) <span class="comment">--rotate around all axis, zxy order, angle in degrees</span>
+										function rotate_around_axis(self, axis, angle) <span class="comment">--rotate around arbitrary axis (vector3), angle in degrees</span>
 									</pre>
 								</li>
 							</ul>
@@ -1089,12 +1134,14 @@
 
 					<p style="padding-left: 30px;">Example:</p>
 					<pre class="code">
-						local pos0 = game.preg[0]
+						local pos0 = game.pos0
 						local newRot = game.rotation.new(pos0.rot)
 						local newPos = game.pos.new({rot = newRot})
 						newPos:rotX(45)
 						newPos:rotate({x = 90, z = 180})
 						newPos:move({x = 10, z = 5})
+
+						game.agent_set_position(agent, newPos)
 					</pre>
 				</div>
 			</div>
@@ -1340,8 +1387,8 @@
 						</li>
 						<li>
 							<p><span class="keyword">game.OnGameLoad()</span> this function, if it exists, gets called when the game loads.</p>
-							<p><span class="keyword">game.OnSave()</span> this function, if it exists, gets called after a game is saved successfully.</p>
-							<p><span class="keyword">game.OnLoadSave()</span> this function, if it exists, gets called after a savegame is loaded successfully.</p>
+							<p><span class="keyword">game.OnSave(slot_no)</span> this function, if it exists, gets called after a game is saved successfully.</p>
+							<p><span class="keyword">game.OnLoadSave(slot_no)</span> this function, if it exists, gets called after a savegame is loaded successfully.</p>
 						</li>
 						<li>
 							<p><span class="keyword">game.fail()</span> when used during a <span class="keyword">lua_call</span> operation it will make the MS code fail, like any other cf operation can do.</p>
@@ -1386,9 +1433,7 @@
 				<div class="content_block_caption">Globals</div>
 				<div>
 					<ul class="padli">
-						<li><span class="keyword">tableShallowCopy(t, copyMetatable)</span> - returns a copy of table t, however any object items will still reference the same object. If copyMetatable ~= nil, the returned table will have the same metatable as t, as given by getmetatable(t).</li>
-						<li><span class="keyword">tableRecursiveCopy(t, copyMetatable)</span> - returns a copy of table t. All table items in t and further down the "tree" will be actual copies by value instead of by reference. If copyMetatable ~= nil, all metatables will be copied (by value), as given by getmetatable(t).</li>
-						<li>vector3 - class for storing and manipulating 3D vectors
+						<li>vector3 - class for storing and manipulating 3D vectors. game.pos and game.rot use this.
 							<ul>
 								<li>
 									<p style="padding-left: 20px; padding-top: 10px;"><span class="keyword">vector3.prototype</span></p>
@@ -1431,25 +1476,44 @@
 								</li>
 							</ul>
 						</li>
-						<li><span class="keyword">printTable(t, [prefix])</span> - print an entire table, recursively. Useful for debugging.</li>
-						<li><span class="keyword">make(table, ...)</span> - useful for creating table tree structures.<br>
+
+						<li><span class="keyword">table.copy_shallow(t, copyMetatable)</span> - returns a copy of table t that is one level deep. Copied tables will reference the same underlying table. If copyMetatable ~= nil, the returned table will have the same metatable as t, as given by getmetatable(t).</li>
+
+						<li><span class="keyword">table.copy_recursive(t, copyMetatable)</span> - returns a recursive copy of table t. All table items in t and further down the "tree" will be actual copies by value instead of by reference. If copyMetatable ~= nil, all metatables will be copied (by value), as given by getmetatable(t).</li>
+
+						<li><span class="keyword">table.find(t, val)</span> - Returns the first key in t that has val as its value. If not found, returns nil.</li>
+
+						<li><span class="keyword">table.filter(t, filter)</span> - Returns a shallow copy of t which contains only key-value pairs that pass the filter. filter is a function: filter(k, v, t). If filter returns nil or false, the pair does not pass.</li>
+
+						<li><span class="keyword">table.make(table, ...)</span> - useful for creating table tree structures.<br>
 							<pre class="code">
 								t = {}
 								  ...
 								make(t, "a", "b").c = 5
-								<span class="comment">--t: {a = {b = {c = 5}}}</span>
+								<span class="comment">--t is now: {a = {b = {c = 5}}}</span>
 							</pre>
 							<br>
 							It will make sure that <span class="keyword">table.a.b</span> exists and return it, but won't overwrite anything that already exists.
 						</li>
-						<li><span class="keyword">starts_with(str, start)</span><br>
-						<li><span class="keyword">ends_with(str, ending)</span><br>
-						<li><span class="keyword">round(num, numDecimalPlaces)</span><br>
+
+						<li><span class="keyword">table.print(t, [prefix])</span> - print an entire table, recursively. Useful for debugging.</li>
+
+						<li><span class="keyword">table.merge(target, source, [recursive])</span> - Write key-value pairs from source into target, if target does not have key.</li>
+
+						<li><span class="keyword">string.starts_with(str, start)</span></li>
+						<li><span class="keyword">string.ends_with(str, ending)</span></li>
+
+						<li><span class="keyword">string.get_matches(str, pattern)</span> - Returns a table with all matches of pattern in str. Uses string.gmatch.</li>
+
+						<li><span class="keyword">round(num, numDecimalPlaces)</span></li>
 						<li>
 							<span class="keyword">getTime()</span> get time in milliseconds since program start, using <span class="keyword">std::chrono::steady_clock</span>
 						</li>
+
+						<li><span class="keyword">printf(format, ...)</span> - Works like C printf.</li>
+
 						<li><span class="keyword">_print(str)</span> - displays str in game (console on dedicated). Regular print() uses this.</li>
-						<li><span class="keyword">_log(str)</span> - adds str to rgl_log.txt</li>
+						<li><span class="keyword">log_rgl(str)</span> - adds a line to rgl_log.txt</li>
 						<li>
 							<span class="keyword">mkdir(path)</span> Create a directory. Returns true on success, on failure it returns nil, err_msg, err_code<br>
 							err_code can be: ERROR_ALREADY_EXISTS = 0xB7, ERROR_PATH_NOT_FOUND = 0x3
@@ -1478,7 +1542,7 @@
 							</pre>
 						</li>
 						<li>
-							<a href="https://sourceforge.net/p/warband-script-enhancer/code/ci/1.170/tree/WSELib/LuaGlobals.lua" target="_blank" rel="noopener noreferrer">Lua startup code (sourceforge)</a> - this gets executed right before main.lua.
+							<a href="https://github.com/Ruslan-700/WSE/blob/master/WSELib/LuaGlobals.lua" target="_blank" rel="noopener noreferrer">Lua startup code (sourceforge)</a> - this gets executed right before main.lua.
 						</li>
 					</ul>
 				</div>
@@ -1500,7 +1564,7 @@
 							<li>Runtime errors in your thread are silent. Fortunately you can wrap your worker function in a pcall and print any error.</li>
 						</ul>
 						
-						Full code can be found <a href="https://github.com/kumpuu/Warband-Lua-Examples/blob/master/lua/stats.lua" target="_blank" rel="noopener noreferrer"">here.</a>
+						Full code can be found <a href="https://github.com/kumpuu/Warband-Lua-Examples/blob/master/multiplayer/lua/stats.lua" target="_blank" rel="noopener noreferrer">here.</a>
 					</li>
 					<li>
 						<a href="https://lua.sqlite.org/home/doc/tip/doc/lsqlite3.wiki" target="_blank" rel="noopener noreferrer">LSQLite3</a> v0.9.6 (sqlite 3.24.0) library for your database needs. <span class="keyword">sqlite3 = require("lsqlite3")</span>.
@@ -1575,9 +1639,11 @@
 									<p><pre class="code">
 										local f, err = io.open("%storage%/file.json", "r")
 									</pre></p>
-									For dedicated servers, storage folder is at <span class="keyword">[warband_dir]\WSE\[Module]\</span> by default.<br>
-									For client, look in <span class="keyword">C:\Users\[user]\Documents\Mount&Blade Warband\WSE\[Module]</span> (WSE 2 uses <span class="keyword">Mount&Blade Warband WSE2</span>).<br>
-									Tip: access other modules by using <span class="keyword">%storage%\\..\\[Other Module]\\somefile.txt</span>.<br>
+									For dedicated servers, storage folder is at <span class="keyword">[warband_dir]/WSE/[Module]/</span> by default.<br>
+									For client, look in <span class="keyword">C:/Users/[user]/Documents/Mount&Blade Warband/WSE/[Module]</span> (WSE 2 uses <span class="keyword">Mount&Blade Warband WSE2</span>).<br>
+									Tip: access other modules by using <span class="keyword">%storage%/../[Other Module]/somefile.txt</span>.<br>
+									<br>
+									Access savegame folder with <span class="keyword">%savegames%</span>. This also allows to go back one level.
 								</p>
 							</p>
 						</li>
@@ -1590,6 +1656,7 @@
 					<ul>
 						<li>
 							<p><span class="keyword">disable_game_const_warnings</span> - disables all warnings during msfiles\ game constants scanning</p>
+							<p>WSE2: <span class="keyword">[General] bLuaDisableGameConstWarnings</span> in "Documents\Mount&Blade Warband WSE2\rgl_config.ini"
 						</li>
 					</ul>
 				</div>
@@ -1612,6 +1679,21 @@
 		<hr/>
 		<div class="examples_content">
 			<p style="margin-left: 20px;"><em>Some of these are ripped out of larger files without testing, so be careful.</em></p>
+			
+			<div class="content_block">
+				<div class="content_block_caption">Native Sample Mod</div>
+				<p>
+					I made this singleplayer mod for the Native module, to get people started.<br>
+					It showcases a lot of techniques like hot reloading, using event_mgr, presentations, working with positions, world map triggers, most of the stuff mentioned in this documentation.<br>
+					I tried my best commenting everything.<br>
+					There is some fun toys, the scene tools can even be useful for map makers.<br>
+					<a href="https://github.com/kumpuu/Warband-Lua-Examples/tree/master/singleplayer/native_sample_mod/lua">Github</a><br>
+					<br>
+					<img id="height_map_preview" style="max-width: 50em; max-height: 50em;"><br>
+					Can you recognize this map? This was made with the mod.
+				</p>
+			</div>
+
 			<div class="content_block">
 				<div class="content_block_caption">Simple custom log</div>
 				<p>Needs header_triggers.py in msfiles.</p>
@@ -1703,39 +1785,56 @@
 				<p>
 					The idea is to have a wrapper for game.addTrigger so we have more control (for example this is useful for hot reloading), and to have a single interface for all events - mission template, scene prop, and item triggers, as well as your own events.<br>
 					It returns a constant index to your trigger. game.addTrigger index will shift if you remove things below.<br>
-					Does only add to deathmatch, and no management of SP/MP triggers. It's up to you to modify to your needs.<br>
-					Needs header_triggers.py, ID_scenes.py, ID_items.py in msfiles.
+					Needs header_triggers.py, ID_scene_props.py, ID_items.py in msfiles.
 				</p>
 				<pre class="code code2">
 					<span class="comment">--[[
+					--[[
 					Usage:
 						event_mgr.subscribe(event_id, callback)
-						event_id:
-							"ti_constant", e.g. "ti_before_mission_start"
-							"timer_x.y", e.g. "timer_1.5" or "timer_0"
-							"itm_a:ti_constant", e.g. "itm_french_cav_pistol:ti_on_weapon_attack"
-							"spr_b:ti_constant", same thing
-							"script_", e.g. "script_game_quick_start" (versus hookScript - you can not control execution of modsys script here)
-							"key_", e.g.:
-							"key_o"                              O clicked
-							"key_o down=key_shift"               O clicked while Shift down
-							"key_k down=key_shift key_control"   key_shift, key_control means both left/right
-							"your_own_event_id", can be used with dispatch()
-					
-						returns: a subscription ID which you can use with unsubscribe
-					
-						event_mgr.unsubscribe(event_id, subscription_id)
-					
+					    event_mgr.subscribe(event_id, meta, callback)
+							event_id:
+								"ti_constant", e.g. "ti_before_mission_start"
+								"timer_x.y", e.g. "timer_1.5" or "timer_0"
+								"itm_a:ti_constant", e.g. "itm_french_cav_pistol:ti_on_weapon_attack"
+								"spr_b:ti_constant", same thing
+								"script_", e.g. "script_game_quick_start" (versus hookScript - you can not control execution of modsys script here)
+								"key_", e.g.:
+									"key_o"                              O clicked
+									"key_o down=key_shift"               O clicked while Shift down
+									"key_k down=key_shift key_control"   key_shift, key_control means both left/right
+								"your_own_event_id", can be used with dispatch()
+
+					        meta:
+					            Optional string, you can specify a list of mission templates and a network level this trigger will run in.
+					            Check ID_mission_templates for template IDs. If you don't specify any templates, it will run in any template.
+					            Optional network level:
+					                net_client: Game is singleplayer, hosting a game, or a client connected to a server. For code like presentations, keys, singleplayer things.
+					                net_server: You are hosting a game, or this is a dedicated server. For server code.
+					                net_dedi:   Game is a dedicated server.
+
+					            Examples:
+					                "mst_quick_battle_battle, mst_quick_battle_siege, net_client"
+					                "net_dedi"
+
+							returns: an ID which you can use with unsubscribe
+
+						event_mgr.unsubscribe(event_id, index)
+							will not shift other IDs
+
 						event_mgr.clear()
-						Clear all callbacks. Useful for hot-reloading
-						Example reload:
-						event_mgr.subscribe("key_r down=key_shift", function()
-							event_mgr.clear()
-							print("Reloading")
-							dofile("main.lua")
-						end)
-					
+							Clear all callbacks. This does not remove triggers added to the game, but unsubscribes all.
+							Useful for hot-reloading
+
+							Example reload:
+							event_mgr.subscribe("key_r down=key_shift", function()
+								event_mgr.clear()
+								print("Reloading")
+								dofile("main.lua")
+							end)
+
 						event_mgr.dispatch(event_id, ...)
+					        Will trigger an event
 					]]</span>
 
 					local regex = require "regex"
@@ -1746,40 +1845,17 @@
 						}
 					end
 
-					function event_mgr.subscribe(event_id, callback)
-						event_mgr.init_event(event_id)
-
-						local i = 1
-						while event_mgr.events[event_id][i] ~= nil do i = i + 1 end
-						event_mgr.events[event_id][i] = callback
-						return i
-					end
-
-					function event_mgr.unsubscribe(event_id, subscription_id)
-						event_mgr.events[event_id][subscription_id] = nil
-					end
-
-					function event_mgr.dispatch(event_id, ...)
-						if event_mgr.events[event_id] then
-							for _, event_callback in pairs(event_mgr.events[event_id]) do
-								event_callback(...)
-							end
-						end
-					end
-
-					function event_mgr.clear()
-						for event_id, _ in pairs(event_mgr.events) do
-							event_mgr.events[event_id] = {}
-						end
-					end
-
-					function event_mgr.init_event(event_id)
+					--The idea is that we register each kind of trigger only once to the engine.
+					--When the trigger master callback executes,
+					--it looks into event_mgr.events[event_id] for a list of callbacks.
+					--This function sets up that master callback.
+					local function init_event(event_id)
 						if event_mgr.events[event_id] then return end
-						make(event_mgr.events, event_id)
+						table.make(event_mgr.events, event_id)
 
 						local function add_mst_trig(const, callback)
-							for i = 0, game.getNumTemplates()-1 do
-								game.addTrigger(i, const, 0, 0, callback)
+							for i = 0, game.getNumTemplates() - 1 do
+					            game.addTrigger(i, const, 0, 0, callback)
 							end
 						end
 						
@@ -1789,31 +1865,31 @@
 							return false
 						end
 
-						if starts_with(event_id, "ti_") then
+						if string.starts_with(event_id, "ti_") then
 							local const = game.const.triggers[event_id]
 							add_mst_trig(const, cb)
 						
-						elseif starts_with(event_id, "timer_") then
+						elseif string.starts_with(event_id, "timer_") then
 							local const = tonumber(string.match(event_id, "%d+%.?%d*"))
 							add_mst_trig(const, cb)
 
-						elseif starts_with(event_id, "itm_") then
+						elseif string.starts_with(event_id, "itm_") then
 							local itm, const = string.match(event_id, "([%w_]+):([%w_]+)")
 							itm = game.const[itm]
 							const = game.const[const]
 							game.addItemTrigger(itm, const, cb)
 
-						elseif starts_with(event_id, "spr_") then
+						elseif string.starts_with(event_id, "spr_") then
 							local spr, const = string.match(event_id, "([%w_]+):([%w_]+)")
 							spr = game.const[spr]
 							const = game.const[const]
 							game.addScenePropTrigger(spr, const, cb)
 
-						elseif starts_with(event_id, "script_") then
+						elseif string.starts_with(event_id, "script_") then
 							local s = string.match(event_id, "script_([%w_]+)")
 							game.hookScript(game.script[s], function(...) event_mgr.dispatch(event_id, ...) end)
 
-						elseif starts_with(event_id, "key_") then
+						elseif string.starts_with(event_id, "key_") then
 							local keyname, modkeys = regex.match(event_id, [[(key_\w+)(?: down=(.+))?]])
 							local down = {}
 
@@ -1857,9 +1933,59 @@
 						end
 					end
 
-					--For calling from modsys
-					function eventDispatch(event_id, ...)
-						event_mgr.dispatch(event_id, ...)
+					--Input can be (event_id, callback) or (event_id, meta, callback)
+					function event_mgr.subscribe(...)
+						local event_id, meta, callback
+						local n = select("#", ...)
+						if n == 2 then
+							event_id, callback = unpack({...})
+						else
+							event_id, meta, callback = unpack({...})
+						end
+
+					    if meta then
+					        --We have a meta string like "mst_quick_battle_battle, net_client"
+					        --So wrap the callback in a function that does the checks
+
+					        local msts = string.get_matches(meta, "mst_[^, ]+")
+					        local net  = string.match(meta, "net_[^, ]+")
+					        local old_cb = callback
+
+					        callback = function()
+					            if #msts > 0 and not table.find(msts, game.getCurTemplateId()) then return end
+					            if net then
+					                if net == "net_client" and game.multiplayer_is_dedicated_server() then return end
+					                if net == "net_server" and not game.multiplayer_is_server() then return end
+					                if net == "net_dedi" and not game.multiplayer_is_dedicated_server() then return end
+					            end
+					            old_cb()
+					        end
+					    end
+
+					    init_event(event_id)
+
+						local i = 1
+						while event_mgr.events[event_id][i] ~= nil do i = i + 1 end
+						event_mgr.events[event_id][i] = callback
+						return i
+					end
+
+					function event_mgr.unsubscribe(event_id, index)
+						event_mgr.events[event_id][index] = nil
+					end
+
+					function event_mgr.dispatch(event_id, ...)
+						if event_mgr.events[event_id] then
+							for _, event_callback in pairs(event_mgr.events[event_id]) do
+								event_callback(...)
+							end
+						end
+					end
+
+					function event_mgr.clear()
+						for event_id, _ in pairs(event_mgr.events) do
+							event_mgr.events[event_id] = {}
+						end
 					end
 				</pre>
 			</div>
@@ -1883,7 +2009,7 @@
 						end
 					end
 					
-					function timeoutAddScript(time, script_no, ...)
+					function timeout.addScript(time, script_no, ...)
 						local args = {...}
 						local cb = function()
 							game.call_script(script_no, unpack(args))
@@ -1892,7 +2018,7 @@
 						table.insert(timeouts, { t = game.store_mission_timer_a_msec(0) + time, cb = cb})
 					end
 					
-					function timeoutAdd(time, callback)
+					function timeout.add(time, callback)
 						table.insert(timeouts, { t = game.store_mission_timer_a_msec(0) + time, cb = callback })
 					end
 					
@@ -1907,7 +2033,7 @@
 					(lua_push_int, ":var1"),
 					(lua_push_int, ":var2"),
 					
-					(lua_call, "@timeoutAddScript", 4),
+					(lua_call, "@timeout.addScript", 4),
 					(lua_set_top, 0), <span class="comment">#Just make sure its cleaned up</span>
 				</pre>
 			</div>
@@ -2120,7 +2246,7 @@
 			<div class="content_block">
 				<div class="content_block_caption">Code extract - Dedicated Server</div>
 				<p>Some of the lua code I made for a server. Including a stats database and animation helper.</p>
-				<a href="https://github.com/kumpuu/Warband-Lua-Examples/" target="_blank" rel="noopener noreferrer"">Github</a>
+				<a href="https://github.com/kumpuu/Warband-Lua-Examples/tree/master/multiplayer/lua" target="_blank" rel="noopener noreferrer"">Github</a>
 			</div>
 		</div>
 	</div>
@@ -2250,5 +2376,7 @@
 		if(index) setTheme(index);
 
 		hljs.highlightAll(); //syntax highlighting
+
+		document.getElementById("height_map_preview").src = "data:image/webp;base64,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";
 	</script>
 </body>

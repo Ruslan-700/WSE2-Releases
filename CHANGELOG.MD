@@ -1,5 +1,57 @@
 # Changelog
 
+## 1.1.5.2
+- Added `edit_mode_window_open` and `str_store_savegame_md5` operations.
+- `presentation_set_duration` takes an optional presentation id, so a script can set the remaining duration of a presentation other than the active one, and close it that way.
+- Added `ProtectUniqueShieldsFromBreaking` config option, disabled by default to match vanilla.
+- Added `bUseFixedTroopInitializationSeed` config option for vanilla troop generation.
+- Fixed mounted ranged agents ignoring the limit on how far they may twist their upper body.
+- Fixed an agent's upper body snapping to the far side of that limit instead of the near one.
+- Fixed vertex spikes on armours rigged to bones their skeleton does not have, on x64 builds.
+- Engine-wide vanilla parity pass — combat, AI, campaign, meshes, UI, multiplayer and the complete scripting operation set were compared against Warband 1.174. The notable fixes:
+	- `bRagdollSoak`, `bCouchedLanceChambered` and `bTakeAttackersSpeedForRangedSpeedBonus` now default to vanilla behaviour.
+	- Fixed the ranged, blocking and reloading state machines, blow processing and death handling.
+	- Fixed missile spawning, collision and mesh swap, attack sampling, the spear overswing hitbox, the power draw cap and reflected friendly-fire missiles.
+	- Fixed the player's movement, turning and physics being stepped with the wrong frame time on multiplayer clients.
+	- Fixed sprinting, reload continuation, firearm accuracy, riderless horses and the hold fire order.
+	- Fixed scene props losing their variation when spawned, and troop equipment being re-rolled for the player.
+	- Fixed the proficiency increase buttons disappearing when a module raises the weapon master skill limit.
+	- Fixed blood particles playing in team fight missions and with the blood option turned off in multiplayer.
+	- Fixed agents aiming at the wrong point when checking whether they can see a target.
+	- Fixed fleeing agents choosing their escape direction incorrectly.
+	- Fixed the melee counter-attack chance being inverted, along with several targeting, formation and mounted combat mismatches.
+	- Fixed the eye height of mounted agents.
+	- Fixed hero equipment and face generation drawing from the wrong random source.
+	- Fixed skill and attribute point spending ignoring the skill maximum.
+	- Fixed completing random quests, inventory sorting reordering equal items, and the direction the map sea foam scrolls.
+	- Fixed gloves, boots, hands and the body under armour disappearing at distance.
+	- Fixed walk animation phase matching and strafe angles.
+	- Fixed terrain line of sight always taking the ground height from the far corner of a cell.
+	- Fixed auto-generated AI mesh edges and traversal costs.
+	- Fixed the difficulty rating being inflated by up to a third when damage to friends is reduced.
+	- Fixed a hole punched through the combo box plate by the slider above it in the options windows.
+	- Fixed clicks on text boxes, combo buttons and hyperlink text falling through to the widget behind them.
+	- Fixed table, scrollbar, list box and slider layout and sizing.
+	- Fixed tooltips and context menus overrunning the screen edge.
+	- Fixed the inventory rebuilding both character previews on every slot change.
+	- Fixed the game taking about a second to close.
+	- Fixed `<trp=5>` style tags not matching when written in upper case.
+	- Fixed multiplayer missile hit, player troop and particle burst events.
+	- Fixed the server browser auto-connect losing the stored password while the serial key dialog is open, and the stale server list surviving a module switch.
+	- Fixed a savegame holding more triggers than the module defines corrupting everything read after it.
+	- Fixed `get_achievement_stat` reading the wrong operands, and `player_set_slot` / `team_set_slot` truncating 64-bit values.
+	- Fixed `party_can_join_party`, `party_end_battle`, `teams_are_enemies` and `start_quest`, and stopped several operations leaving a stale value behind on failure.
+	- Fixed `scene_prop_set_cur_hit_points`, `add_companion_party`, `heal_party`, `agent_set_max_hit_points`, `prop_instance_get_scale`, `set_camera_in_first_person`, `add_missile` and `overlay_set_material`.
+	- `store_ally_count` now answers 0 instead of raising an unknown opcode error, and `context_menu_add_item` drops a surplus item without a script error on screen.
+	- Fixed the experience multiplier on gold rewards, the range of the arrow and bullet body hit sounds, and character import files not being matched case-insensitively.
+	- Fixed the quest window shortcut so it can be rebound instead of being hardcoded.
+- Lua: `game.reg<n>`, `game.s<n>` and `game.pos<n>` can be assigned to, not just read.
+- Lua: `OnSave` and `OnLoadSave` receive the savegame slot number.
+- Lua: scripts can read and write inside the savegame folder through the `%savegames%` prefix.
+- Lua: `_log` is now `log_rgl`; the old name still works.
+- Lua: `game.op` no longer offers operations that the headers list as assignable by mistake.
+- Lua: various `game.pos` and `vector3` improvements, and a fix for modules that ship no header files for `game.const`.
+
 ## 1.1.5.1
 - Launcher: Replaced ftp to GitHub Releases. Added a shader patch button.
 - Added render and simulation diagnostics — on-screen overlay and periodic log output (`bShowRenderStats`, `bShowSimulationStats`, `iRenderStatsLogInterval`, `iSimulationStatsLogInterval` config options).

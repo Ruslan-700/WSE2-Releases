@@ -14,6 +14,7 @@ position_rotate_z            = 725 #(position_rotate_z, <position_register>, <an
 position_rotate_z_floating   = 734 #(position_rotate_z_floating, <position_register>, <angle_fixed_point>, [<use_global_axis>]), #Rotates <position_register> around the z-axis by <angle_fixed_point> degrees
 position_rotate_x_floating   = 738 #(position_rotate_x_floating, <position_register>, <angle_fixed_point>, [<use_global_axis>]), #Rotates <position_register> around the x-axis by <angle_fixed_point> degrees
 position_rotate_y_floating   = 739 #(position_rotate_y_floating, <position_register>, <angle_fixed_point>, [<use_global_axis>]), #Rotates <position_register> around the y-axis by <angle_fixed_point> degrees
+presentation_set_duration    = 902 #(presentation_set_duration, <duration-in-1/100-seconds>, [<presentation_id>]), #Set remaining duration. If [<presentation_id>] is not used, set for the active presentation.
 is_vanilla_warband           = 1004 #(is_vanilla_warband), #Fails only when WSE is running
 start_map_conversation       = 1025 #(start_map_conversation, <troop_id>, [<troop_dna>], [<set_dialog_state>], [<dialog_state>]), #Starts a conversation with the selected <troop_id>. Can be called directly from global map or game menus. [<troop_dna>] parameter allows you to randomize non-hero troop appearances. If [<set_dialog_state>] sets, then [<dialog_state>] used instead dlg_event_triggered
 agent_set_animation_progress = 1743 #(agent_set_animation_progress, <agent_no>, <value_fixed_point>, [<channel_no>]), #Sets <agent_no>'s channel [<channel_no>] animation progress to <value_fixed_point>
@@ -332,6 +333,7 @@ str_regex_get_matches                     = 4242 #(str_regex_get_matches, <desti
 str_store_regex_replace                   = 4243 #(str_store_regex_replace, <string_register>, <string_1>, <string_regex>, <string_2>), #Stores <string_1> into <string_register>, replacing occurrences of <string_regex> with <string_2>
 str_decode_url                            = 4244 #(str_decode_url, <string_register>, <string_1>), #Decode url encoded <string_1> and stores it into <string_register>. Note that it doesn't convert +'s to spaces(as per the spec)
 str_store_skill_desc                      = 4245 #(str_store_skill_desc, <string_register>, <skill_no>), #Stores the description of <skill_no> into <string_register>
+str_store_savegame_md5                    = 4246 #(str_store_savegame_md5, <string_register>, <save_slot_no>), #MD5 hashes the .sav file for <save_slot_no> and stores it into <string_register>
 
 options_get_verbose_casualties  = 4300 #(options_get_verbose_casualties, <destination>), #Stores verbose casualties enabled/disabled into <destination>
 options_set_verbose_casualties  = 4301 #(options_set_verbose_casualties, <value>), #Enables or disables verbose casualties
@@ -404,8 +406,10 @@ edit_mode_select_prop_instance            = 4602 #(edit_mode_select_prop_instanc
 edit_mode_deselect_prop_instance          = 4603 #(edit_mode_deselect_prop_instance, <prop_instance_no>), #Stores the <1>th selected prop instance into instance no into <prop_instance_no>
 edit_mode_get_highlighted_prop_instance   = 4604 #(edit_mode_get_highlighted_prop_instance, <destination>), #Stores the highlighted prop instance into <destination>
 edit_mode_set_highlighted_prop_instance   = 4605 #(edit_mode_set_highlighted_prop_instance, [<prop_instance_no>]), #Stores the <1>th selected prop instance into instance no into [<prop_instance_no>]
-edit_mode_set_enabled                     = 4606 #(edit_mode_set_enabled, <value>), #Enables or disables edit mode
+edit_mode_set_enabled                     = 4606 #(edit_mode_set_enabled, <value>), #Enables or disables edit mode. This is equivalent to enabling it in the launcher.
 edit_mode_in_edit_objects_mode            = 4607 #(edit_mode_in_edit_objects_mode), #Fails if the game is not in edit objects mode
+edit_mode_get_mode                        = 4608 #(edit_mode_get_mode, <destination>), #Modes: 0=Objects, 1=Ground Texture, 2=Ground Elevate, 3=Ground Color, 4=Edit AI Mesh, 5=Edit Weather
+edit_mode_window_open                     = 4609 #(edit_mode_window_open), #Fails if the scene edit window is not open. This is the little window that appears when you press Ctrl+E while edit mode is enabled.
 
 update_material   = 4700 #(update_material, <material_name>, <new_material_name>), #Updates <material_name> with <new_material_name>
 reload_item_kinds = 4701 #(reload_item_kinds, [<change_file>], [<file_name>]), #Reload item kinds. If [<change_file>] sets, then [<file_name>] loaded instead default file (requires WSE2)
@@ -483,6 +487,7 @@ set_camera_follow_party                     = 1021 #(set_camera_follow_party, <p
 start_map_conversation                      = 1025 #(start_map_conversation, <troop_id>, [<troop_dna>], [<set_dialog_state>], [<dialog_state>], [<from_presentation>]), #Starts a conversation with the selected <troop_id>. Can be called directly from global map or game menus. [<troop_dna>] parameter allows you to randomize non-hero troop appearances. If [<set_dialog_state>] sets, then [<dialog_state>] used instead dlg_event_triggered. If [<from_presentation>] sets, then conversation called directly from the presentation. (requires WSE2)
 start_encounter                             = 1300 #(start_encounter, <encountered_party_no>, [<party_no>]), #Forces the [<party_no>] to initiate encounter with the <encountered_party_no>. If [<party_no>] not specified, main party used. (requires WSE2)
 party_get_battle_opponent                   = 1680 #(party_get_battle_opponent, <destination>, <party_no>), #When a <party_no> is engaged in battle with another party, stores its opponent party into <destination>. If the <party_no> is not in the encounter stores -1. For multiplayer campaign mode - stores -2, if <party_no> is observer player. (requires WSE2)
+agent_set_scripted_destination_no_attack    = 1748 #(agent_set_scripted_destination_no_attack, <agent_no>, <position_register_no>, [<auto_set_z_to_ground_level>], [<no_rethink>]), #Same as (agent_set_scripted_destination), but the <agent_no> will not attack his enemies. Set [<no_rethink>] to 1 to save resources (requires WSE2)
 agent_get_attached_scene_prop               = 1756 #(agent_get_attached_scene_prop, <destination>, <agent_no>, [<attached_prop_index>]), #Stores scene prop instance which is attached to the <agent_no>, or -1 if there isn't any into <destination>. ([<attached_prop_index>]: 0-3) (requires WSE2)
 agent_set_attached_scene_prop               = 1757 #(agent_set_attached_scene_prop, <agent_no>, <prop_instance_no>, [<attached_prop_index>], [<bone_no>], [<use_bone_rotation>]), #Attaches the specified <prop_instance_no> to the <agent_no>. ([<attached_prop_index>]: 0-3) (requires WSE2)
 agent_set_attached_scene_prop_x             = 1758 #(agent_set_attached_scene_prop_x, <agent_no>, <value>, [<attached_prop_index>]), #Offsets the position of the attached scene prop in relation to <agent_no>, in centimeters, along the X axis (left/right). ([<attached_prop_index>]: 0-3) (requires WSE2)
@@ -600,6 +605,7 @@ lhs_operations += [
 	edit_mode_get_num_selected_prop_instances,
 	edit_mode_get_selected_prop_instance,
 	edit_mode_get_highlighted_prop_instance,
+	edit_mode_get_mode,
 	menu_create_new,
 	overlay_get_val,
 	overlay_get_scroll_pos,
@@ -665,6 +671,7 @@ can_fail_operations += [
 	fge,
 	fle,
 	edit_mode_in_edit_objects_mode,
+	edit_mode_window_open,
 	presentation_activate,
 	array_eq,
 	array_neq,
