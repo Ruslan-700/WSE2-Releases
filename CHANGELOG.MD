@@ -2,7 +2,7 @@
 
 ## 1.1.5.2
 - Added `edit_mode_window_open` and `str_store_savegame_md5` operations.
-- `presentation_set_duration` takes an optional presentation id, so a script can set the remaining duration of a presentation other than the active one, and close it that way.
+- Extend `presentation_set_duration` so we can close other presentations.
 - Added `ProtectUniqueShieldsFromBreaking` config option, disabled by default to match vanilla.
 - Added `bUseFixedTroopInitializationSeed` config option for vanilla troop generation.
 - Fixed mounted ranged agents ignoring the limit on how far they may twist their upper body.
@@ -45,12 +45,13 @@
 	- `store_ally_count` now answers 0 instead of raising an unknown opcode error, and `context_menu_add_item` drops a surplus item without a script error on screen.
 	- Fixed the experience multiplier on gold rewards, the range of the arrow and bullet body hit sounds, and character import files not being matched case-insensitively.
 	- Fixed the quest window shortcut so it can be rebound instead of being hardcoded.
-- Lua: `game.reg<n>`, `game.s<n>` and `game.pos<n>` can be assigned to, not just read.
-- Lua: `OnSave` and `OnLoadSave` receive the savegame slot number.
-- Lua: scripts can read and write inside the savegame folder through the `%savegames%` prefix.
-- Lua: `_log` is now `log_rgl`; the old name still works.
-- Lua: `game.op` no longer offers operations that the headers list as assignable by mistake.
-- Lua: various `game.pos` and `vector3` improvements, and a fix for modules that ship no header files for `game.const`.
+- Lua:
+  - add game.pos<n>, game.reg<n>, game.s<n>
+  - game.op: filter incorrect lhs operations
+  - nSave, OnLoadSave receive slot no
+  - allow r/w to savegame directory
+  - rename _log to log_rgl
+  - various improvements to game.pos, vector3
 
 ## 1.1.5.1
 - Launcher: Replaced ftp to GitHub Releases. Added a shader patch button.
