@@ -125,6 +125,107 @@ ti_on_agent_footstep_sound_played  = -113.0 #can only be used in module_mission_
 # Trigger Param 3: is custom sound
 # Trigger Result: if set, rewrite sound no
 
+ti_on_cheat_detected               = -114.0 #can only be used in module_mission_templates triggers (module_simple_triggers on a WSE2 campaign server)
+# Trigger Param 1: player no
+# Trigger Param 2: detection type (acd_*)
+# Trigger Param 3: measured value (fixed point where the statistic is a float)
+# Trigger Param 4: the threshold that was exceeded, in the same unit
+# Trigger Result: if set to a nonzero value the engine takes no action at all - no kick, no ban -
+#                 and the module is expected to handle the detection itself
+
+# anti-cheat detection types (ti_on_cheat_detected param 2)
+acd_aim_snap         = 10  # a look-direction spike correlated with an attack or a shot
+acd_time_skew        = 11  # the client clock runs at a different rate than the server's
+acd_spread_luck      = 12  # server-rolled shot spread far below the honest expectation
+acd_attack_cadence   = 13  # more attack releases per window than the engine should allow
+acd_auto_block       = 14  # block direction and reaction that no human produces
+acd_auto_attack      = 15  # attacks that always find the open side, or follow the defender
+acd_seed_mismatch    = 16  # the shot seed sent by the client is not the one the server holds
+acd_aim_lead         = 17  # lead error that does not grow with the difficulty of the shot
+acd_module_report    = 100 # reported by the module through player_anticheat_report
+
+# anti-cheat statistics (player_get_anticheat_stat)
+acs_detections               = 0
+acs_seed_mismatches          = 1
+acs_time_skew_ratio          = 2  # (fp)
+acs_time_skew_windows        = 3
+acs_max_aim_speed            = 4  # (fp) degrees per second
+acs_aim_snaps                = 5
+acs_spread_mean              = 6  # (fp) 0.25 is the honest expectation
+acs_spread_shots             = 7
+acs_melee_attacks_in_window  = 8
+acs_ranged_attacks_in_window = 9
+acs_autoblock_samples        = 10
+acs_autoblock_match          = 11 # (fp) 0..1
+acs_autoblock_reaction_ms    = 12 # median, ping compensated
+acs_autoblock_feint_follows  = 13
+acs_autoblock_offscreen      = 14
+acs_autoattack_samples       = 15
+acs_autoattack_open_rate     = 16 # (fp) 0..1
+acs_autoattack_reaction_ms   = 17 # median, ping compensated
+acs_autoattack_feint_follows = 18
+acs_autoattack_chambers      = 19
+acs_autoattack_chamber_rate  = 20 # (fp) 0..1
+acs_aimlead_hard_shots       = 21
+acs_aimlead_err_deg          = 22 # (fp) median error over hard shots
+acs_aimlead_flat_ratio       = 23 # (fp) hard error / easy error
+acs_time_skew_max            = 24 # (fp) largest positive clock skew of the session
+acs_time_skew_stall          = 25 # (fp) largest negative skew of the session (client lag, not a cheat)
+
+# anti-cheat options (server_set_anticheat_option / server_get_anticheat_option)
+aco_mode                        = 0  # 0 = off, 1 = silent (log only), 2 = enforce
+aco_kick_on_detection           = 1
+aco_exempt_admins               = 2
+aco_auto_temp_ban_seconds       = 3
+aco_report_cooldown             = 4  # (fp) seconds
+aco_validate_seed               = 10
+aco_server_authoritative_seed   = 11
+aco_seed_mismatch_max           = 12
+aco_detect_aim_snap             = 20
+aco_aim_snap_deg_per_sec        = 21 # (fp)
+aco_aim_snap_correlation_ms     = 22
+aco_aim_snap_max_count          = 23
+aco_aim_snap_window             = 24 # (fp) seconds
+aco_detect_time_skew            = 30
+aco_max_time_skew_ratio         = 31 # (fp)
+aco_time_skew_windows           = 32
+aco_time_skew_window_span       = 33
+aco_detect_spread_luck          = 40
+aco_spread_window_shots         = 41
+aco_spread_luck_mean            = 42 # (fp)
+aco_detect_attack_cadence       = 50
+aco_max_melee_attacks           = 51
+aco_max_ranged_attacks          = 52
+aco_attack_cadence_window       = 53 # (fp) seconds
+aco_detect_auto_block           = 60
+aco_auto_block_samples          = 61
+aco_auto_block_match_rate       = 62 # (fp)
+aco_auto_block_reaction_ms      = 63
+aco_auto_block_feint_window_ms  = 64
+aco_auto_block_feint_follows    = 65
+aco_auto_block_view_cone        = 66 # (fp) degrees
+aco_auto_block_offscreen_min    = 67
+aco_detect_auto_attack          = 70
+aco_auto_attack_samples         = 71
+aco_auto_attack_open_rate       = 72 # (fp)
+aco_auto_attack_reaction_ms     = 73
+aco_auto_attack_feint_window_ms = 74
+aco_auto_attack_feint_follows   = 75
+aco_auto_attack_chamber_rate    = 76 # (fp)
+aco_auto_attack_chamber_min     = 77
+aco_detect_aim_lead             = 80
+aco_aim_lead_cone               = 81 # (fp) degrees
+aco_aim_lead_max_range          = 82 # (fp)
+aco_aim_lead_hard_shots         = 83
+aco_aim_lead_hard_difficulty    = 84 # (fp)
+aco_aim_lead_max_err            = 85 # (fp) degrees
+aco_aim_lead_flat_ratio         = 86 # (fp)
+
+# anti-cheat modes (aco_mode)
+acm_off     = 0
+acm_silent  = 1
+acm_enforce = 2
+
 gk_walk = 52
 gk_walk_toggle = 53
 gk_rear_horse = 54

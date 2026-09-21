@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.5.3
+- Added a server-side anti-cheat: behavioural detectors, shot seed validation and a module trigger `ti_on_cheat_detected`. Added `player_get_anticheat_stat`, `player_anticheat_report`, `server_set_anticheat_option`, `server_get_anticheat_option` operations.
+- Completed the launcher's localization and made every language renderable.
+- Fixed few regressions.
+- Fixed agents pinned in place at high frame rates on the x64 build.
+- Fixed `play_bink_file` operation.
+- Lua:
+  - expose the module system string table via getString/getStringId
+  - add table.empty, extend table.print, guard game.op.make_default
+  - update luaguide
+
 ## 1.1.5.2
 - Added `edit_mode_window_open` and `str_store_savegame_md5` operations.
 - Extend `presentation_set_duration` so we can close other presentations.

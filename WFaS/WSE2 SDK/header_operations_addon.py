@@ -41,6 +41,8 @@ player_temp_ban               = 2904 #(player_temp_ban, <player_no>, <ban_time>)
 player_get_wse2_version       = 2905 #(player_get_wse2_version, <destination>, <player_no>), #Stores <player_no>'s WSE2 version into <destination>. Works only on servers. 0 - vanilla Warband engine (requires WSE2)
 player_get_party_id           = 2906 #(player_get_party_id, <destination>, <player_no>), #Stores <player_no>'s party reference into <destination>. For multiplayer campaign mode (requires WSE2)
 player_set_party_id           = 2907 #(player_set_party_id, <player_no>, <party_no>), #Sets <player_no>'s party to <party_no>. For multiplayer campaign mode (requires WSE2)
+player_get_anticheat_stat     = 2908 #(player_get_anticheat_stat, <destination>, <player_no>, <stat_no>), #Stores anti-cheat statistic acs_* of <player_no> into <destination>. Values marked (fp) are fixed point (requires WSE2)
+player_anticheat_report       = 2909 #(player_anticheat_report, <player_no>, <value>), #Reports a module-side detection for <player_no> through the anti-cheat pipeline (log, ti_on_cheat_detected, kick). Server only (requires WSE2)
 
 register_get                           = 3000 #(register_get, <destination>, <index>), #Stores the value of register <index> into <destination>
 register_set                           = 3001 #(register_set, <index>, <value>), #Sets the value of register <index> to <value>
@@ -215,6 +217,8 @@ add_anonymous_player           = 3515 #(add_anonymous_player, <unique_id>, <name
 remove_anonymous_player        = 3516 #(remove_anonymous_player, <unique_id>), #Removes pseudonym for multiplayer player <unique_id> (requires WSE2)
 clear_anonymous_players        = 3517 #(clear_anonymous_players), #Clears pseudonyms for multiplayer players (requires WSE2)
 server_set_ghost_mode_advanced = 3518 #(server_set_ghost_mode_advanced, <value>, <can't_be_free>, <team>, <lock_to_view>, <only_players>), #Sets settings for advanced ghost mode. Works only for WSE2 clients. <value>: 0 - disable, 1 - enable, <can't_be_free>: 0 - camera can move, 1 - camera can't move, <team>: 0 - any team, 1 - player's team only, <lock_to_view>: 0 - freely rotate camera, 1 - lock to agent's view, <only_players>: 0 - any agents, 1 - only players (requires WSE2)
+server_set_anticheat_option    = 3519 #(server_set_anticheat_option, <option_no>, <value>), #Sets anti-cheat option aco_* to <value> at runtime. Server only. Float options take fixed point values (requires WSE2)
+server_get_anticheat_option    = 3520 #(server_get_anticheat_option, <destination>, <option_no>), #Stores anti-cheat option aco_* into <destination>. Float options are returned as fixed point (requires WSE2)
 
 store_cur_mission_template_no        = 3600 #(store_cur_mission_template_no, <destination>), #Stores the current mission template into <destination>
 set_show_use_tooltip                 = 3601 #(set_show_use_tooltip, <tooltip_type>, [<value>]), #Enables or disables use tooltips. See header_common_addon.py for possible types
@@ -529,6 +533,7 @@ lhs_operations += [
 	store_not,
 	player_get_wse2_version,
 	player_get_party_id,
+	player_get_anticheat_stat,
 	register_get,
 	store_wse_version,
 	store_current_trigger,
@@ -574,6 +579,7 @@ lhs_operations += [
 	server_get_horse_friendly_fire,
 	server_get_show_crosshair,
 	get_server_option_at_connect,
+	server_get_anticheat_option,
 	store_cur_mission_template_no,
 	get_spectated_agent_no,
 	get_water_level,
