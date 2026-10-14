@@ -53,7 +53,7 @@ ui_fxaa|Élsimítás (FXAA)
 ui_postprocess|Utófeldolgozási szűrő
 ui_postprocess_light|Enyhe élesítés
 ui_postprocess_strong|Erős élesítés
-ui_postprocess_color|VÉREZZEN A SZEMEM
+ui_postprocess_color|Élesítés + színkorrekció
 ui_multiplayer_kills|Ölés üzenetek
 ui_all_kills|Összes
 ui_own|Saját
@@ -82,6 +82,7 @@ ui_control_block_direction|Védekezés vezérlés:
 ui_control_block_direction_mounted|Lovas védekezés vezérlés:
 ui_control_attack_direction|Támadás vezérlés:
 ui_control_attack_direction_mounted|Lovas támadás vezérlés:
+ui_by_inverse_vertical_mouse_movement|Egérmozgással (függőlegesen fordított)
 ui_preset_change|Előbeállítás változtatás
 ui_blood_amount|Vér mennyiség
 ui_beta|β

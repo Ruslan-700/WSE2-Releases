@@ -53,7 +53,7 @@ ui_fxaa|反鋸齒（FXAA）
 ui_postprocess|後製處理濾鏡
 ui_postprocess_light|輕度銳化
 ui_postprocess_strong|強力銳化
-ui_postprocess_color|讓我的眼睛流血
+ui_postprocess_color|銳化 + 調色
 ui_multiplayer_kills|擊殺訊息
 ui_all_kills|全部
 ui_own|自己的
@@ -82,6 +82,7 @@ ui_control_block_direction|格擋控制：
 ui_control_block_direction_mounted|騎乘格擋控制：
 ui_control_attack_direction|攻擊控制：
 ui_control_attack_direction_mounted|騎乘攻擊控制：
+ui_by_inverse_vertical_mouse_movement|垂直反向滑鼠移動
 ui_preset_change|預設更改
 ui_blood_amount|血量
 ui_beta|β

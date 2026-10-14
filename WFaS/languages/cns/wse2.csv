@@ -53,7 +53,7 @@ ui_fxaa|抗 锯 齿 （ FXAA ）
 ui_postprocess|后 期 处 理 滤 镜 
 ui_postprocess_light|轻 度 锐 化 
 ui_postprocess_strong|强 力 锐 化 
-ui_postprocess_color|让 我 的 眼 睛 流 血 
+ui_postprocess_color|锐 化 + 调 色 
 ui_multiplayer_kills|击 杀 消 息 
 ui_all_kills|全 部 
 ui_own|自 己 的 
@@ -83,6 +83,7 @@ ui_control_block_direction|格 挡 控 制 ：
 ui_control_block_direction_mounted|骑 乘 格 挡 控 制 ： 
 ui_control_attack_direction|攻 击 控 制 ： 
 ui_control_attack_direction_mounted|骑 乘 攻 击 控 制 ： 
+ui_by_inverse_vertical_mouse_movement|垂 直 反 向 鼠 标 移 动 
 ui_preset_change|预 设 更 改 
 ui_blood_amount|出 血 量 
 ui_beta|β

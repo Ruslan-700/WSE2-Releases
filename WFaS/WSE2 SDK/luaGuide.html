@@ -1431,6 +1431,12 @@
 							<p><span class="keyword">game.OnLoadSave(slot_no)</span> this function, if it exists, gets called after a savegame is loaded successfully.</p>
 						</li>
 						<li>
+							<p><span class="keyword">game.OnConversationStart(troop_no, agent_no, party_no)</span> this function, if it exists, gets called when a conversation starts, before its first line. <span class="keyword">agent_no</span> is what <span class="keyword">store_conversation_agent</span> returns, <span class="keyword">party_no</span> is -1 for conversations started in a scene. (requires WSE2)</p>
+							<p><span class="keyword">game.OnConversationLine(speaker_troop_no, speaker_agent_no, is_player, text, sentence_id, is_auto_proceed)</span> this function, if it exists, gets called for every dialogue line that is committed, after its consequences ran. <span class="keyword">text</span> has all substitutions applied, the speaker includes any <span class="keyword">set_conversation_speaker_troop/agent</span> override. For the player only the selected choice is reported. <span class="keyword">is_auto_proceed</span> lines are skipped over by the conversation and never shown. (requires WSE2)</p>
+							<p><span class="keyword">game.OnConversationEnd(troop_no, agent_no, party_no)</span> this function, if it exists, gets called when the conversation closes, with the same values <span class="keyword">OnConversationStart</span> got. Opening trade, notes, inventory etc. from a conversation does not end it. (requires WSE2)</p>
+							<p>To show a presentation over a conversation (e.g. from a key check in a trigger added with <span class="keyword">game.addTrigger</span>) use <span class="keyword">game.execOperation("start_conversation_presentation", prsnt_no)</span>. The conversation stays where it is and resumes when the presentation ends. A <span class="keyword">prsntf_read_only</span> presentation does not block the conversation. (requires WSE2)</p>
+						</li>
+						<li>
 							<p><span class="keyword">game.fail()</span> when used during a <span class="keyword">lua_call</span> operation it will make the MS code fail, like any other cf operation can do.</p>
 							<p style="padding-left: 10px;">Example:</p>
 							<pre class="code" ms>

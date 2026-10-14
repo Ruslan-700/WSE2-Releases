@@ -53,7 +53,7 @@ ui_fxaa|Antyaliasing (FXAA)
 ui_postprocess|Filtr postprocesingu
 ui_postprocess_light|Lekkie wyostrzanie
 ui_postprocess_strong|Silne wyostrzanie
-ui_postprocess_color|NIECH MÓJ WZROK KRWAWI
+ui_postprocess_color|Wyostrzanie + korekcja kolorów
 ui_multiplayer_kills|Komunikaty o zabójstwach
 ui_all_kills|Wszystkie
 ui_own|Własne
@@ -82,6 +82,7 @@ ui_control_block_direction|Sterowanie blokiem:
 ui_control_block_direction_mounted|Sterowanie blokiem konno:
 ui_control_attack_direction|Sterowanie atakiem:
 ui_control_attack_direction_mounted|Sterowanie atakiem konno:
+ui_by_inverse_vertical_mouse_movement|Ruchem myszy (odwrócona oś pionowa)
 ui_preset_change|Zmiana ustawień
 ui_blood_amount|Ilość krwi
 ui_beta|β

@@ -53,7 +53,7 @@ ui_fxaa|Vyhlazování (FXAA)
 ui_postprocess|Filtr postprocessingu
 ui_postprocess_light|Lehké doostření
 ui_postprocess_strong|Silné doostření
-ui_postprocess_color|AŤ MI KRVÁCÍ OČI
+ui_postprocess_color|Doostření + korekce barev
 ui_multiplayer_kills|Zprávy o zabití
 ui_all_kills|Všechny
 ui_own|Vlastní
@@ -82,6 +82,7 @@ ui_control_block_direction|Ovládání bloku:
 ui_control_block_direction_mounted|Ovládání bloku na koni:
 ui_control_attack_direction|Ovládání útoku:
 ui_control_attack_direction_mounted|Ovládání útoku na koni:
+ui_by_inverse_vertical_mouse_movement|Pohybem myši (obrácená svislá osa)
 ui_preset_change|Změna předvolby
 ui_blood_amount|Množství krve
 ui_beta|β

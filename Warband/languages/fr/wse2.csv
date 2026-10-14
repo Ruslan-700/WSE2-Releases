@@ -53,7 +53,7 @@ ui_fxaa|Anticrénelage (FXAA)
 ui_postprocess|Filtre de post-processing
 ui_postprocess_light|Netteté légère
 ui_postprocess_strong|Netteté forte
-ui_postprocess_color|FAITES PLEURER MES YEUX
+ui_postprocess_color|Netteté + étalonnage des couleurs
 ui_multiplayer_kills|Messages sur tués
 ui_all_kills|Tous
 ui_own|Les miens
@@ -82,6 +82,7 @@ ui_control_block_direction|Contrôle blocage :
 ui_control_block_direction_mounted|Contrôle blocage monté :
 ui_control_attack_direction|Contrôle attaque :
 ui_control_attack_direction_mounted|Contrôle attaque montée :
+ui_by_inverse_vertical_mouse_movement|Mouvement de souris inversé verticalement
 ui_preset_change|Changer de preset
 ui_blood_amount|Quantité de sang
 ui_beta|β

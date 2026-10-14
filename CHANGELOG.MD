@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.1.5.4
+- Added `show_hud` and `start_conversation_presentation` operations.
+- Added a vertically inverted mouse mode for attack and block direction control (swaps up and down, keeps left and right).
+- Added `[Battle]` config options, all off by default to match vanilla:
+  - `bDegradeBrokenShields` — a shield broken in battle really drops to battered, cracked and lost instead of only showing the message.
+  - `iRangedBumpStun` — keeps an attacker's bump from stunning a ranged agent who is blocking (0 = vanilla, 1 = only while aiming, 2 = off).
+  - `bRainAffectsFirearms` — rain cuts firearm damage and missile speed like it does for crossbows.
+- Removed the `bParry` option, which never entered the parry state.
+- WSE2 now loads its own shader effect as `mb_wse2_2a.fxo` / `mb_wse2_2b.fxo`, so a module's own effect always wins (`[Graphics] bUseWSE2Effect`, enabled by default).
+- Fixed player movement warping and freeze-then-teleport corrections in multiplayer at high frame rates.
+- Fixed the player freezing in place above ~790 fps.
+- Fixed mouse sensitivity, camera smoothing and the attack/block direction input depending on the frame rate.
+- Fixed a helmet sinking into the head after an equipment change.
+- Fixed a crash after saving when a party was attached to an already removed one.
+- Fixed a crash adjusting hero health after a battle when a mission script removed an encountered party.
+- Fixed `change_screen_map` in a menu sending the game to the map instead of the next menu after the following mission.
+- Fixed crashes in tableau and water reflection rendering.
+- Fixed map and game type names in the server list not showing in the player's language.
+- Fixed seeded random sequences being shifted by other threads and libraries, and `store_random_in_range` with 64-bit bounds.
+- The window state (maximized, position, fullscreen toggle) is now saved as soon as it changes, not only on a clean exit.
+- Lua:
+  - add game.OnConversationStart / OnConversationLine / OnConversationEnd callbacks
+
 ## 1.1.5.3
 - Added a server-side anti-cheat: behavioural detectors, shot seed validation and a module trigger `ti_on_cheat_detected`. Added `player_get_anticheat_stat`, `player_anticheat_report`, `server_set_anticheat_option`, `server_get_anticheat_option` operations.
 - Completed the launcher's localization and made every language renderable.

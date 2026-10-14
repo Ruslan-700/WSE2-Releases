@@ -53,7 +53,7 @@ ui_fxaa|Kantenglättung (FXAA)
 ui_postprocess|Nachbearbeitungsfilter
 ui_postprocess_light|Leichtes Schärfen
 ui_postprocess_strong|Starkes Schärfen
-ui_postprocess_color|LASS MEINE AUGEN BLUTEN
+ui_postprocess_color|Schärfen + Farbkorrektur
 ui_multiplayer_kills|Kill-Nachrichten
 ui_all_kills|Alle
 ui_own|Eigene
@@ -82,6 +82,7 @@ ui_control_block_direction|Block-Steuerung:
 ui_control_block_direction_mounted|Block-Steuerung (beritten):
 ui_control_attack_direction|Angriffs-Steuerung:
 ui_control_attack_direction_mounted|Angriffs-Steuerung (beritten):
+ui_by_inverse_vertical_mouse_movement|Durch vertikal invertierte Mausbewegung
 ui_preset_change|Voreinstellung ändern
 ui_blood_amount|Blutmenge
 ui_beta|β

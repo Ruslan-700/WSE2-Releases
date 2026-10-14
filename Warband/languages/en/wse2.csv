@@ -53,7 +53,7 @@ ui_fxaa|Antialiasing (FXAA)
 ui_postprocess|Post Processing Filter
 ui_postprocess_light|Light Sharpen
 ui_postprocess_strong|Strong Sharpen
-ui_postprocess_color|MAKE MY EYES BLEED
+ui_postprocess_color|Sharpen + Color Grading
 ui_multiplayer_kills|Kill Messages
 ui_all_kills|All
 ui_own|Own
@@ -82,6 +82,7 @@ ui_control_block_direction|Block Control:
 ui_control_block_direction_mounted|Mounted Block Control:
 ui_control_attack_direction|Attack Control:
 ui_control_attack_direction_mounted|Mounted Attack Control:
+ui_by_inverse_vertical_mouse_movement|By Vertically Inverted Mouse Movement
 ui_preset_change|Preset Change
 ui_blood_amount|Blood Amount
 ui_beta|β

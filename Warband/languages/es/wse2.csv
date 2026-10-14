@@ -53,7 +53,7 @@ ui_fxaa|Antialiasing (FXAA)
 ui_postprocess|Filtro de posprocesado
 ui_postprocess_light|Nitidez ligera
 ui_postprocess_strong|Nitidez fuerte
-ui_postprocess_color|HAZ QUE MIS OJOS SANGREN
+ui_postprocess_color|Nitidez + corrección de color
 ui_multiplayer_kills|Mensajes de eliminación
 ui_all_kills|Todos
 ui_own|Propios
@@ -82,6 +82,7 @@ ui_control_block_direction|Control de bloqueo:
 ui_control_block_direction_mounted|Control de bloqueo montado:
 ui_control_attack_direction|Control de ataque:
 ui_control_attack_direction_mounted|Control de ataque montado:
+ui_by_inverse_vertical_mouse_movement|Movimiento del ratón invertido verticalmente
 ui_preset_change|Cambiar ajuste predefinido
 ui_blood_amount|Cantidad de sangre
 ui_beta|β
