@@ -49,7 +49,7 @@ ui_free_look|Szabad nézet
 ui_vsync|Függőleges szinkronizáció
 ui_msaa|Élsimítás (MSAA)
 ui_atoc|Átlátszóság élsimítás (MSAA)
-ui_fxaa|Élsimítás (FXAA)
+ui_fxaa|Élsimítás (FXAA / SMAA)
 ui_postprocess|Utófeldolgozási szűrő
 ui_postprocess_light|Enyhe élesítés
 ui_postprocess_strong|Erős élesítés
@@ -101,11 +101,11 @@ ui_ragdoll_soak_apply_force|Ragdoll holttestek mozognak találat esetén
 ui_vsync_tooltip|Megelőzi a képszakadást, beviteli késleltetést okozhat\n\nTeljesítményköltség: <c=0xFF0000>Magas</c>
 ui_msaa_tooltip|Simítja a szilárd tárgyak szaggatott éleit\n\nTeljesítményköltség: <c=0xFF0000>Magas</c>
 ui_atoc_tooltip|Simítja a félig átlátszó tárgyak szaggatott éleit\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
-ui_fxaa_tooltip|Simítja a szaggatott éleket, jelentősen elmosódottá teszi a képet\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
+ui_fxaa_tooltip|Simítja a szaggatott éleket a kép kirajzolása után. Az FXAA olcsóbb, de a\nfinom részleteket is elmossa; az SMAA megtalálja az élt, a többit nem bántja\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
 ui_anisotropic_filtering_tooltip|Csökkenti a távoli felületek elmosódottságát\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
-ui_sound_occlusion_tooltip|Utánozza a hangok érzékelését zárt környezetben, vagyis ahol akadályok vannak a hangforrás vagy a hallgató közelében\n\nTeljesítményköltség: <c=0xFF0000>Magas</c>
-ui_show_render_stats_wse2_tooltip|Képkockánkénti renderelési számlálókat mutat: rajzolási hívások, látható objektumok, CPU- és GPU-skinning, árnyékok és szálidők\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
-ui_show_simulation_stats_wse2_tooltip|Megmutatja, mire megy el egy szimulációs lépés: fizika, ágensek, MI, eseményindítók, jelenet, hálózat és szkripthívások\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_sound_occlusion_tooltip|Utánozza a hangok érzékelését zárt környezetben, vagyis ahol akadályok\nvannak a hangforrás vagy a hallgató közelében\nA 80 m-nél távolabbi hangokat nem követi\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_show_render_stats_wse2_tooltip|Képkockánkénti renderelési számlálókat mutat: rajzolási hívások,\nlátható objektumok, CPU- és GPU-skinning, árnyékok és szálidők\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_show_simulation_stats_wse2_tooltip|Megmutatja, mire megy el egy szimulációs lépés: fizika, ágensek, MI,\neseményindítók, jelenet, hálózat és szkripthívások\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
 ui_update_wse2_version|Kérjük, frissítsd a WSE2 verziódat, különben kirúgnak erről a szerverről.
 ui_server_for_wse2_campaign|Ez a szerver egy online hadjárathoz készült WSE2-n. Kérjük, indítsd el a WSE2-t és válaszd a „Csatlakozás hadjárathoz" opciót.
 ui_server_for_standart_game_modes|Ez a szerver normál játékmódokhoz készült, kérjük válaszd a „Csatlakozás játékhoz" opciót.
@@ -113,6 +113,8 @@ ui_enable_cheats_wse2|Csalások engedélyezése
 ui_enable_edit_mode_wse2|Szerkesztő mód engedélyezése (Figyelem: lassítja a játékot.)
 ui_language_wse2|Nyelv:
 ui_ondemand_textures_wse2|Textúrák igény szerinti betöltése
+ui_map_sun_moves_wse2|Mozgó nap a térképen
+ui_map_sun_moves_wse2_tooltip|A nap végigvonul az égen a világtérképen, nem pedig egy adott órán áll.\nAz árnyékok óránkénti lépésekben követik, a dombok napos oldala folyamatosan.\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
 ui_map_editor|Térkép szerkesztő
 ui_terrain_editor|Terep szerkesztő
 ui_debug|Debug
@@ -147,3 +149,24 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
+ui_flora_wind|Növényzeti szél
+ui_flora_wind_tooltip|A fű, a bokrok és az ágak meghajolnak a szélben, a törzsük pedig a helyén marad\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_flora_wind_unavailable|A WSE2 shaderei kellenek ehhez a modulhoz.
+ui_grass_draw_distance|Fű megjelenítési távolsága
+ui_meter_value|%d m
+ui_grass_draw_distance_unavailable|A WSE2 shaderei kellenek ehhez a modulhoz.
+ui_ssao|Környezeti takarás
+ui_ssao_tooltip|Elsötétíti a sarkokat és réseket, ahová nem jut el a fény\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
+ui_god_rays|Napsugárnyalábok
+ui_god_rays_tooltip|Fénynyalábok a levegőben ott, ahol valami eltakarja a napot\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
+ui_frame_depth|Mélység a képkockából
+ui_frame_depth_tooltip|A hatások mélységét magából a képkockából veszi\na jelenet második megrajzolása helyett, így a mozgó tárgyak\nminden modulban helyesen árnyékolódnak\nMélységhatások szükségesek, MSAA nélkül\n\n<c=0x00FF00>Javítja a teljesítményt</c>
+ui_shader_blood|Vérmatricák
+ui_shader_blood_tooltip|Saját alakú fröccsenést tesz oda, ahová az ütés ért,\namely a helyén marad, miközben a test mozog,\na csúcsok színébe festett foltok mellett\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_shader_blood_unavailable|A WSE2 3-as shader modell shaderei kellenek hozzá.
+ui_soft_shadows|Lágy árnyékok
+ui_soft_shadows_tooltip|Több texelre teríti a napárnyékok szélét a lépcsős él helyett\n\nTeljesítményköltség: <c=0xFFAA00>Közepes</c>
+ui_soft_shadows_unavailable|A WSE2 3-as shader modell shaderei kellenek hozzá.
+ui_water_foam|Parti hab
+ui_water_foam_tooltip|Hullámtörés azon a vonalon, ahol a víz a parttal találkozik\n\nTeljesítményköltség: <c=0x00FF00>Alacsony</c>
+ui_water_foam_unavailable|A WSE2 3-as shader modell shaderei kellenek hozzá.

@@ -49,7 +49,7 @@ ui_free_look|自由視角
 ui_vsync|垂直同步
 ui_msaa|反鋸齒（MSAA）
 ui_atoc|透明反鋸齒（MSAA）
-ui_fxaa|反鋸齒（FXAA）
+ui_fxaa|反鋸齒（FXAA / SMAA）
 ui_postprocess|後製處理濾鏡
 ui_postprocess_light|輕度銳化
 ui_postprocess_strong|強力銳化
@@ -101,9 +101,9 @@ ui_ragdoll_soak_apply_force|布偶屍體被擊中時會移動
 ui_vsync_tooltip|防止畫面撕裂，可能導致輸入延遲\n\n效能消耗：<c=0xFF0000>高</c>
 ui_msaa_tooltip|平滑實體物件的鋸齒邊緣\n\n效能消耗：<c=0xFF0000>高</c>
 ui_atoc_tooltip|平滑半透明物件的鋸齒邊緣\n\n效能消耗：<c=0x00FF00>低</c>
-ui_fxaa_tooltip|平滑鋸齒邊緣，會明顯模糊畫面\n\n效能消耗：<c=0xFFAA00>中</c>
+ui_fxaa_tooltip|在畫面繪製後平滑鋸齒邊緣。FXAA 更省，但會把細節一起模糊\nSMAA 只找出邊緣，其餘保持不動\n\n效能消耗：<c=0xFFAA00>中</c>
 ui_anisotropic_filtering_tooltip|減少遠處表面的模糊\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_sound_occlusion_tooltip|模擬封閉環境中的聲音感知效果，即聲源或聽者附近有障礙物的情況\n\n效能消耗：<c=0xFF0000>高</c>
+ui_sound_occlusion_tooltip|模擬封閉環境中的聲音感知效果，\n即聲源或聽者附近有障礙物的情況\n80 公尺以外的聲音不進行計算\n\n效能消耗：<c=0x00FF00>低</c>
 ui_show_render_stats_wse2_tooltip|顯示每幀渲染計數：繪製呼叫、可見物件、CPU 和 GPU 蒙皮、陰影和執行緒耗時\n\n效能消耗：<c=0x00FF00>低</c>
 ui_show_simulation_stats_wse2_tooltip|顯示一個模擬步驟的耗時去向：物理、單位、AI、觸發器、場景、網路和腳本呼叫\n\n效能消耗：<c=0x00FF00>低</c>
 ui_update_wse2_version|請更新您的 WSE2 版本，否則您將被踢出此伺服器。
@@ -113,6 +113,8 @@ ui_enable_cheats_wse2|啟用作弊
 ui_enable_edit_mode_wse2|啟用編輯模式（警告：會降低遊戲速度。）
 ui_language_wse2|語言：
 ui_ondemand_textures_wse2|按需載入材質
+ui_map_sun_moves_wse2|地圖上的太陽隨時間移動
+ui_map_sun_moves_wse2_tooltip|世界地圖上的太陽會在天空中移動，而不是固定在某個時刻。\n陰影以每小時一步跟隨，山坡的受光面則連續變化。\n\n效能消耗：<c=0x00FF00>低</c>
 ui_map_editor|地圖編輯器
 ui_terrain_editor|地形編輯器
 ui_debug|偵錯
@@ -147,3 +149,24 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
+ui_flora_wind|植被隨風擺動
+ui_flora_wind_tooltip|草、灌木和樹枝隨風搖曳，而樹幹保持不動\n\n效能消耗：<c=0x00FF00>低</c>
+ui_flora_wind_unavailable|需要適用於此模組的 WSE2 著色器。
+ui_grass_draw_distance|草地繪製距離
+ui_meter_value|%d 米
+ui_grass_draw_distance_unavailable|需要適用於此模組的 WSE2 著色器。
+ui_ssao|環境光遮蔽
+ui_ssao_tooltip|使光線難以到達的角落和縫隙變暗\n\n效能消耗：<c=0xFFAA00>中</c>
+ui_god_rays|體積光
+ui_god_rays_tooltip|太陽被遮擋時在空氣中投下光束\n\n效能消耗：<c=0xFFAA00>中</c>
+ui_frame_depth|從畫面取得深度
+ui_frame_depth_tooltip|直接從畫面取得特效所需的深度，而不是再繪製一遍場景，\n因此任何模組中的移動物體都能得到正確的陰影\n需要開啟深度特效並關閉 MSAA\n\n<c=0x00FF00>提升效能</c>
+ui_shader_blood|血跡貼花
+ui_shader_blood_tooltip|在挨打的位置添加帶形狀的血花，並隨身體移動而留在原處，\n疊加在頂點顏色中的血跡之上\n\n效能消耗：<c=0x00FF00>低</c>
+ui_shader_blood_unavailable|需要 WSE2 的著色器模型 3 著色器。
+ui_soft_shadows|軟陰影
+ui_soft_shadows_tooltip|將 陽 光 陰 影 的 邊 緣 分 散 到 數 個 紋 素 上 ， 而 不 是 留 下 鋸 齒\n\n效能消耗：<c=0xFFAA00>中</c>
+ui_soft_shadows_unavailable|需要 WSE2 的著色器模型 3 著色器。
+ui_water_foam|岸邊浪花
+ui_water_foam_tooltip|水與岸交界處的浪花泡沫\n\n效能消耗：<c=0x00FF00>低</c>
+ui_water_foam_unavailable|需要 WSE2 的著色器模型 3 著色器。

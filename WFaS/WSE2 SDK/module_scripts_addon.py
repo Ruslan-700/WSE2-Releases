@@ -109,3 +109,16 @@
 # Called each time after initial window started with bMainMenuScene=true (requires WSE2)
 ("wse_initial_window_start", [
 ]),
+
+#script_wse_camp_button_clicked
+# Called each time the Camp button on the world map bar is clicked, in singleplayer and in the multiplayer campaign (requires WSE2)
+# INPUT
+# script param 1 = main party no
+# OUTPUT
+# trigger result = anything non-zero suppresses the default behavior.
+#   Default in singleplayer: an encounter with the camp party (party 2), which the module turns into its camp menu.
+#   Default in the multiplayer campaign: nothing. The script runs on the clicking client only, so anything
+#   the server must know has to be sent to it by the module (for example with multiplayer_send_message_to_server).
+("wse_camp_button_clicked", [
+	(store_script_param, ":party_no", 1),
+]),

@@ -1,5 +1,55 @@
 # Changelog
 
+## 1.1.5.5
+- WSE2 now loads the shader model 3 build of its effect (`mb_wse2_3_0.fxo`) wherever the hardware supports it (`[Graphics] iEffectShaderModel`: 0 = hardware decides, 2 = shader model 2 only, 3 = shader model 3 only). Most of the new graphics below need it.
+- New graphics features. Unless stated otherwise they are on by default, and switching one off restores the retail look:
+  - Screen space ambient occlusion (`[PostFx] iSsao`, off by default, also in the graphics options; `fSsaoRadius`, `fSsaoStrength`).
+  - SMAA antialiasing (`[PostFx] iSmaa`, off by default; replaces FXAA when on, and shares its list in the graphics options).
+  - Crepuscular rays from the sun and the moon (`[PostFx] bGodRays`, off by default, also in the graphics options; `fGodRaysDensity`, `fGodRaysDecay`, `fGodRaysStrength`, `fGodRaysThreshold`, and `fGodRaysDensityNight`, `fGodRaysDecayNight`, `fGodRaysStrengthNight` for moonlight).
+  - Soft shadow edges (`[ShadowMap] bSoftShadows`, also in the graphics options; `fSoftShadowWidth`), and a shadow map resolution that follows the size of the scene (`[ShadowMap] bShadowMapSizeByScene`), so generated battlefields get sharp shadows too.
+  - Height fog gathering in hollows and along rivers (`[Scene] bHeightFog`, off by default; `fHeightFogBase`, `fHeightFogFalloff`, `fHeightFogStrength`).
+  - Water: travelling waves, surf along the shore, the sun reflected on the surface, rain ripples, and an underwater colour that follows the scene and the time of day (`[Graphics] bWaterWaves`, `bWaterFoam` (also in the graphics options), `bWaterSunGlint`, `fWaterRainRipples`, `bSceneUnderwaterFog`). Waves form only on deep, open water (`fWaterWaveHeight`, `fWaterWaveLength`, `fWaterWaveSpeed`, `fWaterWaveRange`, `fWaterWaveMinDepth`, `fWaterWaveMinFetch`); surf is set by `fWaterFoamDepth`, `fWaterFoamWidth`, `fWaterFoamMaxSlope`, `fWaterFoamStrength`; how far one sees into water by `fWaterTransmittance` and `fMuddyWaterVisibility`.
+  - Vegetation sways in the wind and is lit by the sun from a direction (`[Flora] bFloraWind` (also in the graphics options), `bFloraDirectionalLight`; `[Graphics] fFloraWindStrength`, `fFloraWindGustSize`, `fFloraWindSpeed`); grass draw distance is now adjustable (`[Flora] fGrassDrawDistance`, also in the graphics options). The gusts and the sea swell follow the weather direction (`[Graphics] bWeatherDirection`).
+  - The sky is baked into cube maps at load from several places in the scene, giving the ambient light a direction and reflections on weapons and armour (`[Graphics] bSkyAmbientCube`, `iSkyCubeProbes`, `bSkyLightSpecular`, `fSkyReflection`, `bDirectionalAmbient`, `bSpecularFresnel`). Tuned by `bSkyAmbientCubeScene`, `fSkyAmbientCubeStrength`, `iSkyCubeSize`, `fSkyCubeProbeBlend`, `fSkySpecularPower`, `fSkySpecularMetal`, `fSkyReflectionBlur`, `fSkyReflectionMirror`; the baked sky is seen through the scene's fog (`bSkyCubeFog`).
+  - `set_fog_distance` called during a mission now dims the sun to match the new fog; the sun's brightness used to be worked out only once, when the scene was built (`[Graphics] bFogDimsSun`).
+  - Hills and buildings in front of the sun no longer catch its flare as a pale band along the ridge (`[Graphics] fSunFlareAirlight`, the share of the glow a surface may take, 0.25 by default; 1 restores the retail look).
+  - Foliage is drawn into the depth pre-pass, so ambient occlusion, sun shafts and depth of field see leaves (`[Graphics] bFoliageInDepthPass`). Meshes whose shader moves their vertices over time (a module's waving flags, water and the like) are kept out of it unless the module ships an `earlyz_` depth technique for them, instead of being written at rest and shaded where they are not (`bDepthPassSkipAnimated`). The depth is now taken from the frame itself instead of drawing the scene a second time, which is faster and shades moving objects correctly in any module without depth shaders of its own (`[Graphics] bFrameDepth`, also in the graphics options). It needs depth effects on and MSAA off; otherwise the option is greyed out and the depth pre-pass is used as before.
+  - Up to eight torches and fires now light each mesh instead of four, statically lit props catch the lamp beside them, and lamps shine on hair, skin and weapons (`[Graphics] iMaxLightsPerMesh`, `bStaticMeshPointLights`, `fHairLampSpecular`, `fFaceLampSpecular`, `fWeaponLampSpecular`).
+  - Hair sways as its owner moves (`[Graphics] fHairSway`).
+  - Blood splashes projected onto the body as decals, on top of the vertex colour stains (`[Graphics] bShaderBloodStains`, also in the graphics options).
+  - A module can replace the blood splash atlas and the shore foam texture with its own `wse2_blood_splats.dds` and `wse2_foam.dds` (see `WSE2 SDK/Textures/readme.txt`); without them the engine generates both.
+  - The sun on the world map follows the hour, and the map's relief is shaded from where it stands (`[Campaign] bMapSunMoves`, also in the graphics options; `bMapSunShading`).
+  - Cleaner leaf, fence and thatch edges at a distance (`[Graphics] bFoliageUnpremultiply`; `bSharpenAlphaTest`, off by default), and full anisotropic filtering on normal maps (`[Graphics] iNormalMapMaxAnisotropy`, now 16).
+- Added world map texture variants with per-variant scene flora (`fkf_variant` flora flag, see `module_flora_kinds_addon.py`).
+- Added `party_get_current_terrain_variant`, `scene_set_region_variant`, `scene_set_height_fog`, `scene_set_water_waves`, `scene_set_flora_wind`, `scene_set_weather_direction` and `scene_rebake_sky_cube` operations.
+- Added `script_wse_camp_button_clicked`: the Camp button on the map bar now asks the module first, and works in the multiplayer campaign when the module handles it. Without the script nothing changes.
+- Added `[BattleAi] bAlwaysStopToReload` to keep bots still while reloading a weapon that cannot be reloaded on the move, even when they are not engaging an enemy, off by default.
+- Added `[Sound] fOcclusionMaxDistance` (80 m by default): sounds beyond it skip sound occlusion, which made big battles with occlusion enabled much heavier on the CPU.
+- Ctrl+Shift+C reloads the configuration files while the game runs.
+- Escape now opens the menu from the mission debug view.
+- The executables now carry their version, so the launcher can read it before the game has ever run. Added UseWSE2Effect and EffectShaderModel options to launcher.
+- HTTP requests now use the system proxy, as vanilla does.
+- Fewer frame time spikes from graphics buffer rebuilds (`[Graphics] fVertexBufferHeadroom`, `iVertexBufferMaxMegabytes`; `bGraphicsBufferStats` logs what the buffers hold), faster shadow map baking and bone uploads.
+- Character shadows are redrawn at least 8 times a second at any distance (`[FakeCharacterShadows] fFakeCharacterShadowMinUpdateRate`).
+- Fixed display driver resets (TDR) in large battles.
+- Fixed the screen staying black after a display driver reset with Direct3D9Ex.
+- Fixed meshes going missing for a frame when a vertex buffer ran out of room.
+- Fixed meshes shared by several agents sometimes drawing with another agent's heraldic colours or texture offset when instancing is enabled.
+- Fixed vegetation on generated scenes getting darker after every Alt+Tab or `rebuild_shadow_map`.
+- Fixed scene props handled as flora disappearing past the flora degrade distance.
+- Fixed meshes in range of more than four lamps sometimes dropping one of the four strongest.
+- Fixed a crash when hovering an item with a corrupted modifier in the inventory.
+- Fixed a crash when a scene was freed while the render thread was still drawing it.
+- Fixed a crash in the Lua log callback when the render thread wrote to the log.
+- Fixed memory corruption when loading collision bodies with five-vertex faces, and degenerate collision faces with two vertices; such faces are now split into quads and triangles, or dropped.
+- Fixed the game hanging at startup with `iMaxFrameRate=0`; zero now means no limit, on dedicated servers too.
+- Fixed the last three rows of the battle options window being impossible to scroll to.
+- Fixed the Chinese IME closing the chat box, and the IME stopping working after the Steam overlay was opened.
+- Fixed bots frozen in mid-air beside an `ai_limiter` barrier on x64.
+- Fixed player movement on slopes differing from vanilla servers on the x86 (Havok) build.
+- Fixed shield breaks playing at a random pitch, and voice pitch varying on every skin instead of skin 0 only (`[Sound] iVoicePitchVariationSkins`).
+- Fixed `missile_get_cur_position` operation.
+
 ## 1.1.5.4
 - Added `show_hud` and `start_conversation_presentation` operations.
 - Added a vertically inverted mouse mode for attack and block direction control (swaps up and down, keeps left and right).

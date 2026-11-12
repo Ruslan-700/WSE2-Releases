@@ -49,7 +49,7 @@ ui_free_look|Vista libre
 ui_vsync|Sincronización vertical
 ui_msaa|Antialiasing (MSAA)
 ui_atoc|Antialiasing de transparencia (MSAA)
-ui_fxaa|Antialiasing (FXAA)
+ui_fxaa|Antialiasing (FXAA / SMAA)
 ui_postprocess|Filtro de posprocesado
 ui_postprocess_light|Nitidez ligera
 ui_postprocess_strong|Nitidez fuerte
@@ -101,11 +101,11 @@ ui_ragdoll_soak_apply_force|Los cadáveres ragdoll se mueven al golpearlos
 ui_vsync_tooltip|Previene el tearing de pantalla, puede causar retraso de entrada\n\nCoste de rendimiento: <c=0xFF0000>Alto</c>
 ui_msaa_tooltip|Suaviza bordes dentados en objetos sólidos\n\nCoste de rendimiento: <c=0xFF0000>Alto</c>
 ui_atoc_tooltip|Suaviza bordes dentados en objetos semitransparentes\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
-ui_fxaa_tooltip|Suaviza bordes dentados, desenfoca significativamente la pantalla\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
+ui_fxaa_tooltip|Suaviza bordes dentados tras dibujar el fotograma. FXAA es más barato y\ndesenfoca el detalle fino con ellos; SMAA halla el borde y no toca el resto\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
 ui_anisotropic_filtering_tooltip|Reduce el desenfoque en superficies distantes\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
-ui_sound_occlusion_tooltip|Imita cómo se perciben los sonidos en entornos cerrados, es decir, cuando hay barreras cerca de la fuente de sonido o del oyente\n\nCoste de rendimiento: <c=0xFF0000>Alto</c>
-ui_show_render_stats_wse2_tooltip|Muestra contadores del renderizador por fotograma: llamadas de dibujo, objetos visibles, skinning por CPU y GPU, sombras y tiempos de hilo\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
-ui_show_simulation_stats_wse2_tooltip|Muestra en qué se va un paso de simulación: física, agentes, IA, disparadores, escena, red y llamadas de script\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_sound_occlusion_tooltip|Imita cómo se perciben los sonidos en entornos cerrados, es decir,\ncuando hay barreras cerca de la fuente de sonido o del oyente\nLos sonidos a más de 80 m no se trazan\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_show_render_stats_wse2_tooltip|Muestra contadores del renderizador por fotograma: llamadas de dibujo,\nobjetos visibles, skinning por CPU y GPU, sombras y tiempos de hilo\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_show_simulation_stats_wse2_tooltip|Muestra en qué se va un paso de simulación: física, agentes, IA,\ndisparadores, escena, red y llamadas de script\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
 ui_update_wse2_version|Por favor, actualice su versión de WSE2 o será expulsado de este servidor.
 ui_server_for_wse2_campaign|Este servidor es para una campaña en línea en WSE2. Por favor, inicie WSE2 y seleccione «Unirse a una campaña».
 ui_server_for_standart_game_modes|Este servidor es para modos de juego estándar, por favor seleccione «Unirse a una partida».
@@ -113,6 +113,8 @@ ui_enable_cheats_wse2|Activar trucos
 ui_enable_edit_mode_wse2|Activar modo de edición (Advertencia: ralentiza el juego.)
 ui_language_wse2|Idioma:
 ui_ondemand_textures_wse2|Cargar texturas bajo demanda
+ui_map_sun_moves_wse2|Sol en movimiento en el mapa
+ui_map_sun_moves_wse2_tooltip|El sol recorre el cielo en el mapa del mundo en vez de quedarse en una hora fija.\nLas sombras lo siguen a saltos de una hora; las laderas, de forma continua.\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
 ui_map_editor|Editor de mapas
 ui_terrain_editor|Editor de terreno
 ui_debug|Depuración
@@ -147,3 +149,24 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
+ui_flora_wind|Viento en la vegetación
+ui_flora_wind_tooltip|La hierba, los arbustos y las ramas se mecen con el viento,\nmientras sus troncos siguen firmes\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_flora_wind_unavailable|Requiere los shaders de WSE2 para este módulo.
+ui_grass_draw_distance|Distancia de dibujado de hierba
+ui_meter_value|%d m
+ui_grass_draw_distance_unavailable|Requiere los shaders de WSE2 para este módulo.
+ui_ssao|Oclusión ambiental
+ui_ssao_tooltip|Oscurece esquinas y pliegues donde no llega la luz\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
+ui_god_rays|Rayos de sol
+ui_god_rays_tooltip|Haces de luz en el aire donde algo se interpone ante el sol\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
+ui_frame_depth|Profundidad del fotograma
+ui_frame_depth_tooltip|Toma la profundidad de los efectos del propio fotograma\nen vez de dibujar la escena una segunda vez, así los objetos\nen movimiento se sombrean bien en cualquier módulo\nRequiere efectos de profundidad y sin MSAA\n\n<c=0x00FF00>Mejora el rendimiento</c>
+ui_shader_blood|Calcomanías de sangre
+ui_shader_blood_tooltip|Añade una salpicadura con forma propia donde cayó el golpe,\nque permanece en su sitio mientras el cuerpo se mueve,\nademás de las manchas en los colores de los vértices\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_shader_blood_unavailable|Requiere los shaders de WSE2 para shader model 3.
+ui_soft_shadows|Sombras suaves
+ui_soft_shadows_tooltip|Reparte el borde de las sombras del sol entre varios téxeles\nen lugar de dejar una escalera\n\nCoste de rendimiento: <c=0xFFAA00>Medio</c>
+ui_soft_shadows_unavailable|Requiere los shaders de WSE2 para shader model 3.
+ui_water_foam|Espuma en la orilla
+ui_water_foam_tooltip|Rompiente a lo largo de la línea donde el agua se encuentra con la orilla\n\nCoste de rendimiento: <c=0x00FF00>Bajo</c>
+ui_water_foam_unavailable|Requiere los shaders de WSE2 para shader model 3.

@@ -592,7 +592,6 @@ technique postFX_DofBlurLDR_Depth
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-
 float4 FinalScenePassPS(uniform const bool use_dof, uniform const int use_hdr, uniform const bool use_auto_exp, float2 texCoord: TEXCOORD0) : COLOR {
 		
 	// Sample the scene
@@ -731,7 +730,9 @@ technique postFX_final_1_1_0{	pass P0	{   VertexShader = vs_main_postFX_compiled
 technique postFX_final_1_2_0{	pass P0	{   VertexShader = vs_main_postFX_compiled;		PixelShader = compile PS_2_X FinalScenePassPS(  true, 2, false);	} }
 technique postFX_final_1_1_1{	pass P0	{   VertexShader = vs_main_postFX_compiled;		PixelShader = compile PS_2_X FinalScenePassPS(  true, 1, true);	} }
 technique postFX_final_1_2_1{	pass P0	{   VertexShader = vs_main_postFX_compiled;		PixelShader = compile PS_2_X FinalScenePassPS(  true, 2, true);	} }
+                                                                                                                                                 
 
+//Recycle Bin: 
 #if WSE2
 #include "postFX_WSE2.fx"
 #endif

@@ -49,7 +49,7 @@ ui_free_look|自 由 视 角
 ui_vsync|垂 直 同 步 
 ui_msaa|抗 锯 齿 （ MSAA ） 
 ui_atoc|透 明 抗 锯 齿 （ MSAA ） 
-ui_fxaa|抗 锯 齿 （ FXAA ） 
+ui_fxaa|抗 锯 齿 （ FXAA / SMAA ） 
 ui_postprocess|后 期 处 理 滤 镜 
 ui_postprocess_light|轻 度 锐 化 
 ui_postprocess_strong|强 力 锐 化 
@@ -102,9 +102,9 @@ ui_ragdoll_soak_apply_force|布 娃 娃 尸 体 被 击 中 时 会 移 动
 ui_vsync_tooltip|防 止 画 面 撕 裂 ， 可 能 导 致 输 入 延 迟\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
 ui_msaa_tooltip|平 滑 实 体 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
 ui_atoc_tooltip|平 滑 半 透 明 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
-ui_fxaa_tooltip|平 滑 锯 齿 边 缘 ， 会 明 显 模 糊 画 面\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_fxaa_tooltip|在画面绘制后平滑锯齿边缘。FXAA 更省，但会把细节一起模糊\nSMAA 只找出边缘，其余保持不动\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
 ui_anisotropic_filtering_tooltip|减 少 远 处 表 面 的 模 糊\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
-ui_sound_occlusion_tooltip|模 拟 封 闭 环 境 中 的 声 音 感 知 效 果 ， 即 声 源 或 听 者 附 近 有 障 碍 物 的 情 况\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
+ui_sound_occlusion_tooltip|模 拟 封 闭 环 境 中 的 声 音 感 知 效 果 ，\n即 声 源 或 听 者 附 近 有 障 碍 物 的 情 况\n80 米 以 外 的 声 音 不 进 行 计 算\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_show_render_stats_wse2_tooltip|显 示 每 帧 渲 染 计 数 ： 绘 制 调 用 、 可 见 对 象 、 CPU 和 GPU 蒙 皮 、 阴 影 和 线 程 耗 时 \n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_show_simulation_stats_wse2_tooltip|显 示 一 个 模 拟 步 骤 的 耗 时 去 向 ： 物 理 、 单 位 、 AI 、 触 发 器 、 场 景 、 网 络 和 脚 本 调 用 \n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_update_wse2_version|请 更 新 您 的 WSE2版 本 ， 否 则 您 将 被 踢 出 此 服 务 器 。 
@@ -114,6 +114,8 @@ ui_enable_cheats_wse2|启 用 作 弊
 ui_enable_edit_mode_wse2|启 用 编 辑 模 式 （ 警 告 ： 会 降 低 游 戏 速 度 。 ） 
 ui_language_wse2|语 言 ： 
 ui_ondemand_textures_wse2|按 需 加 载 纹 理 
+ui_map_sun_moves_wse2|地 图 上 的 太 阳 随 时 间 移 动 
+ui_map_sun_moves_wse2_tooltip|世 界 地 图 上 的 太 阳 会 在 天 空 中 移 动 ， 而 不 是 固 定 在 某 个 时 刻 。\n阴 影 以 每 小 时 一 步 跟 随 ， 山 坡 的 受 光 面 则 连 续 变 化 。\n\n性 能 消 耗 ： <c=0x00FF00>低</c>
 ui_map_editor|地 图 编 辑 器 
 ui_terrain_editor|地 形 编 辑 器 
 ui_debug|调 试 
@@ -148,3 +150,24 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
+ui_flora_wind|植被随风摆动
+ui_flora_wind_tooltip|草、灌木和树枝随风摇曳，而树干保持不动\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_flora_wind_unavailable|需要适用于此模组的 WSE2 着色器。
+ui_grass_draw_distance|草地绘制距离
+ui_meter_value|%d 米
+ui_grass_draw_distance_unavailable|需要适用于此模组的 WSE2 着色器。
+ui_ssao|环境光遮蔽
+ui_ssao_tooltip|使光线难以到达的角落和缝隙变暗\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_god_rays|体积光
+ui_god_rays_tooltip|太阳被遮挡时在空气中投下光束\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_frame_depth|从画面获取深度
+ui_frame_depth_tooltip|直接从画面获取特效所需的深度，而不是再绘制一遍场景，\n因此任何模组中的运动物体都能得到正确的阴影\n需要开启深度特效并关闭 MSAA\n\n<c=0x00FF00>提升性能</c>
+ui_shader_blood|血迹贴花
+ui_shader_blood_tooltip|在挨打的位置添加带形状的血花，并随身体移动而留在原处，\n叠加在顶点颜色中的血迹之上\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_shader_blood_unavailable|需要 WSE2 的着色器模型 3 着色器。
+ui_soft_shadows|软阴影
+ui_soft_shadows_tooltip|将 阳 光 阴 影 的 边 缘 分 散 到 数 个 纹 素 上 ， 而 不 是 留 下 锯 齿\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_soft_shadows_unavailable|需要 WSE2 的着色器模型 3 着色器。
+ui_water_foam|岸边浪花
+ui_water_foam_tooltip|水与岸交界处的浪花泡沫\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_water_foam_unavailable|需要 WSE2 的着色器模型 3 着色器。

@@ -7,3 +7,9 @@ For module specific settings edit module_config_template.ini and put to your mod
 
 Documentation
 https://forums.taleworlds.com/index.php?threads/warband-script-enhancer.384882/#post-9126370
+
+Releases
+https://github.com/Ruslan-700/WSE2-Releases
+
+Shaders
+https://github.com/Ruslan-700/WSE2_Shader_Patch
