@@ -1,134 +1,135 @@
-ui_first_person_field_of_view|視野（第一人稱）
-ui_third_person_field_of_view|視野（第三人稱）
-ui_banner_mode|顯示旗幟
-ui_banner_outline_mode|顯示旗幟輪廓
-ui_dynamic_banner_transparency|動態旗幟透明度
-ui_on_group|在隊伍上
-ui_on_friendlies|在友方上
-ui_on_everyone|在所有人上
-ui_show_multiplayer_chat|顯示聊天
-ui_show_multiplayer_team_chat|顯示隊伍聊天
-ui_difficulty_rating_percentage|難度 = %d%%
-ui_general_options|一般
-ui_battle_options|戰鬥
-ui_campaign_options|戰役
-ui_multiplayer_options|多人遊戲
-ui_video_options|圖形
-ui_sound_options|聲音
-ui_input_options|輸入
-ui_edit_mode_options|編輯模式
-ui_maximum_framerate|最大幀率
-ui_show_framerate_wse2|顯示幀率
-ui_show_render_stats_wse2|顯示渲染統計
-ui_show_simulation_stats_wse2|顯示模擬統計
-ui_estimated_performance|效能 = %d%%
-ui_change_reflections_explanation|全反射非常消耗效能。如果幀率較低，請關閉此選項。
-ui_report_proficiency|報告熟練度
-ui_abysmal|極差
-ui_clear|清除
-ui_walk|步行
-ui_walk_toggle|步行（切換）
-ui_rear_horse|馬匹揚蹄
-ui_hide_ui|切換介面顯示
-ui_hide_tooltips|切換提示顯示
-ui_listen_server_could_not_be_started|無法啟動伺服器。請確保沒有其他程式正在使用連接埠 %d。
-ui_water_reflections|水面反射
-ui_reflections_quality|水面反射品質
-ui_sky|天空
-ui_sky_landscape_objects|天空、地形和物體
-ui_sound_occlusion|聲音遮蔽
-ui_sound_occlusion_filter|遮蔽低通濾波器
-ui_sound_hrtf_filter|HRTF 低通濾波器
-ui_sound_distance_filter|距離低/高通濾波器
-ui_scene_restart_required|部分設定將在進入新場景時生效：
-ui_game_restart_required|部分設定將在重新啟動遊戲後生效：
-ui_weapon_trails|武器軌跡
-ui_windowed|視窗化
-ui_dynamic_batching|動態網格批次處理
-ui_free_look|自由視角
-ui_vsync|垂直同步
-ui_msaa|反鋸齒（MSAA）
-ui_atoc|透明反鋸齒（MSAA）
-ui_fxaa|反鋸齒（FXAA / SMAA）
-ui_postprocess|後製處理濾鏡
-ui_postprocess_light|輕度銳化
-ui_postprocess_strong|強力銳化
-ui_postprocess_color|銳化 + 調色
-ui_multiplayer_kills|擊殺訊息
-ui_all_kills|全部
-ui_own|自己的
-ui_player_deaths|玩家死亡
-ui_own_kills_and_player_deaths|自己的擊殺和玩家死亡
-ui_sun_flare|太陽眩光
-ui_enable_alt_f4|啟用 Alt+F4 退出
-ui_invert_mouse_x_axis|反轉滑鼠 X 軸
-ui_enable_sound|啟用聲音
-ui_enable_music|啟用音樂
-ui_toggle_background|背景
-ui_font_scale|字型縮放
-ui_messages_font_scale|訊息字型縮放
-ui_spectator_camera_controls|觀戰攝影機控制
-ui_faster_camera|加速攝影機移動
-ui_slower_camera|減速攝影機移動
-ui_camera_closer|拉近攝影機
-ui_camera_farther|拉遠攝影機
-ui_particle_degrade_distance|粒子系統退化距離
-ui_sheath_primary_weapon|收起武器
-ui_sheath_secondary_weapon|收起盾牌
-ui_drop_primary_weapon|丟棄武器
-ui_drop_secondary_weapon|丟棄盾牌
-ui_screenshot_format|截圖格式
-ui_control_block_direction|格擋控制：
-ui_control_block_direction_mounted|騎乘格擋控制：
-ui_control_attack_direction|攻擊控制：
-ui_control_attack_direction_mounted|騎乘攻擊控制：
-ui_by_inverse_vertical_mouse_movement|垂直反向滑鼠移動
-ui_preset_change|預設更改
-ui_blood_amount|血量
+ui_first_person_field_of_view|視 野 （ 第 一 人 稱 ） 
+ui_third_person_field_of_view|視 野 （ 第 三 人 稱 ） 
+ui_banner_mode|顯 示 旗 幟 
+ui_banner_outline_mode|顯 示 旗 幟 輪 廓 
+ui_dynamic_banner_transparency|動 態 旗 幟 透 明 度 
+ui_on_group|隊 伍 
+ui_on_friendlies|友 軍 
+ui_on_everyone|所 有 人 
+ui_show_multiplayer_chat|顯 示 聊 天 
+ui_show_multiplayer_team_chat|顯 示 團 隊 聊 天 
+ui_difficulty_rating_percentage|難 度 = %d%%
+ui_general_options|常 規 
+ui_battle_options|戰 鬥 
+ui_campaign_options|戰 役 
+ui_multiplayer_options|多 人 遊 戲 
+ui_video_options|圖 形 
+ui_sound_options|聲 音 
+ui_input_options|輸 入 
+ui_edit_mode_options|編 輯 模 式 
+ui_maximum_framerate|最 大 幀 率 
+ui_show_framerate_wse2|顯 示 幀 率 
+ui_show_render_stats_wse2|顯 示 渲 染 統 計 
+ui_show_simulation_stats_wse2|顯 示 模 擬 統 計 
+ui_estimated_performance|效 能 = %d%%
+ui_change_reflections_explanation|完 整 反 射 非 常 消 耗 效 能 。 如 果 幀 率 較 低 ， 請 關 閉 此 選 項 。 
+ui_report_proficiency|報 告 熟 練 度 
+ui_abysmal|極 差 
+ui_clear|清 除 
+ui_walk|步 行 
+ui_walk_toggle|步 行 （ 切 換 ） 
+ui_rear_horse|馬 匹 揚 蹄 
+ui_hide_ui|切 換 介 面 顯 示 
+ui_hide_tooltips|切 換 提 示 顯 示 
+ui_listen_server_could_not_be_started|無 法 啟 動 監 聽 伺 服 器 。 請 確 保 沒 有 其 他 程 式 正 在 使 用 連 接 埠 %d 。 
+ui_water_reflections|水 面 反 射 
+ui_reflections_quality|水 面 反 射 品 質 
+ui_sky|天 空 
+ui_sky_landscape_objects|天 空 、 地 形 和 物 體 
+ui_sound_occlusion|聲 音 遮 蔽 
+ui_sound_occlusion_filter|遮 蔽 低 通 濾 波 器 
+ui_sound_hrtf_filter|HRTF 低 通 濾 波 器 
+ui_sound_distance_filter|距 離 低 通 / 高 通 濾 波 器 
+ui_scene_restart_required|部 分 設 定 將 在 進 入 新 場 景 時 生 效 ： 
+ui_game_restart_required|部 分 設 定 將 在 重 啟 遊 戲 後 生 效 ： 
+ui_weapon_trails|武 器 拖 尾 
+ui_windowed|視 窗 化 
+ui_dynamic_batching|動 態 網 格 批 次 處 理 
+ui_free_look|自 由 視 角 
+ui_vsync|垂 直 同 步 
+ui_msaa|反 鋸 齒 （ MSAA ） 
+ui_atoc|透 明 反 鋸 齒 （ MSAA ） 
+ui_fxaa|反 鋸 齒 （ FXAA / SMAA ） 
+ui_postprocess|後 製 處 理 濾 鏡 
+ui_postprocess_light|輕 度 銳 化 
+ui_postprocess_strong|強 力 銳 化 
+ui_postprocess_color|銳 化 + 調 色 
+ui_multiplayer_kills|擊 殺 訊 息 
+ui_all_kills|全 部 
+ui_own|僅 自 己 
+ui_player_deaths|玩 家 死 亡 
+ui_own_kills_and_player_deaths|自 己 的 擊 殺 和 玩 家 死 亡 
+ui_sun_flare|太 陽 眩 光 
+ui_enable_alt_f4|啟 用 Alt+F4退 出 
+ui_invert_mouse_x_axis|反 轉 滑 鼠 X軸 
+ui_enable_sound|啟 用 音 效 
+ui_enable_music|啟 用 音 樂 
+ui_enable_sound_variation|打 開 聲 效 變 化 
+ui_toggle_background|背 景 
+ui_font_scale|字 型 縮 放 
+ui_messages_font_scale|訊 息 字 型 縮 放 
+ui_spectator_camera_controls|觀 戰 攝 影 機 控 制 
+ui_faster_camera|加 速 攝 影 機 移 動 
+ui_slower_camera|減 速 攝 影 機 移 動 
+ui_camera_closer|拉 近 攝 影 機 
+ui_camera_farther|拉 遠 攝 影 機 
+ui_particle_degrade_distance|粒 子 系 統 降 級 距 離 
+ui_sheath_primary_weapon|收 起 武 器 
+ui_sheath_secondary_weapon|收 起 盾 牌 
+ui_drop_primary_weapon|丟 棄 武 器 
+ui_drop_secondary_weapon|丟 棄 盾 牌 
+ui_screenshot_format|截 圖 格 式 
+ui_control_block_direction|格 擋 控 制 ： 
+ui_control_block_direction_mounted|騎 乘 格 擋 控 制 ： 
+ui_control_attack_direction|攻 擊 控 制 ： 
+ui_control_attack_direction_mounted|騎 乘 攻 擊 控 制 ： 
+ui_by_inverse_vertical_mouse_movement|垂 直 反 轉 滑 鼠 移 動 
+ui_preset_change|預 設 更 改 
+ui_blood_amount|血 跡 數 量 
 ui_beta|β
-ui_partial|部分
-ui_data_file_mismatch|您的模組檔案已損壞或被竄改
-ui_randomize_client_port|隨機客戶端連接埠（推薦，除非您在防火牆後面）
-ui_client_port|客戶端連接埠
-ui_server_port|伺服器連接埠
-ui_unable_to_bind_socket|無法連線，連接埠已被佔用。
-ui_synchronization_error|同步錯誤
-ui_dismount_horse_on_use|使用時下馬
-ui_maximum_game_frame_rate|最大遊戲幀率
-ui_autoexp|自動曝光
-ui_ragdoll_soak|可以擊中布偶屍體
-ui_ragdoll_soak_apply_force|布偶屍體被擊中時會移動
-ui_vsync_tooltip|防止畫面撕裂，可能導致輸入延遲\n\n效能消耗：<c=0xFF0000>高</c>
-ui_msaa_tooltip|平滑實體物件的鋸齒邊緣\n\n效能消耗：<c=0xFF0000>高</c>
-ui_atoc_tooltip|平滑半透明物件的鋸齒邊緣\n\n效能消耗：<c=0x00FF00>低</c>
-ui_fxaa_tooltip|在畫面繪製後平滑鋸齒邊緣。FXAA 更省，但會把細節一起模糊\nSMAA 只找出邊緣，其餘保持不動\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_anisotropic_filtering_tooltip|減少遠處表面的模糊\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_sound_occlusion_tooltip|模擬封閉環境中的聲音感知效果，\n即聲源或聽者附近有障礙物的情況\n80 公尺以外的聲音不進行計算\n\n效能消耗：<c=0x00FF00>低</c>
-ui_show_render_stats_wse2_tooltip|顯示每幀渲染計數：繪製呼叫、可見物件、CPU 和 GPU 蒙皮、陰影和執行緒耗時\n\n效能消耗：<c=0x00FF00>低</c>
-ui_show_simulation_stats_wse2_tooltip|顯示一個模擬步驟的耗時去向：物理、單位、AI、觸發器、場景、網路和腳本呼叫\n\n效能消耗：<c=0x00FF00>低</c>
-ui_update_wse2_version|請更新您的 WSE2 版本，否則您將被踢出此伺服器。
-ui_server_for_wse2_campaign|此伺服器用於 WSE2 線上戰役，請啟動 WSE2 並選擇「加入戰役」。
-ui_server_for_standart_game_modes|此伺服器用於標準遊戲模式，請選擇「加入遊戲」。
-ui_enable_cheats_wse2|啟用作弊
-ui_enable_edit_mode_wse2|啟用編輯模式（警告：會降低遊戲速度。）
-ui_language_wse2|語言：
-ui_ondemand_textures_wse2|按需載入材質
-ui_map_sun_moves_wse2|地圖上的太陽隨時間移動
-ui_map_sun_moves_wse2_tooltip|世界地圖上的太陽會在天空中移動，而不是固定在某個時刻。\n陰影以每小時一步跟隨，山坡的受光面則連續變化。\n\n效能消耗：<c=0x00FF00>低</c>
-ui_map_editor|地圖編輯器
-ui_terrain_editor|地形編輯器
-ui_debug|偵錯
-ui_restore_module_data|恢復模組資料
-ui_reload_ui_variables|重新載入 UI 變數
-ui_set_lod_quality|設定 LOD 品質
-ui_auto|自動
-ui_freeze|凍結
-ui_create_language_template|建立語言範本
-ui_mark_nontranslated_lines|標記未翻譯的行
-ui_create_language_template_required_game|請在使用此功能之前建立新遊戲或恢復遊戲！
-ui_create_language_template_generated|語言範本檔案已產生至 new_language 目錄！
-ui_create_language_template_generated_marked|語言範本檔案已產生至 new_language 目錄！未翻譯的文字以 {***} 標記。您可以使用它作為搜尋關鍵字。
-ui_join_campaign|加入戰役
+ui_partial|部 分 
+ui_data_file_mismatch|您 的 模 組 檔 案 已 損 壞 或 被 竄 改 
+ui_randomize_client_port|隨 機 客 戶 端 連 接 埠 （ 推 薦 ， 除 非 您 在 防 火 牆 後 面 ） 
+ui_client_port|客 戶 端 連 接 埠 
+ui_server_port|伺 服 器 連 接 埠 
+ui_unable_to_bind_socket|無 法 連 線 ， 連 接 埠 已 被 佔 用 。 
+ui_synchronization_error|同 步 錯 誤 
+ui_dismount_horse_on_use|使 用 時 下 馬 
+ui_maximum_game_frame_rate|最 大 遊 戲 幀 率 
+ui_autoexp|自 動 曝 光 
+ui_ragdoll_soak|可 擊 中 布 娃 娃 狀 態 屍 體 
+ui_ragdoll_soak_apply_force|布 娃 娃 狀 態 屍 體 被 擊 中 時 會 移 動 
+ui_vsync_tooltip|防 止 畫 面 撕 裂 ， 可 能 導 致 輸 入 延 遲\n\n效 能 消 耗 ：<c=0xFF0000>高</c>
+ui_msaa_tooltip|平 滑 實 體 物 件 的 鋸 齒 邊 緣\n\n效 能 消 耗 ：<c=0xFF0000>高</c>
+ui_atoc_tooltip|平 滑 半 透 明 物 件 的 鋸 齒 邊 緣\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_fxaa_tooltip|在 畫 面 繪 製 後 平 滑 鋸 齒 邊 緣 。 FXAA 更 省 ， 但 會 把 細 節 一 起 模 糊\nSMAA 只 找 出 邊 緣 ， 其 餘 保 持 不 動\n\n效 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_anisotropic_filtering_tooltip|減 少 遠 處 表 面 的 模 糊\n\n效 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_sound_occlusion_tooltip|模 擬 封 閉 環 境 中 的 聲 音 感 知 效 果 ，\n即 聲 源 或 聽 者 附 近 有 障 礙 物 的 情 況\n80 公 尺 以 外 的 聲 音 不 進 行 計 算\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_show_render_stats_wse2_tooltip|顯 示 每 幀 渲 染 計 數 ： 繪 製 呼 叫 、 可 見 物 件 、 CPU 和 GPU 蒙 皮 、 陰 影 和 執 行 緒 耗 時\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_show_simulation_stats_wse2_tooltip|顯 示 一 個 模 擬 步 驟 的 耗 時 去 向 ： 物 理 、 單 位 、 AI、 觸 發 器 、 場 景 、 網 路 和 腳 本 呼 叫\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_update_wse2_version|請 更 新 您 的 WSE2版 本 ， 否 則 您 將 被 踢 出 此 伺 服 器 。 
+ui_server_for_wse2_campaign|此 伺 服 器 用 於 WSE2線 上 戰 役 ， 請 啟 動 WSE2 並 選 擇 "加 入 戰 役 " 。 
+ui_server_for_standart_game_modes|此 伺 服 器 用 於 標 準 遊 戲 模 式 ， 請 選 擇 "加 入 遊 戲 " 。 
+ui_enable_cheats_wse2|啟 用 作 弊 
+ui_enable_edit_mode_wse2|啟 用 編 輯 模 式 （ 警 告 ： 會 降 低 遊 戲 速 度 。 ） 
+ui_language_wse2|語 言 ： 
+ui_ondemand_textures_wse2|按 需 載 入 材 質 
+ui_map_sun_moves_wse2|地 圖 上 的 太 陽 隨 時 間 移 動 
+ui_map_sun_moves_wse2_tooltip|世 界 地 圖 上 的 太 陽 會 在 天 空 中 移 動 ， 而 不 是 固 定 在 某 個 時 刻 。\n陰 影 以 每 小 時 一 步 跟 隨 ， 山 坡 的 受 光 面 則 連 續 變 化 。\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_map_editor|地 圖 編 輯 器 
+ui_terrain_editor|地 形 編 輯 器 
+ui_debug|偵 錯 
+ui_restore_module_data|恢 復 模 組 資 料 
+ui_reload_ui_variables|重 新 載 入 UI 變 數 
+ui_set_lod_quality|設 定 LOD品 質 
+ui_auto|自 動 
+ui_freeze|凍 結 
+ui_create_language_template|建 立 語 言 範 本 
+ui_mark_nontranslated_lines|標 記 未 翻 譯 的 行 
+ui_create_language_template_required_game|請 在 使 用 此 功 能 之 前 建 立 新 遊 戲 或 恢 復 遊 戲 ！ 
+ui_create_language_template_generated|語 言 範 本 檔 案 已 產 生 至 new_language 目 錄 ！ 
+ui_create_language_template_generated_marked|語 言 範 本 檔 案 已 產 生 至 new_language 目 錄 ！ 未 翻 譯 的 文 字 以 {***}標 記 。 您 可 以 使 用 它 作 為 搜 尋 關 鍵 字 。 
+ui_join_campaign|加 入 戰 役 
 ui_custom_key_1|
 ui_custom_key_2|
 ui_custom_key_3|
@@ -149,24 +150,50 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
-ui_flora_wind|植被隨風擺動
-ui_flora_wind_tooltip|草、灌木和樹枝隨風搖曳，而樹幹保持不動\n\n效能消耗：<c=0x00FF00>低</c>
-ui_flora_wind_unavailable|需要適用於此模組的 WSE2 著色器。
-ui_grass_draw_distance|草地繪製距離
-ui_meter_value|%d 米
-ui_grass_draw_distance_unavailable|需要適用於此模組的 WSE2 著色器。
-ui_ssao|環境光遮蔽
-ui_ssao_tooltip|使光線難以到達的角落和縫隙變暗\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_god_rays|體積光
-ui_god_rays_tooltip|太陽被遮擋時在空氣中投下光束\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_frame_depth|從畫面取得深度
-ui_frame_depth_tooltip|直接從畫面取得特效所需的深度，而不是再繪製一遍場景，\n因此任何模組中的移動物體都能得到正確的陰影\n需要開啟深度特效並關閉 MSAA\n\n<c=0x00FF00>提升效能</c>
-ui_shader_blood|血跡貼花
-ui_shader_blood_tooltip|在挨打的位置添加帶形狀的血花，並隨身體移動而留在原處，\n疊加在頂點顏色中的血跡之上\n\n效能消耗：<c=0x00FF00>低</c>
-ui_shader_blood_unavailable|需要 WSE2 的著色器模型 3 著色器。
-ui_soft_shadows|軟陰影
-ui_soft_shadows_tooltip|將 陽 光 陰 影 的 邊 緣 分 散 到 數 個 紋 素 上 ， 而 不 是 留 下 鋸 齒\n\n效能消耗：<c=0xFFAA00>中</c>
-ui_soft_shadows_unavailable|需要 WSE2 的著色器模型 3 著色器。
-ui_water_foam|岸邊浪花
-ui_water_foam_tooltip|水與岸交界處的浪花泡沫\n\n效能消耗：<c=0x00FF00>低</c>
-ui_water_foam_unavailable|需要 WSE2 的著色器模型 3 著色器。
+ui_flora_wind|植 被 隨 風 擺 動 
+ui_flora_wind_tooltip|草 、 灌 木 和 樹 枝 隨 風 搖 曳 ， 而 枝 幹 保 持 不 動\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_flora_wind_unavailable|需 要 適 用 於 此 模 組 的 WSE2 著 色 器 。 
+ui_grass_draw_distance|草 地 繪 製 距 離 
+ui_meter_value|%d 米 
+ui_grass_draw_distance_unavailable|需 要 適 用 於 此 模 組 的 WSE2 著 色 器 。 
+ui_ssao|環 境 光 遮 蔽 
+ui_ssao_tooltip|使 光 線 難 以 到 達 的 角 落 和 縫 隙 變 暗\n\n效 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_god_rays|體 積 光 
+ui_god_rays_tooltip|太 陽 被 遮 擋 時 在 空 氣 中 投 下 光 束\n\n效 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_frame_depth|從 畫 面 取 得 深 度 
+ui_frame_depth_tooltip|直 接 從 畫 面 取 得 特 效 所 需 的 深 度 ， 而 不 是 再 繪 製 一 遍 場 景 ，\n因 此 任 何 模 組 中 的 運 動 物 體 都 能 得 到 正 確 的 著 色\n需 要 開 啟 深 度 特 效 並 關 閉 MSAA\n\n<c=0x00FF00>提 升 效 能</c>
+ui_shader_blood|血 跡 貼 花 
+ui_shader_blood_tooltip|在 挨 打 的 位 置 添 加 帶 形 狀 的 血 花 ， 並 隨 身 體 移 動 而 留 在 原 處 ，\n疊 加 在 頂 點 顏 色 中 的 血 跡 之 上\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_shader_blood_unavailable|需 要 使 用 WSE2 著 色 器 模 型 3 。 
+ui_soft_shadows|軟 陰 影 
+ui_soft_shadows_tooltip|將 陽 光 陰 影 的 邊 緣 分 散 到 數 個 紋 素 上 ， 而 不 是 留 下 鋸 齒\n\n效 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_soft_shadows_unavailable|需 要 使 用 WSE2 著 色 器 模 型 3 。 
+ui_water_foam|岸 邊 浪 花 
+ui_water_foam_tooltip|水 與 岸 交 界 處 的 浪 花 泡 沫\n\n效 能 消 耗 ：<c=0x00FF00>低</c>
+ui_water_foam_unavailable|需 要 使 用 WSE2 著 色 器 模 型 3 。 
+ui_play|開 始 遊 戲 
+ui_play_x64|開 始 遊 戲 (x64)
+ui_start_dedicated|啟 動 專 用 伺 服 器 
+ui_disable_sound|關 閉 音 效 
+ui_disable_music|關 閉 音 樂 
+ui_language|語 言 ： 
+ui_current_module|當 前 模 組 ： 
+ui_ondemand_textures|按 需 載 入 材 質 ： 
+ui_use_wse2_effect|使 用 WSE2 特 效 ： 
+ui_effect_shader_model|特 效 著 色 器 模 型 ： 
+ui_effect_shader_model_auto|自 動 
+ui_update_wse2|更 新 WSE2
+ui_install_wse2|安 裝 WSE2
+ui_version_is_up_to_date|當 前 WSE2 版 本 已 是 最 新 。 
+ui_newer_version_available|有 更 新 的 WSE2 版 本 可 用 。 
+ui_wse2_not_installed|您 尚 未 安 裝 WSE2 。 
+ui_please_wait|請 稍 候 …
+ui_downloading_|正 在 下 載 
+ui_extracting|正 在 解 包 
+ui_update_installed|更 新 已 安 裝 。 
+ui_restart_launcher|重 啟 啟 動 器 
+ui_update_failed|更 新 失 敗 ： 
+ui_options|選 項 
+ui_save|保 存 
+ui_cancel|取 消 
+ui_exit|退 出 
