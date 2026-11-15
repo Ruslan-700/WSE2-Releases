@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.5.6
+- Fixed a large frame rate loss in missions — it hit modules that ship their own shader effect, the shader model 2 build, and anyone playing with the sky ambient cube turned off.
+- Fixed shadows breaking into stairs on surfaces lying at a grazing angle to the sun, leaves above all.
+- Fixed a crash on the first frame of a mission on the x86 client with modules that ship their own shader effect.
+- Fixed a crash when starting a new game with `bSkipTutorial`.
+- Less processor time per frame in big battles.
+- Updated the Simplified and Traditional Chinese translations.
+
 ## 1.1.5.5
 - WSE2 now loads the shader model 3 build of its effect (`mb_wse2_3_0.fxo`) wherever the hardware supports it (`[Graphics] iEffectShaderModel`: 0 = hardware decides, 2 = shader model 2 only, 3 = shader model 3 only). Most of the new graphics below need it.
 - New graphics features. Unless stated otherwise they are on by default, and switching one off restores the retail look:

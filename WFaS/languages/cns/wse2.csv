@@ -3,11 +3,11 @@ ui_third_person_field_of_view|视 野 （ 第 三 人 称 ）
 ui_banner_mode|显 示 旗 帜 
 ui_banner_outline_mode|显 示 旗 帜 轮 廓 
 ui_dynamic_banner_transparency|动 态 旗 帜 透 明 度 
-ui_on_group|在 队 伍 上 
-ui_on_friendlies|在 友 方 上 
-ui_on_everyone|在 所 有 人 上 
+ui_on_group|队 伍 
+ui_on_friendlies|友 军 
+ui_on_everyone|所 有 人 
 ui_show_multiplayer_chat|显 示 聊 天 
-ui_show_multiplayer_team_chat|显 示 队 伍 聊 天 
+ui_show_multiplayer_team_chat|显 示 团 队 聊 天 
 ui_difficulty_rating_percentage|难 度 = %d%%
 ui_general_options|常 规 
 ui_battle_options|战 斗 
@@ -22,7 +22,7 @@ ui_show_framerate_wse2|显 示 帧 率
 ui_show_render_stats_wse2|显 示 渲 染 统 计 
 ui_show_simulation_stats_wse2|显 示 模 拟 统 计 
 ui_estimated_performance|性 能 = %d%%
-ui_change_reflections_explanation|全 反 射 非 常 消 耗 性 能 。 如 果 帧 率 较 低 ， 请 关 闭 此 选 项 。 
+ui_change_reflections_explanation|完 整 反 射 非 常 消 耗 性 能 。 如 果 帧 率 较 低 ， 请 关 闭 此 选 项 。 
 ui_report_proficiency|报 告 熟 练 度 
 ui_abysmal|极 差 
 ui_clear|清 除 
@@ -31,7 +31,7 @@ ui_walk_toggle|步 行 （ 切 换 ）
 ui_rear_horse|马 匹 扬 蹄 
 ui_hide_ui|切 换 界 面 显 示 
 ui_hide_tooltips|切 换 提 示 显 示 
-ui_listen_server_could_not_be_started|无 法 启 动 服 务 器 。 请 确 保 没 有 其 他 程 序 正 在 使 用 端 口 %d 。 
+ui_listen_server_could_not_be_started|无 法 启 动 监 听 服 务 器 。 请 确 保 没 有 其 他 程 序 正 在 使 用 端 口 %d 。 
 ui_water_reflections|水 面 反 射 
 ui_reflections_quality|水 面 反 射 质 量 
 ui_sky|天 空 
@@ -39,10 +39,10 @@ ui_sky_landscape_objects|天 空 、 地 形 和 物 体
 ui_sound_occlusion|声 音 遮 蔽 
 ui_sound_occlusion_filter|遮 蔽 低 通 滤 波 器 
 ui_sound_hrtf_filter|HRTF 低 通 滤 波 器 
-ui_sound_distance_filter|距 离 低 / 高 通 滤 波 器 
+ui_sound_distance_filter|距 离 低 通  / 高 通 滤 波 器 
 ui_scene_restart_required|部 分 设 置 将 在 进 入 新 场 景 时 生 效 ： 
 ui_game_restart_required|部 分 设 置 将 在 重 启 游 戏 后 生 效 ： 
-ui_weapon_trails|武 器 轨 迹 
+ui_weapon_trails|武 器 拖 尾 
 ui_windowed|窗 口 化 
 ui_dynamic_batching|动 态 网 格 批 处 理 
 ui_free_look|自 由 视 角 
@@ -56,13 +56,13 @@ ui_postprocess_strong|强 力 锐 化
 ui_postprocess_color|锐 化 + 调 色 
 ui_multiplayer_kills|击 杀 消 息 
 ui_all_kills|全 部 
-ui_own|自 己 的 
+ui_own|仅 自 己 
 ui_player_deaths|玩 家 死 亡 
 ui_own_kills_and_player_deaths|自 己 的 击 杀 和 玩 家 死 亡 
 ui_sun_flare|太 阳 眩 光 
 ui_enable_alt_f4|启 用 Alt+F4退 出 
 ui_invert_mouse_x_axis|反 转 鼠 标 X轴 
-ui_enable_sound|启 用 声 音 
+ui_enable_sound|启 用 音 效 
 ui_enable_music|启 用 音 乐 
 ui_enable_sound_variation|打 开 声 效 变 化 
 ui_toggle_background|背 景 
@@ -73,7 +73,7 @@ ui_faster_camera|加 速 摄 像 机 移 动
 ui_slower_camera|减 速 摄 像 机 移 动 
 ui_camera_closer|拉 近 摄 像 机 
 ui_camera_farther|拉 远 摄 像 机 
-ui_particle_degrade_distance|粒 子 系 统 退 化 距 离 
+ui_particle_degrade_distance|粒 子 系 统 降 级 距 离 
 ui_sheath_primary_weapon|收 起 武 器 
 ui_sheath_secondary_weapon|收 起 盾 牌 
 ui_drop_primary_weapon|丢 弃 武 器 
@@ -83,9 +83,9 @@ ui_control_block_direction|格 挡 控 制 ：
 ui_control_block_direction_mounted|骑 乘 格 挡 控 制 ： 
 ui_control_attack_direction|攻 击 控 制 ： 
 ui_control_attack_direction_mounted|骑 乘 攻 击 控 制 ： 
-ui_by_inverse_vertical_mouse_movement|垂 直 反 向 鼠 标 移 动 
+ui_by_inverse_vertical_mouse_movement|垂 直 反 转 鼠 标 移 动 
 ui_preset_change|预 设 更 改 
-ui_blood_amount|出 血 量 
+ui_blood_amount|血 迹 数 量 
 ui_beta|β
 ui_partial|部 分 
 ui_data_file_mismatch|您 的 模 组 文 件 已 损 坏 或 被 篡 改 
@@ -97,19 +97,19 @@ ui_synchronization_error|同 步 错 误
 ui_dismount_horse_on_use|使 用 时 下 马 
 ui_maximum_game_frame_rate|最 大 游 戏 帧 率 
 ui_autoexp|自 动 曝 光 
-ui_ragdoll_soak|可 以 击 中 布 娃 娃 尸 体 
-ui_ragdoll_soak_apply_force|布 娃 娃 尸 体 被 击 中 时 会 移 动 
+ui_ragdoll_soak|可 击 中 布 娃 娃 状 态 尸 体 
+ui_ragdoll_soak_apply_force|布 娃 娃 状 态 尸 体 被 击 中 时 会 移 动 
 ui_vsync_tooltip|防 止 画 面 撕 裂 ， 可 能 导 致 输 入 延 迟\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
 ui_msaa_tooltip|平 滑 实 体 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0xFF0000>高</c>
 ui_atoc_tooltip|平 滑 半 透 明 对 象 的 锯 齿 边 缘\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
-ui_fxaa_tooltip|在画面绘制后平滑锯齿边缘。FXAA 更省，但会把细节一起模糊\nSMAA 只找出边缘，其余保持不动\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_fxaa_tooltip|在 画 面 绘 制 后 平 滑 锯 齿 边 缘 。 FXAA 更 省 ， 但 会 把 细 节 一 起 模 糊\nSMAA 只 找 出 边 缘 ， 其 余 保 持 不 动\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
 ui_anisotropic_filtering_tooltip|减 少 远 处 表 面 的 模 糊\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
 ui_sound_occlusion_tooltip|模 拟 封 闭 环 境 中 的 声 音 感 知 效 果 ，\n即 声 源 或 听 者 附 近 有 障 碍 物 的 情 况\n80 米 以 外 的 声 音 不 进 行 计 算\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_show_render_stats_wse2_tooltip|显 示 每 帧 渲 染 计 数 ： 绘 制 调 用 、 可 见 对 象 、 CPU 和 GPU 蒙 皮 、 阴 影 和 线 程 耗 时 \n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_show_simulation_stats_wse2_tooltip|显 示 一 个 模 拟 步 骤 的 耗 时 去 向 ： 物 理 、 单 位 、 AI 、 触 发 器 、 场 景 、 网 络 和 脚 本 调 用 \n\n性 能 消 耗 ：<c=0x00FF00>低</c>
 ui_update_wse2_version|请 更 新 您 的 WSE2版 本 ， 否 则 您 将 被 踢 出 此 服 务 器 。 
-ui_server_for_wse2_campaign|此 服 务 器 用 于 WSE2在 线 战 役 ， 请 启 动 WSE2 并 选 择 "加 入 战 役" 。 
-ui_server_for_standart_game_modes|此 服 务 器 用 于 标 准 游 戏 模 式 ， 请 选 择 " 加 入 游 戏 " 。 
+ui_server_for_wse2_campaign|此 服 务 器 用 于 WSE2在 线 战 役 ， 请 启 动 WSE2 并 选 择 "加 入 战 役 " 。 
+ui_server_for_standart_game_modes|此 服 务 器 用 于 标 准 游 戏 模 式 ， 请 选 择 "加 入 游 戏 " 。 
 ui_enable_cheats_wse2|启 用 作 弊 
 ui_enable_edit_mode_wse2|启 用 编 辑 模 式 （ 警 告 ： 会 降 低 游 戏 速 度 。 ） 
 ui_language_wse2|语 言 ： 
@@ -150,24 +150,50 @@ ui_custom_key_17|
 ui_custom_key_18|
 ui_custom_key_19|
 ui_custom_key_20|
-ui_flora_wind|植被随风摆动
-ui_flora_wind_tooltip|草、灌木和树枝随风摇曳，而树干保持不动\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
-ui_flora_wind_unavailable|需要适用于此模组的 WSE2 着色器。
-ui_grass_draw_distance|草地绘制距离
-ui_meter_value|%d 米
-ui_grass_draw_distance_unavailable|需要适用于此模组的 WSE2 着色器。
-ui_ssao|环境光遮蔽
-ui_ssao_tooltip|使光线难以到达的角落和缝隙变暗\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
-ui_god_rays|体积光
-ui_god_rays_tooltip|太阳被遮挡时在空气中投下光束\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
-ui_frame_depth|从画面获取深度
-ui_frame_depth_tooltip|直接从画面获取特效所需的深度，而不是再绘制一遍场景，\n因此任何模组中的运动物体都能得到正确的阴影\n需要开启深度特效并关闭 MSAA\n\n<c=0x00FF00>提升性能</c>
-ui_shader_blood|血迹贴花
-ui_shader_blood_tooltip|在挨打的位置添加带形状的血花，并随身体移动而留在原处，\n叠加在顶点颜色中的血迹之上\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
-ui_shader_blood_unavailable|需要 WSE2 的着色器模型 3 着色器。
-ui_soft_shadows|软阴影
+ui_flora_wind|植 被 随 风 摆 动 
+ui_flora_wind_tooltip|草 、 灌 木 和 树 枝 随 风 摇 曳 ， 而 枝 干 保 持 不 动\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_flora_wind_unavailable|需 要 适 用 于 此 模 组 的 WSE2 着 色 器 。 
+ui_grass_draw_distance|草 地 绘 制 距 离 
+ui_meter_value|%d 米 
+ui_grass_draw_distance_unavailable|需 要 适 用 于 此 模 组 的 WSE2 着 色 器 。 
+ui_ssao|环 境 光 遮 蔽 
+ui_ssao_tooltip|使 光 线 难 以 到 达 的 角 落 和 缝 隙 变 暗\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_god_rays|体 积 光 
+ui_god_rays_tooltip|太 阳 被 遮 挡 时 在 空 气 中 投 下 光 束\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
+ui_frame_depth|从 画 面 获 取 深 度 
+ui_frame_depth_tooltip|直 接 从 画 面 获 取 特 效 所 需 的 深 度 ， 而 不 是 再 绘 制 一 遍 场 景 ，\n因 此 任 何 模 组 中 的 运 动 物 体 都 能 得 到 正 确 的 着 色\n需 要 开 启 深 度 特 效 并 关 闭 MSAA\n\n<c=0x00FF00>提 升 性 能</c>
+ui_shader_blood|血 迹 贴 花 
+ui_shader_blood_tooltip|在 挨 打 的 位 置 添 加 带 形 状 的 血 花 ， 并 随 身 体 移 动 而 留 在 原 处 ，\n叠 加 在 顶 点 颜 色 中 的 血 迹 之 上\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_shader_blood_unavailable|需 要 使 用 WSE2 着 色 器 模 型 3 。 
+ui_soft_shadows|软 阴 影 
 ui_soft_shadows_tooltip|将 阳 光 阴 影 的 边 缘 分 散 到 数 个 纹 素 上 ， 而 不 是 留 下 锯 齿\n\n性 能 消 耗 ：<c=0xFFAA00>中</c>
-ui_soft_shadows_unavailable|需要 WSE2 的着色器模型 3 着色器。
-ui_water_foam|岸边浪花
-ui_water_foam_tooltip|水与岸交界处的浪花泡沫\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
-ui_water_foam_unavailable|需要 WSE2 的着色器模型 3 着色器。
+ui_soft_shadows_unavailable|需 要 使 用 WSE2 着 色 器 模 型 3 。 
+ui_water_foam|岸 边 浪 花 
+ui_water_foam_tooltip|水 与 岸 交 界 处 的 浪 花 泡 沫\n\n性 能 消 耗 ：<c=0x00FF00>低</c>
+ui_water_foam_unavailable|需 要 使 用 WSE2 着 色 器 模 型 3 。 
+ui_play|开 始 游 戏 
+ui_play_x64|开 始 游 戏 (x64)
+ui_start_dedicated|启 动 专 用 服 务 器 
+ui_disable_sound|关 闭 音 效 
+ui_disable_music|关 闭 音 乐 
+ui_language|语 言 ： 
+ui_current_module|当 前 模 组 ： 
+ui_ondemand_textures|按 需 加 载 纹 理 ： 
+ui_use_wse2_effect|使 用 WSE2 特 效 ： 
+ui_effect_shader_model|特 效 着 色 器 模 型 ： 
+ui_effect_shader_model_auto|自 动 
+ui_update_wse2|更 新 WSE2 
+ui_install_wse2|安 装 WSE2 
+ui_version_is_up_to_date|当 前 WSE2 版 本 已 是 最 新 。 
+ui_newer_version_available|有 更 新 的 WSE2 版 本 可 用 。 
+ui_wse2_not_installed|您 尚 未 安 装 WSE2 。 
+ui_please_wait|请 稍 候 … 
+ui_downloading_|正 在 下 载 
+ui_extracting|正 在 解 包 
+ui_update_installed|更 新 已 安 装 。 
+ui_restart_launcher|重 启 启 动 器 
+ui_update_failed|更 新 失 败 ： 
+ui_options|选 项 
+ui_save|保 存 
+ui_cancel|取 消 
+ui_exit|退 出 
